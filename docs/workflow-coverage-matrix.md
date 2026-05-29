@@ -15,7 +15,7 @@ explicit.
 | Repo | Package Adoption | API Boundary Coverage | Worker/Event Coverage | UI/Operator Coverage | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | `careerpath` | covered | in-progress | not-started | in-progress | in-progress | Published packages are consumed. Expand to all workflows. |
-| `ofoqh.communication` | in-progress | in-progress | in-progress | not-started | in-progress | Shared package is referenced. Published client packages now preserve downstream `ProblemDetails`, and delivery endpoints emit trace-aware problem responses. Worker and webhook-originated workflow failures still need explicit chain coverage. |
+| `ofoqh.communication` | in-progress | in-progress | in-progress | not-started | in-progress | Shared package is referenced. Published client packages now preserve downstream `ProblemDetails`, delivery endpoints emit trace-aware problem responses, and webhook callbacks now return structured dependency failures. Remaining gaps are mostly operator-facing surfaces and broader worker/outbox coverage. |
 | `ofoqh.identity.provider` | in-progress | in-progress | not-started | not-started | in-progress | OAuth admin path is covered. User-store notification workflows now preserve communication delivery and OAuth token acquisition failures through shared results and published client packages. Broaden further to tenant, public, and delivery-outcome read workflows. |
 
 ## Workflows
@@ -28,7 +28,7 @@ explicit.
 | Tenant invite onboarding | IDP tenant admin API | `idp`, `communication` | Tenant invite API -> communication delivery client | email delivery + outcome polling | API `ProblemDetails`, operator logs | in-progress | Delivery client and token acquisition failures now preserve structured chains. Invite creation still degrades to warning-only when email queueing fails after invite persistence, and outcome polling remains best-effort. |
 | Public password reset | IDP public API | `idp`, `communication` | Public API -> communication delivery client | email delivery | API `ProblemDetails` | in-progress | Reset email queue failures now preserve `failureChain`, including OAuth token acquisition failures. Delivery outcome read paths still need explicit regression coverage. |
 | Public self-registration approval | IDP public API | `idp`, `communication` | Public API -> communication delivery client | admin notification email | API `ProblemDetails`, operator logs | in-progress | Notification dispatch failures are structured internally, but public flow still logs-and-continues for non-blocking notification paths. |
-| Internal delivery service calls | backend service-to-service API | `communication`, downstream callers | Caller -> communication internal delivery API | optional provider/webhook outcomes | API `ProblemDetails`, client exceptions | in-progress | Published .NET clients now preserve downstream problem details and chain entries. Worker and provider callback paths still need the same contract. |
+| Internal delivery service calls | backend service-to-service API | `communication`, downstream callers | Caller -> communication internal delivery API | provider send, provider webhook callbacks, realtime outbox | API `ProblemDetails`, client exceptions, worker logs | in-progress | Published .NET clients now preserve downstream problem details and chain entries. Provider send failures, webhook callbacks, and worker logging are chain-aware, but operator-facing outbox diagnostics still need a surfaced chain view. |
 
 ## How To Use This Matrix
 
