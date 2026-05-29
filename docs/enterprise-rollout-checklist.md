@@ -123,5 +123,6 @@ At minimum, inventory and verify:
 Use the shared matrix in:
 
 - [workflow-coverage-matrix.md](/home/jnabizada/Projects/Ofoqh/ofoqh.shared/docs/workflow-coverage-matrix.md:1)
+- [endpoint-diagnostics-audit.md](/home/jnabizada/Projects/Ofoqh/ofoqh.shared/docs/endpoint-diagnostics-audit.md:1)
 
 Every uncovered workflow or partial hop must be visible there until closed.

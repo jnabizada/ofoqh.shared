@@ -23,3 +23,4 @@ Use these documents to drive enterprise-wide adoption:
 
 - [enterprise-rollout-checklist.md](/home/jnabizada/Projects/Ofoqh/ofoqh.shared/docs/enterprise-rollout-checklist.md:1)
 - [workflow-coverage-matrix.md](/home/jnabizada/Projects/Ofoqh/ofoqh.shared/docs/workflow-coverage-matrix.md:1)
+- [endpoint-diagnostics-audit.md](/home/jnabizada/Projects/Ofoqh/ofoqh.shared/docs/endpoint-diagnostics-audit.md:1)
