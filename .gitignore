@@ -4,3 +4,5 @@ npm/*/dist/
 dotnet/**/bin/
 dotnet/**/obj/
 .vs/
+
+artifacts/
