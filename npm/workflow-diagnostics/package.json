@@ -1,0 +1,19 @@
+{
+  "name": "@ofoqh/workflow-diagnostics",
+  "version": "0.1.0",
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://verdaccio.dev-test.careerpath.ofoqh.com/"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

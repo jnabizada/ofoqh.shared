@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ofoqh.com/schemas/workflow-problem-details.schema.json",
+  "title": "Workflow Problem Details",
+  "type": "object",
+  "properties": {
+    "type": { "type": ["string", "null"] },
+    "title": { "type": ["string", "null"] },
+    "status": { "type": ["integer", "null"] },
+    "detail": { "type": ["string", "null"] },
+    "instance": { "type": ["string", "null"] },
+    "traceId": { "type": ["string", "null"] },
+    "failureChain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service": { "type": "string" },
+          "operation": { "type": "string" },
+          "status": { "type": ["integer", "null"] },
+          "traceId": { "type": ["string", "null"] },
+          "requestId": { "type": ["string", "null"] },
+          "instance": { "type": ["string", "null"] },
+          "message": { "type": ["string", "null"] },
+          "timestampUtc": { "type": ["string", "null"] }
+        },
+        "required": ["service", "operation"]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Ofoqh.Workflow.Diagnostics.AspNetCore</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Ofoqh</Authors>
+    <Description>ASP.NET Core helpers for workflow diagnostics ProblemDetails handling.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ofoqh.Workflow.Diagnostics\Ofoqh.Workflow.Diagnostics.csproj" />
+  </ItemGroup>
+</Project>

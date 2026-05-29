@@ -1,0 +1,13 @@
+{
+  "name": "ofoqh-workflow-diagnostics-monorepo",
+  "private": true,
+  "workspaces": [
+    "npm/workflow-diagnostics"
+  ],
+  "scripts": {
+    "build:ts": "npm --workspace @ofoqh/workflow-diagnostics run build",
+    "publish:verdaccio": "bash ./scripts/publish-verdaccio.sh",
+    "pack:dotnet": "dotnet pack ./dotnet/Ofoqh.Workflow.Diagnostics.sln -c Release -o ./artifacts/nuget",
+    "publish:bagetter": "bash ./scripts/publish-bagetter.sh"
+  }
+}
