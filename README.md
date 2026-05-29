@@ -1,30 +1,69 @@
-# ofoqh-workflow-diagnostics
+# ofoqh.shared
 
-Shared workflow diagnostics contracts, helpers, and guidance for Ofoqh services and SPAs.
+Shared contracts, packages, and guidance for cross-repo Ofoqh platform concerns.
 
-## Scope
+## Purpose
 
-This repository is the canonical home for:
+This repository is the canonical home for the enterprise workflow diagnostics pattern
+used across Ofoqh services and SPAs. It standardizes how downstream failures are
+preserved, propagated, and exposed through RFC 7807 `ProblemDetails`.
 
-- RFC 7807 workflow failure-chain contracts
-- shared .NET diagnostics packages
-- shared npm diagnostics packages
-- adoption and architecture guidance
-- contract schemas and examples
+The goal is simple: no workflow should lose its real failure state just because it
+crossed one or more service boundaries.
 
-## Planned Packages
+## What Lives Here
+
+- shared .NET packages for workflow diagnostics
+- shared npm package for frontend diagnostics contracts and helpers
+- JSON schema for workflow-aware `ProblemDetails`
+- rollout, architecture, and adoption guidance
+- publishing scripts for cluster BaGet and Verdaccio
+
+## Packages
+
+### NuGet
 
 - `Ofoqh.Workflow.Diagnostics`
-- `@ofoqh/workflow-diagnostics`
+  Shared models, abstractions, headers, and ProblemDetails parsing helpers.
+- `Ofoqh.Workflow.Diagnostics.AspNetCore`
+  ASP.NET Core helpers for workflow-aware API responses.
 
-## Cluster Registries
+### npm
+
+- `@ofoqh/workflow-diagnostics`
+  Shared TypeScript contract and helper layer for SPAs and frontend libraries.
+
+## Repository Layout
+
+- `docs/`
+  Enterprise guidance, architecture, rollout checklists, and publishing notes.
+- `schemas/`
+  JSON schema for workflow-aware `ProblemDetails`.
+- `dotnet/`
+  Shared .NET packages and tests.
+- `npm/`
+  Shared frontend package(s).
+- `scripts/`
+  Publish helpers for internal registries.
+
+## Internal Registries
 
 - NuGet/BaGet: `https://bagetter.dev-test.careerpath.ofoqh.com/v3/index.json`
 - npm/Verdaccio: `https://verdaccio.dev-test.careerpath.ofoqh.com/`
 
-## Initial Layout
+## Source
 
-- `docs/`
-- `schemas/`
-- `dotnet/`
-- `npm/`
+- Repository: `https://github.com/jnabizada/ofoqh.shared`
+
+## Documentation
+
+- [Contract](docs/contract.md)
+- [Architecture](docs/architecture.md)
+- [Adoption Guide](docs/adoption-guide.md)
+- [Enterprise Rollout Checklist](docs/enterprise-rollout-checklist.md)
+- [Workflow Coverage Matrix](docs/workflow-coverage-matrix.md)
+- [Publishing](docs/publishing.md)
+
+## License
+
+This repository is proprietary and intended for internal Ofoqh use. See [LICENSE.md](LICENSE.md).

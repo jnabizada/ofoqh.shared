@@ -6,6 +6,17 @@
     <PackageId>Ofoqh.Workflow.Diagnostics</PackageId>
     <Version>0.1.0</Version>
     <Authors>Ofoqh</Authors>
-    <Description>Shared workflow diagnostics contracts and parsers.</Description>
+    <Description>Shared workflow diagnostics contracts, failure-chain models, headers, and ProblemDetails parsers for Ofoqh services.</Description>
+    <PackageTags>workflow-diagnostics;problemdetails;rfc7807;observability;distributed-systems</PackageTags>
+    <PackageProjectUrl>https://github.com/jnabizada/ofoqh.shared</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jnabizada/ofoqh.shared</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" Link="LICENSE.md" />
+  </ItemGroup>
 </Project>

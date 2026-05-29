@@ -6,8 +6,19 @@
     <PackageId>Ofoqh.Workflow.Diagnostics.AspNetCore</PackageId>
     <Version>0.1.0</Version>
     <Authors>Ofoqh</Authors>
-    <Description>ASP.NET Core helpers for workflow diagnostics ProblemDetails handling.</Description>
+    <Description>ASP.NET Core helpers for emitting workflow-aware ProblemDetails and preserving downstream failure-chain metadata.</Description>
+    <PackageTags>workflow-diagnostics;problemdetails;aspnetcore;rfc7807;observability</PackageTags>
+    <PackageProjectUrl>https://github.com/jnabizada/ofoqh.shared</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jnabizada/ofoqh.shared</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" Link="LICENSE.md" />
+  </ItemGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>

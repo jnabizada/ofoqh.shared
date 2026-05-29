@@ -1,14 +1,28 @@
 {
   "name": "@ofoqh/workflow-diagnostics",
   "version": "0.1.0",
+  "description": "Shared workflow diagnostics contracts and helpers for Ofoqh SPAs and frontend libraries.",
+  "license": "UNLICENSED",
   "type": "module",
+  "homepage": "https://github.com/jnabizada/ofoqh.shared",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnabizada/ofoqh.shared.git",
+    "directory": "npm/workflow-diagnostics"
+  },
+  "bugs": {
+    "url": "https://github.com/jnabizada/ofoqh.shared/issues"
+  },
+  "author": "Ofoqh",
   "publishConfig": {
     "registry": "https://verdaccio.dev-test.careerpath.ofoqh.com/"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json"
