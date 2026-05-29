@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Ofoqh.Workflow.Diagnostics</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Ofoqh</Authors>
     <Description>Shared workflow diagnostics contracts, failure-chain models, headers, and ProblemDetails parsers for Ofoqh services.</Description>
     <PackageTags>workflow-diagnostics;problemdetails;rfc7807;observability;distributed-systems</PackageTags>

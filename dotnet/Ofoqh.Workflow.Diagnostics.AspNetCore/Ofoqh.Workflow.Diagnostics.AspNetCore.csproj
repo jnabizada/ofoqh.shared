@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Ofoqh.Workflow.Diagnostics.AspNetCore</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Ofoqh</Authors>
     <Description>ASP.NET Core helpers for emitting workflow-aware ProblemDetails and preserving downstream failure-chain metadata.</Description>
     <PackageTags>workflow-diagnostics;problemdetails;aspnetcore;rfc7807;observability</PackageTags>
