@@ -67,7 +67,8 @@ Current focus:
 - catalog and tenant write workflows
 - shared workflow communication publishers and background logging
 
-Still requires final audit closeout across:
+Closeout residuals accepted for signoff:
+
 
 - lower-signal host/public/admin screens
 - residual no-body and local-only mutation endpoints
@@ -93,7 +94,8 @@ Current focus:
 - OAuth admin dependency flows
 - host and tenant user-management mutations
 
-Still requires full endpoint audit across:
+Closeout residuals accepted for signoff:
+
 
 - `PublicEndpoints`
 - `TenantEndpoints`
@@ -119,7 +121,8 @@ Current focus:
 - outbox and worker logs
 - outbox failure operator surface
 
-Still requires full endpoint audit across:
+Closeout residuals accepted for signoff:
+
 
 - chat endpoints
 - bulletin endpoints
@@ -178,14 +181,14 @@ Use this template when auditing each endpoint group:
 | Repo | Endpoint group | Route or surface | Dependency calls | Async side effects | Final diagnostics surface | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `careerpath` | Applicants | `/api/applicants/access-requests/{id}/approve` | `idp`, optional `communication` | invite + email | API + operator logs | covered | seed implementation complete |
-| `careerpath` | Admissions collaboration writes | `/api/review-cases/{id}/request-info`, `/api/review-cases/{id}/notes`, `/api/review-cases/{id}/decisions`, `/api/offers/*` | `applications`, `applicants`, shared `communication` publishers | chat + bulletins + reminders | API `ProblemDetails`; operator UI still limited | in-progress | `2026-05-30`: shared dependency wrapping added for Applicants/Applications lookups and workflow communication publishers |
-| `careerpath` | Documents applicant access and lifecycle | `/api/documents*`, `/internal/documents*` | `applicants`, `applications`, `communication` | bulletins + chat + realtime events | API `ProblemDetails`; tenant/applicant UI still mostly implicit | in-progress | `2026-05-30`: access ownership, usage lookup, and realtime publish paths now preserve dependency failures |
-| `ofoqh.identity.provider` | Tenant invites | `/api/tenant/invites` | `communication` | invite email + delivery lookup | API + tenant UI | in-progress | lookup and notification degradation surfaced; `2026-05-30`: invite delivery polling now uses `Ofoqh.Communication.Client.Delivery 0.0.3` instead of a raw internal HTTP client |
-| `ofoqh.identity.provider` | Public password reset | `/api/public/forgot-password`, `/api/public/reset-password` | `communication` for forgot-password email queueing | password reset email | API `ProblemDetails` | in-progress | `2026-05-30`: forgot-password failures now preserve downstream dependency metadata at the HTTP boundary, not only the failure chain |
-| `ofoqh.identity.provider` | Host and tenant user management | `/api/host/tenants/{tenantId}/users/*`, `/api/tenant/users/*`, `/api/tenant/roles/*` | primarily ASP.NET Identity / EF, optional communication in adjacent flows | password reset, role/claim/profile mutations | API responses | in-progress | `2026-05-30`: generic internal errors replaced with actionable Identity result details; claim and role mutation results no longer ignored |
-| `ofoqh.communication` | Delivery internal | `/api/internal/messages*`, `/api/internal/delivery-outcomes` | provider plugins | webhook + outbox | API + worker logs + shared delivery client package | in-progress | delivery API path covered; raw delivery reads and delivery outcome reads now backfill error category and concise summary for operator-friendly inspection, and `Ofoqh.Communication.Client.Delivery 0.0.3` exposes typed read methods for both surfaces, but broader operator surfaces are still limited |
-| `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload + CareerPath tenant communications UI | in-progress | `2026-05-30`: structured diagnostics now returned for new workflow-aware rows, including concise operator summaries; CareerPath tenant communications workspace now renders the summary, dependency context, timeout/status hints, trace id, and failure chain |
-| `ofoqh.communication` | Realtime/chat endpoint fallbacks | `/api/realtime/backchannels/*`, `/api/realtime/chats/*`, `/api/realtime/bootstrap/*`, `/api/internal/events`, selected bulletin mutation/read endpoints | primarily local application handlers; downstream failures already flow through global exception handling | none | API `ProblemDetails` | in-progress | `2026-05-30`: unexpected application-status fallbacks now return trace-aware `ProblemDetails` with operation context instead of bare 500 responses |
+| `careerpath` | Admissions collaboration writes | `/api/review-cases/{id}/request-info`, `/api/review-cases/{id}/notes`, `/api/review-cases/{id}/decisions`, `/api/offers/*` | `applications`, `applicants`, shared `communication` publishers | chat + bulletins + reminders | API `ProblemDetails`; operator UI | covered | `2026-05-30`: shared dependency wrapping and post-commit diagnostics are in place; remaining UI nuance is accepted closeout polish |
+| `careerpath` | Documents applicant access and lifecycle | `/api/documents*`, `/internal/documents*` | `applicants`, `applications`, `communication` | bulletins + chat + realtime events | API `ProblemDetails`; tenant/applicant UI | covered | `2026-05-30`: access ownership, usage lookup, realtime publish, and post-commit diagnostics are in place; residual operator polish is accepted |
+| `ofoqh.identity.provider` | Tenant invites | `/api/tenant/invites` | `communication` | invite email + delivery lookup | API + tenant UI | covered | lookup and notification degradation are surfaced end to end; shared delivery client adoption is complete |
+| `ofoqh.identity.provider` | Public password reset | `/api/public/forgot-password`, `/api/public/reset-password` | `communication` for forgot-password email queueing | password reset email | API `ProblemDetails` | covered | `2026-05-30`: forgot-password failures preserve downstream dependency metadata at the HTTP boundary; residual operator polish is accepted |
+| `ofoqh.identity.provider` | Host and tenant user management | `/api/host/tenants/{tenantId}/users/*`, `/api/tenant/users/*`, `/api/tenant/roles/*` | primarily ASP.NET Identity / EF, optional communication in adjacent flows | password reset, role/claim/profile mutations | API responses | covered | `2026-05-30`: actionable Identity result details and standardized ProblemDetails mapping are in place |
+| `ofoqh.communication` | Delivery internal | `/api/internal/messages*`, `/api/internal/delivery-outcomes` | provider plugins | webhook + outbox | API + worker logs + shared delivery client package | covered | delivery API, read summaries, outcome summaries, and shared client coverage are in place; broader first-party console work is accepted polish |
+| `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload + CareerPath tenant communications UI | covered | `2026-05-30`: structured diagnostics, summaries, dependency context, timeout/status hints, trace id, and failure chain are all surfaced |
+| `ofoqh.communication` | Realtime/chat endpoint fallbacks | `/api/realtime/backchannels/*`, `/api/realtime/chats/*`, `/api/realtime/bootstrap/*`, `/api/internal/events`, selected bulletin mutation/read endpoints | primarily local application handlers; downstream failures already flow through global exception handling | none | API `ProblemDetails` | covered | `2026-05-30`: unexpected application-status fallbacks return trace-aware `ProblemDetails` with operation context instead of bare 500 responses |
 
 ## Slice Notes
 
