@@ -171,10 +171,10 @@ Use this template when auditing each endpoint group:
 | `careerpath` | Applicants | `/api/applicants/access-requests/{id}/approve` | `idp`, optional `communication` | invite + email | API + operator logs | covered | seed implementation complete |
 | `careerpath` | Admissions collaboration writes | `/api/review-cases/{id}/request-info`, `/api/review-cases/{id}/notes`, `/api/review-cases/{id}/decisions`, `/api/offers/*` | `applications`, `applicants`, shared `communication` publishers | chat + bulletins + reminders | API `ProblemDetails`; operator UI still limited | in-progress | `2026-05-30`: shared dependency wrapping added for Applicants/Applications lookups and workflow communication publishers |
 | `careerpath` | Documents applicant access and lifecycle | `/api/documents*`, `/internal/documents*` | `applicants`, `applications`, `communication` | bulletins + chat + realtime events | API `ProblemDetails`; tenant/applicant UI still mostly implicit | in-progress | `2026-05-30`: access ownership, usage lookup, and realtime publish paths now preserve dependency failures |
-| `ofoqh.identity.provider` | Tenant invites | `/api/tenant/invites` | `communication` | invite email + delivery lookup | API + tenant UI | in-progress | lookup and notification degradation surfaced |
+| `ofoqh.identity.provider` | Tenant invites | `/api/tenant/invites` | `communication` | invite email + delivery lookup | API + tenant UI | in-progress | lookup and notification degradation surfaced; `2026-05-30`: invite delivery polling now uses `Ofoqh.Communication.Client.Delivery 0.0.3` instead of a raw internal HTTP client |
 | `ofoqh.identity.provider` | Public password reset | `/api/public/forgot-password`, `/api/public/reset-password` | `communication` for forgot-password email queueing | password reset email | API `ProblemDetails` | in-progress | `2026-05-30`: forgot-password failures now preserve downstream dependency metadata at the HTTP boundary, not only the failure chain |
 | `ofoqh.identity.provider` | Host and tenant user management | `/api/host/tenants/{tenantId}/users/*`, `/api/tenant/users/*`, `/api/tenant/roles/*` | primarily ASP.NET Identity / EF, optional communication in adjacent flows | password reset, role/claim/profile mutations | API responses | in-progress | `2026-05-30`: generic internal errors replaced with actionable Identity result details; claim and role mutation results no longer ignored |
-| `ofoqh.communication` | Delivery internal | `/api/internal/messages*`, `/api/internal/delivery-outcomes` | provider plugins | webhook + outbox | API + worker logs | in-progress | delivery API path covered; raw delivery reads and delivery outcome reads now backfill error category and concise summary for operator-friendly inspection, but broader operator surfaces are still limited |
+| `ofoqh.communication` | Delivery internal | `/api/internal/messages*`, `/api/internal/delivery-outcomes` | provider plugins | webhook + outbox | API + worker logs + shared delivery client package | in-progress | delivery API path covered; raw delivery reads and delivery outcome reads now backfill error category and concise summary for operator-friendly inspection, and `Ofoqh.Communication.Client.Delivery 0.0.3` exposes typed read methods for both surfaces, but broader operator surfaces are still limited |
 | `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload + CareerPath tenant communications UI | in-progress | `2026-05-30`: structured diagnostics now returned for new workflow-aware rows, including concise operator summaries; CareerPath tenant communications workspace now renders the summary, dependency context, and failure chain |
 | `ofoqh.communication` | Realtime/chat endpoint fallbacks | `/api/realtime/backchannels/*`, `/api/realtime/chats/*`, `/api/realtime/bootstrap/*`, `/api/internal/events`, selected bulletin mutation/read endpoints | primarily local application handlers; downstream failures already flow through global exception handling | none | API `ProblemDetails` | in-progress | `2026-05-30`: unexpected application-status fallbacks now return trace-aware `ProblemDetails` with operation context instead of bare 500 responses |
 
@@ -253,6 +253,32 @@ Still open after this slice:
 - no first-party operator UI consumes delivery outcome event summaries yet
 - service-to-service consumers still need adoption follow-through if they want to display the new outcome summary fields
 - broader operator closeout in `communication` remains an audit task beyond this read-model improvement
+
+### `2026-05-30` `ofoqh.communication` shared delivery client read coverage
+
+Completed in this slice:
+
+- `Ofoqh.Communication.Client.Delivery` now supports typed reads for persisted delivery records and durable delivery outcome events
+- the shared client exposes concise summary-bearing DTOs instead of forcing downstream services onto ad hoc HTTP calls
+- dedicated client tests now verify raw delivery search, idempotency-key lookup, and delivery outcome query construction plus JSON parsing
+
+Still open after this slice:
+
+- downstream repos still need to adopt the new read methods where they currently inspect delivery state indirectly
+- operator-facing UIs remain a separate concern from backend client parity
+
+### `2026-05-30` `ofoqh.identity.provider` shared delivery client adoption
+
+Completed in this slice:
+
+- invite delivery outcome lookup now uses the published `Ofoqh.Communication.Client.Delivery 0.0.3` read surface instead of a custom raw `HttpClient` call
+- the extra named internal delivery client path was removed from identity infrastructure wiring
+- focused invite and public identity tests remained green after the client adoption
+
+Still open after this slice:
+
+- this is the first downstream adoption only; other repos still need to switch to the shared read client where they inspect communication delivery state
+- operator/UI surfaces remain separate from the backend client parity work
 
 ### `2026-05-30` `ofoqh.communication` realtime and internal endpoint fallback hardening
 
