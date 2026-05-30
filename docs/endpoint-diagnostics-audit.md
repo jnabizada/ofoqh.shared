@@ -50,21 +50,19 @@ refreshed as APIs evolve.
 Current focus:
 
 - applicants approval and invite endpoints
-- applications dependency-failure endpoints
-- tenant invite operator UI
+- applications dependency-failure and post-commit write endpoints
+- tenant invite and communications operator UI
 - admissions review collaboration endpoints
 - documents applicant access and lifecycle endpoints
-- shared workflow communication publishers used by multiple APIs
+- catalog and tenant write workflows
+- shared workflow communication publishers and background logging
 
-Still requires full endpoint audit across:
+Still requires final audit closeout across:
 
-- `Applicants.Api`
-- `Applications.Api`
-- `Admissions.Api`
-- `Catalog.Api`
-- `Documents.Api`
-- `Tenants.Api`
-- internal API groups in each service
+- lower-signal host/public/admin screens
+- residual no-body and local-only mutation endpoints
+- hosted/background flows where diagnostics are log-only
+- internal API groups in each service for consistency verification
 
 Checklist:
 
