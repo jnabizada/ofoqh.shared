@@ -43,6 +43,16 @@ refreshed as APIs evolve.
 - `covered`
 - `blocked`
 
+## Closeout Assessment
+
+As of `2026-05-30`, the major cross-service diagnostics plumbing is in place across `careerpath`, `ofoqh.identity.provider`, and `ofoqh.communication`.
+
+The main residual work is now:
+
+- converting conservative `in-progress` rows to `covered` only after explicit endpoint-group signoff
+- polishing operator screens where richer diagnostics could still be rendered more directly
+- reviewing low-signal local-only or background flows that already log or inherit shared diagnostics but have not been individually signed off
+
 ## Repo Audit Plan
 
 ### `careerpath`
@@ -174,7 +184,7 @@ Use this template when auditing each endpoint group:
 | `ofoqh.identity.provider` | Public password reset | `/api/public/forgot-password`, `/api/public/reset-password` | `communication` for forgot-password email queueing | password reset email | API `ProblemDetails` | in-progress | `2026-05-30`: forgot-password failures now preserve downstream dependency metadata at the HTTP boundary, not only the failure chain |
 | `ofoqh.identity.provider` | Host and tenant user management | `/api/host/tenants/{tenantId}/users/*`, `/api/tenant/users/*`, `/api/tenant/roles/*` | primarily ASP.NET Identity / EF, optional communication in adjacent flows | password reset, role/claim/profile mutations | API responses | in-progress | `2026-05-30`: generic internal errors replaced with actionable Identity result details; claim and role mutation results no longer ignored |
 | `ofoqh.communication` | Delivery internal | `/api/internal/messages*`, `/api/internal/delivery-outcomes` | provider plugins | webhook + outbox | API + worker logs + shared delivery client package | in-progress | delivery API path covered; raw delivery reads and delivery outcome reads now backfill error category and concise summary for operator-friendly inspection, and `Ofoqh.Communication.Client.Delivery 0.0.3` exposes typed read methods for both surfaces, but broader operator surfaces are still limited |
-| `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload + CareerPath tenant communications UI | in-progress | `2026-05-30`: structured diagnostics now returned for new workflow-aware rows, including concise operator summaries; CareerPath tenant communications workspace now renders the summary, dependency context, and failure chain |
+| `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload + CareerPath tenant communications UI | in-progress | `2026-05-30`: structured diagnostics now returned for new workflow-aware rows, including concise operator summaries; CareerPath tenant communications workspace now renders the summary, dependency context, timeout/status hints, trace id, and failure chain |
 | `ofoqh.communication` | Realtime/chat endpoint fallbacks | `/api/realtime/backchannels/*`, `/api/realtime/chats/*`, `/api/realtime/bootstrap/*`, `/api/internal/events`, selected bulletin mutation/read endpoints | primarily local application handlers; downstream failures already flow through global exception handling | none | API `ProblemDetails` | in-progress | `2026-05-30`: unexpected application-status fallbacks now return trace-aware `ProblemDetails` with operation context instead of bare 500 responses |
 
 ## Slice Notes

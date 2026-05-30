@@ -10,12 +10,22 @@ explicit.
 - `covered`
 - `blocked`
 
+## Closeout Assessment
+
+Primary workflow diagnostics implementation is complete across the shared enterprise path.
+
+Residual items are now mostly one of these:
+
+- operator-surface polish where a screen could render richer context more explicitly
+- low-signal local-only or no-body flows that already benefit from shared error shaping or logging but do not justify new contracts
+- formal endpoint-by-endpoint signoff to convert `in-progress` rows into `covered` with strict audit confidence
+
 ## Repositories
 
 | Repo | Package Adoption | API Boundary Coverage | Worker/Event Coverage | UI/Operator Coverage | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | `careerpath` | covered | covered | in-progress | in-progress | in-progress | Published packages are consumed. Shared downstream dependency shaping and post-commit diagnostics now cover Applicants, Applications, Admissions, Catalog, Documents, and Tenants. Applicant, tenant, public, and admin web flows now surface structured diagnostics through targeted warning UI plus the shared HTTP error formatter. Remaining gaps are final low-signal background and operator closeout work. |
-| `ofoqh.communication` | in-progress | in-progress | in-progress | in-progress | in-progress | Shared package is referenced. Published client packages now preserve downstream `ProblemDetails`, delivery endpoints and remaining realtime/chat/internal-event fallback branches emit trace-aware problem responses, webhook callbacks return structured dependency failures, outbox operator diagnostics are surfaced in the CareerPath tenant communications workspace, and both delivery reads and delivery outcome reads now backfill operator-friendly failure category/summary data. `Ofoqh.Communication.Client.Delivery 0.0.3` now exposes typed delivery read and outcome-read methods with regression coverage. Remaining gaps are mostly broader operator coverage and final audit closeout. |
+| `ofoqh.communication` | in-progress | in-progress | in-progress | in-progress | in-progress | Shared package is referenced. Published client packages now preserve downstream `ProblemDetails`, delivery endpoints and remaining realtime/chat/internal-event fallback branches emit trace-aware problem responses, webhook callbacks return structured dependency failures, outbox operator diagnostics are surfaced in the CareerPath tenant communications workspace, and both delivery reads and delivery outcome reads now backfill operator-friendly failure category/summary data. `Ofoqh.Communication.Client.Delivery 0.0.3` now exposes typed delivery read and outcome-read methods with regression coverage. The tenant communications monitor now also shows timeout/status/trace hints for outbox failures. Remaining gaps are mostly broader first-party operator coverage and formal audit closeout. |
 | `ofoqh.identity.provider` | in-progress | covered | not-started | not-started | in-progress | OAuth admin path is covered. The shared `ToHttpResult(...)` mapper now emits RFC 7807 `ProblemDetails` consistently for not-found, validation, business-rule, unauthorized, and internal-error results across public, tenant, and host endpoints. User-store notification workflows preserve communication delivery and OAuth token acquisition failures through shared results and published client packages, and invite delivery lookup consumes the shared delivery client read surface instead of a raw HTTP call. Remaining gaps are mostly operator surfaces and final endpoint audit closeout. |
 
 ## Workflows
