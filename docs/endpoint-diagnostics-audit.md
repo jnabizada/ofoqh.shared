@@ -96,6 +96,7 @@ Checklist:
 - identify endpoints with non-blocking communication side effects
 - ensure those endpoints expose degraded downstream state explicitly
 - identify endpoints that still use generic `InternalError` without structured dependency context
+- verify shared `ToHttpResult(...)` ProblemDetails projection remains consistent across invite, user, role, host-tenant, and OAuth administration surfaces
 - audit invite, user, role, host-tenant, and OAuth administration surfaces separately
 
 ### `ofoqh.communication`
@@ -223,6 +224,19 @@ Still open after this slice:
 - these user-management endpoints still do not emit workflow-style failure chains because they are mostly local Identity mutations rather than downstream service hops
 - broader host/tenant surfaces outside user management still need endpoint-by-endpoint audit review
 - operator-facing UI rendering of these richer validation/internal messages remains a separate client-side concern
+
+### `2026-05-30` `ofoqh.identity.provider` shared result-to-ProblemDetails standardization
+
+Completed in this slice:
+
+- the shared `ToHttpResult(...)` mapper now projects `NotFound`, `ValidationError`, `BusinessRuleViolated`, `Unauthorized`, and `InternalError` as RFC 7807 `ProblemDetails`
+- public, tenant, and host endpoints that already rely on the shared mapper automatically inherit the standardized error envelope instead of returning a mix of anonymous `{ error }` payloads and fallback 500 responses
+- focused tests now verify that unauthorized and validation failures also come back as `ProblemDetails`
+
+Still open after this slice:
+
+- operator-facing UIs still need to decide when to render these richer non-500 problem payloads more explicitly versus relying on shared error formatting
+- endpoint-by-endpoint audit closeout is still needed for local-only flows that do not involve downstream workflow failures
 
 ### `2026-05-30` `ofoqh.identity.provider` public password reset diagnostics
 
