@@ -175,6 +175,7 @@ Use this template when auditing each endpoint group:
 | `ofoqh.identity.provider` | Host and tenant user management | `/api/host/tenants/{tenantId}/users/*`, `/api/tenant/users/*`, `/api/tenant/roles/*` | primarily ASP.NET Identity / EF, optional communication in adjacent flows | password reset, role/claim/profile mutations | API responses | in-progress | `2026-05-30`: generic internal errors replaced with actionable Identity result details; claim and role mutation results no longer ignored |
 | `ofoqh.communication` | Delivery internal | `/api/internal/messages*` | provider plugins | webhook + outbox | API + worker logs | in-progress | delivery API path covered; broader operator surfaces still limited |
 | `ofoqh.communication` | Realtime outbox failures | `/api/realtime/outbox/failures` | none at read time; reflects worker-captured dependency failures | retries + dead-letter transitions | operator API payload | in-progress | `2026-05-30`: structured diagnostics now returned for new workflow-aware rows; no dedicated UI yet |
+| `ofoqh.communication` | Realtime/chat endpoint fallbacks | `/api/realtime/backchannels/*`, `/api/realtime/chats/*`, `/api/realtime/bootstrap/*`, `/api/internal/events`, selected bulletin mutation/read endpoints | primarily local application handlers; downstream failures already flow through global exception handling | none | API `ProblemDetails` | in-progress | `2026-05-30`: unexpected application-status fallbacks now return trace-aware `ProblemDetails` with operation context instead of bare 500 responses |
 
 ## Slice Notes
 
@@ -223,6 +224,20 @@ Still open after this slice:
 - these user-management endpoints still do not emit workflow-style failure chains because they are mostly local Identity mutations rather than downstream service hops
 - broader host/tenant surfaces outside user management still need endpoint-by-endpoint audit review
 - operator-facing UI rendering of these richer validation/internal messages remains a separate client-side concern
+
+### `2026-05-30` `ofoqh.communication` realtime and internal endpoint fallback hardening
+
+Completed in this slice:
+
+- remaining chat, backchannel, realtime-session, internal business-event, and bulletin fallback branches now emit trace-aware `ProblemDetails`
+- unexpected application statuses now include `traceId`, operation name, and reported operation status instead of returning a bare `500`
+- the hardening is intentionally additive: structured dependency exceptions still flow through the global exception handler, while unexpected result-shaping mismatches now preserve enough context for operators
+
+Still open after this slice:
+
+- these paths still rely on representative build coverage rather than dedicated endpoint-level tests for every fallback branch
+- operator UIs remain a separate concern where the API is not directly consumed by a human-facing screen
+- worker/provider-originated logs still matter for deep root-cause analysis beyond the API edge
 
 ## Next Endpoint Audit Order
 
