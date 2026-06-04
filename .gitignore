@@ -1,5 +1,6 @@
 node_modules/
 package-lock.json
+dist/
 npm/*/dist/
 dotnet/**/bin/
 dotnet/**/obj/
