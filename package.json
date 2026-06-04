@@ -2,12 +2,27 @@
   "name": "ofoqh-workflow-diagnostics-monorepo",
   "private": true,
   "workspaces": [
-    "npm/workflow-diagnostics"
+    "npm/workflow-diagnostics",
+    "npm/angular-tenant"
   ],
   "scripts": {
+    "build:angular-tenant": "ng-packagr -p npm/angular-tenant/ng-package.json",
+    "pack:angular-tenant": "npm run build:angular-tenant && npm pack ./dist/angular-tenant",
     "build:ts": "npm --workspace @ofoqh/workflow-diagnostics run build",
+    "publish:angular-tenant": "npm run build:angular-tenant && npm publish ./dist/angular-tenant --registry https://verdaccio.dev-test.careerpath.ofoqh.com/",
     "publish:verdaccio": "bash ./scripts/publish-verdaccio.sh",
     "pack:dotnet": "dotnet pack ./dotnet/Ofoqh.Workflow.Diagnostics.sln -c Release -o ./artifacts/nuget",
     "publish:bagetter": "bash ./scripts/publish-bagetter.sh"
+  },
+  "devDependencies": {
+    "@angular/common": "^21.1.0",
+    "@angular/compiler": "^21.1.0",
+    "@angular/compiler-cli": "^21.1.0",
+    "@angular/core": "^21.1.0",
+    "@angular/router": "^21.1.0",
+    "ng-packagr": "^21.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "typescript": "^5.9.2"
   }
 }

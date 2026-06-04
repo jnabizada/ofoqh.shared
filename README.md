@@ -4,17 +4,18 @@ Shared contracts, packages, and guidance for cross-repo Ofoqh platform concerns.
 
 ## Purpose
 
-This repository is the canonical home for the enterprise workflow diagnostics pattern
-used across Ofoqh services and SPAs. It standardizes how downstream failures are
-preserved, propagated, and exposed through RFC 7807 `ProblemDetails`.
+This repository is the canonical home for reusable Ofoqh shared packages.
 
-The goal is simple: no workflow should lose its real failure state just because it
-crossed one or more service boundaries.
+It currently owns two shared tracks:
+
+- workflow diagnostics contracts and helpers across .NET and TypeScript
+- frontend platform packages for tenant-aware SPA routing and auth behavior
 
 ## What Lives Here
 
 - shared .NET packages for workflow diagnostics
 - shared npm package for frontend diagnostics contracts and helpers
+- shared npm package for Angular tenant routing and auth primitives
 - JSON schema for workflow-aware `ProblemDetails`
 - rollout, architecture, and adoption guidance
 - publishing scripts for cluster BaGet and Verdaccio
@@ -32,6 +33,9 @@ crossed one or more service boundaries.
 
 - `@ofoqh/workflow-diagnostics`
   Shared TypeScript contract and helper layer for SPAs and frontend libraries.
+- `@ofoqh/angular-tenant`
+  Shared Angular tenant routing, callback, session, and request primitives for
+  tenant-scoped SPAs.
 
 ## Repository Layout
 
@@ -60,6 +64,7 @@ crossed one or more service boundaries.
 - [Contract](docs/contract.md)
 - [Architecture](docs/architecture.md)
 - [Adoption Guide](docs/adoption-guide.md)
+- [Frontend Tenant Docs](docs/frontend/README.md)
 - [Enterprise Rollout Checklist](docs/enterprise-rollout-checklist.md)
 - [Workflow Coverage Matrix](docs/workflow-coverage-matrix.md)
 - [Publishing](docs/publishing.md)

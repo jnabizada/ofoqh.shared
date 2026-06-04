@@ -1,0 +1,35 @@
+{
+  "name": "@ofoqh/angular-tenant",
+  "version": "0.1.0",
+  "description": "Shared Angular tenant routing, callback, session, and request helpers for Ofoqh tenant-scoped SPAs.",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/jnabizada/ofoqh.shared",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnabizada/ofoqh.shared.git",
+    "directory": "npm/angular-tenant"
+  },
+  "bugs": {
+    "url": "https://github.com/jnabizada/ofoqh.shared/issues"
+  },
+  "author": "Ofoqh",
+  "publishConfig": {
+    "registry": "https://verdaccio.dev-test.careerpath.ofoqh.com/"
+  },
+  "files": [
+    "README.md",
+    "fesm2022",
+    "types",
+    "package.json"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^21.1.0",
+    "@angular/core": "^21.1.0",
+    "@angular/router": "^21.1.0",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
