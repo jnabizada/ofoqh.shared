@@ -15,6 +15,7 @@
     "publish:angular-tenant": "npm run build:angular-tenant && npm publish ./dist/angular-tenant --registry https://verdaccio.dev-test.careerpath.ofoqh.com/",
     "publish:ux": "npm run build:ux && npm publish ./dist/ofoqh-ux --registry https://verdaccio.dev-test.careerpath.ofoqh.com/",
     "publish:verdaccio": "bash ./scripts/publish-verdaccio.sh",
+    "unpublish:verdaccio": "bash ./scripts/unpublish-verdaccio.sh",
     "pack:dotnet": "dotnet pack ./dotnet/Ofoqh.Workflow.Diagnostics.sln -c Release -o ./artifacts/nuget",
     "publish:bagetter": "bash ./scripts/publish-bagetter.sh"
   },
