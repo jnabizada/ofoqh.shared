@@ -3,7 +3,7 @@
   position: relative;
   overflow: visible;
   padding: 2px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
 }
@@ -40,7 +40,7 @@
   color: var(--ux-action-btn-color, #334155);
   cursor: pointer;
   opacity: 0.9;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   transition:
     opacity 160ms ease,
     color 160ms ease,

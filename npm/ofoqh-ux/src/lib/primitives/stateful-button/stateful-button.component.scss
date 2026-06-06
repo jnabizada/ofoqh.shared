@@ -4,7 +4,7 @@
   position: relative;
   overflow: visible;
   padding: 2px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
 }
@@ -61,7 +61,7 @@
   width: auto;
   min-width: 0;
   padding: 0 18px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   border: 1px solid color-mix(in srgb, var(--ux-btn-edge) 72%, white 28%);
   background: linear-gradient(180deg, color-mix(in srgb, var(--ux-btn-bg) 92%, white 8%), var(--ux-btn-bg));
   color: var(--ux-btn-text);
@@ -119,7 +119,7 @@
 .ux-stateful-button__spinner {
   width: 15px;
   height: 15px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: rgba(255, 255, 255, 0.98);
   animation: ux-stateful-button-spin 700ms linear infinite;

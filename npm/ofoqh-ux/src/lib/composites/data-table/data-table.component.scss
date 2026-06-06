@@ -27,7 +27,7 @@
 .dt-wrap {
   overflow: auto;
   border: 1px solid var(--table-border, #d7dfeb);
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   background: var(--table-bg, #ffffff);
   font: inherit;
   color: inherit;
@@ -148,7 +148,7 @@ tbody tr:focus-within td {
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   font: inherit;
   font-size: 0.78em;
   border: none;

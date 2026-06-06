@@ -11,7 +11,7 @@
   overflow: visible;
   margin-block: 6px;
   padding: 4px;
-  border-radius: var(--skin-radius-sm, 0px);
+  border-radius: var(--skin-radius-sm, 10px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
   outline-offset: 2px;
