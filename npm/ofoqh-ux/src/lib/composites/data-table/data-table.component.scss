@@ -1,0 +1,206 @@
+:host {
+  display: block;
+  position: relative;
+  overflow: visible;
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+.dt-wrap {
+  overflow: auto;
+  border: 1px solid var(--table-border, #d7dfeb);
+  border-radius: var(--skin-radius-sm, 0px);
+  background: var(--table-bg, #ffffff);
+  font: inherit;
+  color: inherit;
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.03),
+    0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.dt-table {
+  width: max(100%, var(--table-min-width, 980px));
+  border-collapse: collapse;
+  table-layout: fixed;
+  font: inherit;
+  color: inherit;
+}
+
+th,
+td {
+  font: inherit;
+  padding: 12px 14px;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+thead,
+thead tr,
+thead th {
+  background-color: var(--table-header-bg, #edf3fb) !important;
+}
+
+thead th {
+  font-weight: 700;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  color: var(--table-header-text, #1e293b) !important;
+  text-align: left;
+  text-transform: uppercase;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
+}
+
+.dt-sort-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.dt-sort-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+tbody td {
+  border-bottom: 1px solid color-mix(in srgb, var(--table-border, #d7dfeb) 72%, transparent);
+  color: color-mix(in srgb, var(--mat-sys-on-surface) 92%, transparent);
+  background: var(--table-bg, #ffffff);
+}
+
+tbody tr:hover td,
+tbody tr:focus-within td {
+  background: color-mix(in srgb, var(--table-bg, #ffffff) 68%, #eef4fb 32%);
+  border-bottom-color: color-mix(in srgb, var(--mat-sys-outline) 45%, transparent);
+}
+
+.dt-primary {
+  font-size: 1em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.dt-secondary {
+  font-size: 0.85em;
+  color: var(--mat-sys-on-surface-variant);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.dt-link {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: var(--mat-sys-primary, #1d4ed8);
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.dt-link:hover,
+.dt-link:focus-visible {
+  text-decoration: underline;
+}
+
+.dt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dt-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--skin-radius-sm, 0px);
+  font: inherit;
+  font-size: 0.78em;
+  border: none;
+}
+
+.dt-chip.tone-neutral {
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
+}
+
+.dt-chip.tone-success {
+  background: color-mix(in srgb, #16a34a 20%, transparent);
+}
+
+.dt-chip.tone-warning {
+  background: color-mix(in srgb, #ca8a04 22%, transparent);
+}
+
+.dt-chip.tone-danger {
+  background: color-mix(in srgb, #dc2626 18%, transparent);
+}
+
+.dt-chip.tone-info {
+  background: color-mix(in srgb, #2563eb 18%, transparent);
+}
+
+.dt-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.dt-empty-row td {
+  border-bottom-color: transparent !important;
+}
+
+.dt-empty-cell {
+  padding: 16px 12px;
+  text-align: center;
+  font: inherit;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.align-end {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.dt-paginator {
+  border-top: none;
+  border-right: none;
+  padding-inline: 8px;
+}

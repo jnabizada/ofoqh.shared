@@ -1,0 +1,25 @@
+<div class="editable-table">
+  <div class="editable-table-header" [style.gridTemplateColumns]="gridTemplateColumns()">
+    @for (col of columns; track col.id) {
+      <div class="editable-table-header-cell" [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+        {{ col.header }}
+      </div>
+    }
+  </div>
+
+  <div class="editable-table-body">
+    @for (row of rows; track rowIdentity($index, row); let rowIndex = $index) {
+      <div class="editable-table-row" [style.gridTemplateColumns]="gridTemplateColumns()">
+        @for (col of columns; track col.id) {
+          <div class="editable-table-cell" [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+            <ng-container
+              *ngTemplateOutlet="cellTemplate(col.id); context: cellContext(row, rowIndex, col)">
+            </ng-container>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <ng-content select="[editableTableFooter]"></ng-content>
+</div>

@@ -1,0 +1,126 @@
+:host {
+  display: block;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+  margin: 0 0 var(--ux-stack-gap, 14px);
+  padding: 4px;
+  border-radius: 22px;
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+.ux-summary-bar {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 18px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ux-summary-bar--dense {
+  gap: 10px;
+}
+
+.ux-summary-bar__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ux-summary-bar__copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ux-summary-bar__eyebrow,
+.ux-summary-bar__copy h2,
+.ux-summary-bar__subhead {
+  margin: 0;
+}
+
+.ux-summary-bar__eyebrow {
+  color: var(--ux-summary-bar-accent, #6d83a0);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ux-summary-bar__copy h2 {
+  color: var(--ux-summary-bar-text, #102744);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.ux-summary-bar__subhead {
+  color: var(--ux-summary-bar-muted, #60758d);
+  line-height: 1.45;
+}
+
+.ux-summary-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ux-summary-bar__actions:empty {
+  display: none;
+}
+
+.ux-summary-bar__grid {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.ux-summary-bar--dense .ux-summary-bar__grid {
+  gap: 10px;
+}
+
+@media (max-width: 1100px) {
+  .ux-summary-bar__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .ux-summary-bar__head {
+    align-items: stretch;
+  }
+
+  .ux-summary-bar__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ux-summary-bar__grid {
+    grid-template-columns: 1fr !important;
+  }
+}

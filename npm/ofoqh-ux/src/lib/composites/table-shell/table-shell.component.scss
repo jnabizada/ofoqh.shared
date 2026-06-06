@@ -1,0 +1,189 @@
+:host {
+  display: block;
+  position: relative;
+  overflow: visible;
+  margin-block: 6px;
+  padding: 4px;
+  border-radius: 22px;
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+:host(.ux-table-shell-host--span-2) {
+  grid-column: span 2;
+}
+
+.ux-table-shell {
+  border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e3) 82%, #8da8c2 18%);
+  border-radius: var(--skin-radius-sm, 0px);
+  background: var(--card-bg, #fff);
+  padding: 18px;
+}
+
+.ux-table-shell__head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ux-table-shell__copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ux-table-shell__copy h2 {
+  margin: 0;
+  color: var(--app-text, #10243e);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.ux-table-shell__subhead {
+  margin: 0;
+  color: var(--muted, #60758d);
+  line-height: 1.5;
+}
+
+.ux-table-shell__head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ux-table-shell__head-actions [table-head-meta],
+.ux-table-shell__head-actions [table-head-actions] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ux-table-shell__head-actions [table-head-meta] > *,
+.ux-table-shell__head-actions [table-head-actions] > * {
+  min-height: 40px;
+}
+
+.ux-table-shell__body {
+  display: grid;
+  gap: 14px;
+}
+
+.ux-table-shell__pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ux-table-shell__count {
+  color: var(--muted, #60758d);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ux-table-shell__pager-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 10px;
+}
+
+.ux-table-shell__pager-label {
+  display: grid;
+  gap: 6px;
+}
+
+.ux-table-shell__field-label {
+  color: var(--app-text, #10243e);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ux-table-shell__pager-controls select {
+  min-height: 40px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--field-border, #c8d5e3);
+  border-radius: var(--skin-radius-sm, 0px);
+  background: var(--field-bg, #f7fafd);
+  color: var(--field-text, #10243e);
+}
+
+.ux-table-shell__tag,
+.ux-table-shell__secondary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: var(--skin-radius-sm, 0px);
+  font-weight: 700;
+}
+
+.ux-table-shell__tag {
+  background: #dbe8f7;
+  color: #224f84;
+}
+
+.ux-table-shell__secondary-action {
+  cursor: pointer;
+  transition:
+    box-shadow 150ms ease,
+    background-color 140ms ease,
+    border-color 140ms ease;
+  border: 1px solid color-mix(in srgb, var(--field-border, #c8d5e3) 78%, #7690aa 22%);
+  color: var(--app-text, #10243e);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--field-bg, #f7fafd) 96%, white 4%), color-mix(in srgb, var(--field-bg, #f7fafd) 88%, #e7eef6 12%));
+}
+
+.ux-table-shell__secondary-action:hover {
+  box-shadow:
+    0 2px 6px rgba(24, 59, 101, 0.08),
+    0 0 0 3px rgba(78, 141, 219, 0.09);
+}
+
+.ux-table-shell__secondary-action:is(:disabled, [disabled]) {
+  border-color: color-mix(in srgb, var(--field-border, #c8d5e3) 88%, #aab7c6 12%);
+  background: color-mix(in srgb, var(--field-bg, #f7fafd) 92%, #eef3f8 8%);
+  color: color-mix(in srgb, var(--muted, #60758d) 88%, #7f91a3 12%);
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .ux-table-shell__head {
+    flex-direction: column;
+  }
+
+  .ux-table-shell__head-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

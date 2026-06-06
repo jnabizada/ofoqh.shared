@@ -1,0 +1,75 @@
+<article
+  class="ux-dashboard-card"
+  cdkDrag
+  [cdkDragData]="dragData"
+  [cdkDragDisabled]="dragTemporarilyDisabled"
+  [class.ux-dashboard-card--wide]="wide"
+  [class.ux-dashboard-card--hero]="hero"
+  [style.background]="background"
+  [style.border-top]="accentColor ? '4px solid ' + accentColor : null"
+  (mousedown)="onPointerDown($event)"
+  (touchstart)="onPointerDown($event)">
+  <div class="ux-dashboard-card__head">
+    <div class="ux-dashboard-card__copy">
+      @if (eyebrow) {
+        <p class="ux-dashboard-card__eyebrow">{{ eyebrow }}</p>
+      }
+      <h2>{{ title }}</h2>
+      <p class="ux-dashboard-card__subhead">{{ subhead }}</p>
+    </div>
+    <div class="ux-dashboard-card__actions">
+      <div class="ux-dashboard-card-toolbar">
+        <button type="button" class="ux-dashboard-card__icon-button" (click)="toggleMenu.emit()" aria-label="Open card menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="5" cy="12" r="1.75"></circle>
+            <circle cx="12" cy="12" r="1.75"></circle>
+            <circle cx="19" cy="12" r="1.75"></circle>
+          </svg>
+        </button>
+        <button type="button" class="ux-dashboard-card__icon-button" (click)="hideCard.emit()" aria-label="Hide card" title="Hide card">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.4 6.4a1 1 0 0 1 1.4 0L12 10.6l4.2-4.2a1 1 0 1 1 1.4 1.4L13.4 12l4.2 4.2a1 1 0 0 1-1.4 1.4L12 13.4l-4.2 4.2a1 1 0 0 1-1.4-1.4l4.2-4.2-4.2-4.2a1 1 0 0 1 0-1.4Z"></path>
+          </svg>
+        </button>
+        @if (menuOpen) {
+          <div class="ux-dashboard-card-menu">
+            <strong>Card options</strong>
+            <div class="ux-dashboard-card-menu__section">
+              <span class="ux-dashboard-card-menu__label">Width: {{ currentWidthLabel }}</span>
+              <div class="ux-dashboard-card-menu__sizes">
+                @for (option of widthOptions; track option.value) {
+                  <button type="button" class="ux-dashboard-card__chip-button" (click)="widthChange.emit(option.value)">{{ option.label }}</button>
+                }
+              </div>
+            </div>
+            <div class="ux-dashboard-card-menu__section">
+              <span class="ux-dashboard-card-menu__label">Row placement</span>
+              <button type="button" class="ux-dashboard-card__chip-button ux-dashboard-card-menu__wide-action" (click)="rowBreakToggle.emit()">
+                {{ startsNewRow ? 'Keep in flowing rows' : 'Start new row' }}
+              </button>
+            </div>
+            <div class="ux-dashboard-card-menu__section">
+              <span class="ux-dashboard-card-menu__label">Color</span>
+              <div class="ux-dashboard-card-menu__colors">
+                @for (option of quickColors; track option.value) {
+                  <button type="button" class="ux-dashboard-card__chip-button" (click)="colorChange.emit(option.value)">{{ option.label }}</button>
+                }
+              </div>
+              <label>
+                <span>Custom color</span>
+                <input type="color" [value]="colorPickerValue" (input)="onColorInput($event)">
+              </label>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="ux-dashboard-card__body">
+    <div class="ux-dashboard-card__meta">
+      <ng-content select="[card-head-actions]"></ng-content>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</article>

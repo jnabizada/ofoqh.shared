@@ -1,0 +1,16 @@
+<section class="ux-summary-panel">
+  @if (title() || subhead()) {
+    <header class="ux-summary-panel__head">
+      @if (title()) {
+        <h2>{{ title() }}</h2>
+      }
+      @if (subhead()) {
+        <p>{{ subhead() }}</p>
+      }
+    </header>
+  }
+
+  <div class="ux-summary-panel__grid" [style.gridTemplateColumns]="gridTemplateColumns()">
+    <ng-content></ng-content>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="ux-page-hero" [class.ux-page-hero--compact]="compact()">
+  <div class="ux-page-hero__copy">
+    @if (eyebrow()) {
+      <p class="ux-page-hero__eyebrow">{{ eyebrow() }}</p>
+    }
+    @if (title()) {
+      <h1>{{ title() }}</h1>
+    }
+    @if (lede()) {
+      <p class="ux-page-hero__lede">{{ lede() }}</p>
+    }
+    <ng-content select="[page-hero-copy]"></ng-content>
+  </div>
+
+  <div class="ux-page-hero__actions">
+    <ng-content select="[page-hero-actions]"></ng-content>
+  </div>
+</section>

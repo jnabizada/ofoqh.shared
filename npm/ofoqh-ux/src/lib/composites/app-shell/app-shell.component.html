@@ -1,0 +1,123 @@
+<div class="shell">
+  <aside class="shell__nav" [class.shell__nav--open]="navOpen">
+    <div class="shell__brand">
+      <div>
+        <p class="shell__eyebrow">{{ brandEyebrow }}</p>
+        <strong>{{ brandTitle }}</strong>
+      </div>
+      <ofoqh-ux-stateful-button
+        class="shell__button shell__button--close"
+        type="button"
+        tone="neutral"
+        size="sm"
+        [idleLabel]="closeLabel"
+        (pressed)="closeNav.emit()" />
+    </div>
+
+    <div class="shell__nav-scroll">
+      @for (section of navSections; track section.key) {
+        <section class="shell__section">
+          @if (section.collapsible) {
+            <button
+              type="button"
+              class="shell__section-toggle"
+              [class.shell__section-toggle--collapsed]="section.collapsed"
+              (click)="toggleSection.emit(section.key)">
+              <span class="shell__section-label">{{ section.label }}</span>
+              <span class="shell__section-chevron">{{ section.collapsed ? '+' : '-' }}</span>
+            </button>
+          } @else {
+            <p class="shell__section-label">{{ section.label }}</p>
+          }
+          @if (!section.collapsible || !section.collapsed) {
+            <nav class="shell__links">
+              @for (item of section.items; track item.route) {
+                <a
+                  class="shell__link"
+                  [routerLink]="item.route"
+                  routerLinkActive="shell__link--active"
+                  [routerLinkActiveOptions]="item.exact ?? false
+                    ? { paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }
+                    : { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }"
+                  (click)="closeNav.emit()">
+                  <span class="shell__icon">{{ item.icon }}</span>
+                  <span>{{ item.label }}</span>
+                  @if ((item.badge ?? 0) > 0) {
+                    <span class="shell__badge">{{ item.badge }}</span>
+                  }
+                </a>
+              }
+            </nav>
+          }
+        </section>
+      }
+
+      <div class="shell__meta-wrap" [style.--shell-meta-lift.px]="metaLift">
+        <button
+          type="button"
+          class="shell__meta-grip"
+          (pointerdown)="metaGripPointerDown.emit($event)"
+          [attr.aria-label]="metaGripAriaLabel">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="shell__meta">
+          @for (card of metaCards; track card.label) {
+            <div class="shell__meta-card">
+              <span class="shell__meta-label">{{ card.label }}</span>
+              <strong>{{ card.title }}</strong>
+              @for (line of card.lines ?? []; track line) {
+                <small>{{ line }}</small>
+              }
+              @if (card.monoLine) {
+                <small class="shell__version">{{ card.monoLine }}</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="shell__content">
+    <header class="shell__topbar">
+      <div class="shell__topbar-copy">
+        <ofoqh-ux-stateful-button
+          class="shell__button shell__button--menu"
+          type="button"
+          tone="neutral"
+          size="sm"
+          [idleLabel]="menuLabel"
+          (pressed)="toggleNav.emit()" />
+        <div>
+          <strong class="shell__title">{{ topbarTitle }}</strong>
+          <p class="shell__subtitle">{{ topbarSubtitle }}</p>
+        </div>
+        @if (attentionLabel) {
+          <span class="shell__attention">{{ attentionLabel }}</span>
+        }
+      </div>
+
+      <div class="shell__topbar-actions">
+        @if (showDebugToggle) {
+          <button
+            type="button"
+            class="shell__debug-toggle"
+            [class.shell__debug-toggle--active]="debugEnabled()"
+            (click)="toggleDebug()">
+            {{ debugEnabled() ? debugToggleOnLabel : debugToggleOffLabel }}
+          </button>
+        }
+        <ng-content select="[uxShellTopbarActions]"></ng-content>
+      </div>
+    </header>
+
+    @if (loading) {
+      <div class="shell__loading"></div>
+    }
+
+    <main class="shell__page">
+      <ng-content></ng-content>
+    </main>
+  </div>
+</div>

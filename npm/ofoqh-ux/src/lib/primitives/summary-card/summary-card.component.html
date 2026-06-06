@@ -1,0 +1,25 @@
+<article class="ux-summary-card">
+  @if (eyebrow()) {
+    <span class="ux-summary-card__eyebrow">{{ eyebrow() }}</span>
+  }
+
+  @if (resolvedTitle()) {
+    <span class="ux-summary-card__title" [attr.title]="resolvedTitle()">{{ resolvedTitle() }}</span>
+  }
+
+  <div class="ux-summary-card__value">
+    <ng-content select="[uxSummaryValue], [summaryMetricValue]"></ng-content>
+  </div>
+
+  @if (hint()) {
+    <p class="ux-summary-card__hint" [attr.title]="hint()">{{ hint() }}</p>
+  } @else {
+    <div class="ux-summary-card__hint-slot">
+      <ng-content select="[uxSummaryHint], [summaryMetricHint]"></ng-content>
+    </div>
+  }
+
+  <div class="ux-summary-card__meta">
+    <ng-content select="[uxSummaryMeta], [summaryMetricMeta]"></ng-content>
+  </div>
+</article>

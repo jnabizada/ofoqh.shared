@@ -1,0 +1,93 @@
+.editable-table {
+  display: grid;
+  gap: 8px;
+  border-left: 0.75px solid var(--table-border, #d7dfeb);
+  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
+  background: var(--table-bg, #ffffff);
+  box-shadow:
+    -2px 2px 0 rgba(15, 23, 42, 0.09),
+    -4px 4px 0 rgba(15, 23, 42, 0.05);
+}
+
+.editable-table-header,
+.editable-table-row {
+  display: grid;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.editable-table-header {
+  min-height: 44px;
+  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
+  background-color: var(--table-header-bg, #edf3fb) !important;
+}
+
+.editable-table-header-cell {
+  min-width: 0;
+  padding: 9px 8px;
+  font: var(--mat-sys-label-medium);
+  font-weight: 600;
+  font-size: var(--table-header-font-size, 0.74rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--table-header-text, #1e293b) !important;
+}
+
+.editable-table-body {
+  display: grid;
+  gap: 0;
+}
+
+.editable-table-row {
+  min-height: 38px;
+  border-bottom: 0.75px solid transparent;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.editable-table-row:hover,
+.editable-table-row:focus-within {
+  border-bottom-color: color-mix(in srgb, var(--mat-sys-outline) 45%, transparent);
+}
+
+.editable-table-cell {
+  min-width: 0;
+  padding: 6px 8px;
+  font-size: var(--table-row-font-size, 0.86rem);
+}
+
+.align-end {
+  text-align: right;
+  justify-self: end;
+}
+
+.align-center {
+  text-align: center;
+  justify-self: center;
+}
+
+@media (max-width: 760px) {
+  .editable-table-header {
+    display: none;
+  }
+
+  .editable-table-body {
+    gap: 10px;
+  }
+
+  .editable-table-row {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+    padding: 10px;
+    border: 0.75px solid transparent;
+    background: color-mix(in srgb, var(--mat-sys-surface) 96%, transparent);
+  }
+
+  .editable-table-row:hover,
+  .editable-table-row:focus-within {
+    border-color: color-mix(in srgb, var(--mat-sys-outline) 55%, transparent);
+  }
+
+  .editable-table-cell {
+    padding: 0;
+  }
+}

@@ -1,0 +1,19 @@
+<button
+  class="ux-stateful-button"
+  [type]="type"
+  [disabled]="isDisabled()"
+  [attr.data-state]="visualState()"
+  [attr.data-tone]="tone"
+  [attr.data-size]="size"
+  [class.ux-stateful-button--full-width]="fullWidth"
+  (click)="onClick($event)">
+  <span class="ux-stateful-button__surface">
+    <span class="ux-stateful-button__pulse" aria-hidden="true"></span>
+    <span class="ux-stateful-button__content">
+      <span *ngIf="state === 'loading'" class="ux-stateful-button__spinner" aria-hidden="true"></span>
+      <span *ngIf="state === 'success'" class="ux-stateful-button__status-icon" aria-hidden="true">✓</span>
+      <span *ngIf="state === 'error'" class="ux-stateful-button__status-icon" aria-hidden="true">!</span>
+      <span class="ux-stateful-button__label">{{ currentLabel() }}</span>
+    </span>
+  </span>
+</button>

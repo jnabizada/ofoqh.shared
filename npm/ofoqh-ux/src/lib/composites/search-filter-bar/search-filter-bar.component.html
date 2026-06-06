@@ -1,0 +1,42 @@
+<section class="ux-search-filter-bar" [class.ux-search-filter-bar--compact]="compact">
+  @if (eyebrow || title || subhead) {
+    <header class="ux-search-filter-bar__head">
+      <div class="ux-search-filter-bar__copy">
+        @if (eyebrow) {
+          <p class="ux-search-filter-bar__eyebrow">{{ eyebrow }}</p>
+        }
+        @if (title) {
+          <h2>{{ title }}</h2>
+        }
+        @if (subhead) {
+          <p class="ux-search-filter-bar__subhead">{{ subhead }}</p>
+        }
+      </div>
+      <div class="ux-search-filter-bar__head-actions">
+        <ng-content select="[search-filter-actions]"></ng-content>
+      </div>
+    </header>
+  }
+
+  <div class="ux-search-filter-bar__controls">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="ux-search-filter-bar__summary">
+    <div class="ux-search-filter-bar__summary-copy">
+      @if (summaryText) {
+        <p>{{ summaryText }}</p>
+      }
+      <ng-content select="[search-filter-summary]"></ng-content>
+    </div>
+    <div class="ux-search-filter-bar__summary-actions">
+      <ng-content select="[search-filter-summary-actions]"></ng-content>
+      @if (resultTag) {
+        <span class="ux-search-filter-bar__tag">{{ resultTag }}</span>
+      }
+      @if (showReset) {
+        <button class="ux-search-filter-bar__button" type="button" (click)="reset.emit()">{{ resolvedResetLabel() }}</button>
+      }
+    </div>
+  </div>
+</section>

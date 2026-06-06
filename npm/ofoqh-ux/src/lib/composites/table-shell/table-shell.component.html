@@ -1,0 +1,44 @@
+<article class="ux-table-shell">
+  <div class="ux-table-shell__head">
+    <div class="ux-table-shell__copy">
+      <h2>{{ title }}</h2>
+      @if (subhead) {
+        <p class="ux-table-shell__subhead">{{ subhead }}</p>
+      }
+    </div>
+    <div class="ux-table-shell__head-actions">
+      @if (countTag) {
+        <span class="ux-table-shell__tag">{{ countTag }}</span>
+      }
+      <ng-content select="[table-head-meta]"></ng-content>
+      <ng-content select="[table-head-actions]"></ng-content>
+    </div>
+  </div>
+
+  @if (showPager) {
+    <div class="ux-table-shell__pager">
+      <span class="ux-table-shell__count">{{ pageLabel }}</span>
+      <div class="ux-table-shell__pager-controls">
+        <label class="ux-table-shell__pager-label">
+          <span class="ux-table-shell__field-label">{{ perPageLabel }}</span>
+          <select [ngModel]="pageSize" (ngModelChange)="pageSizeChange.emit($event)">
+            @for (option of pageSizeOptions; track option) {
+              <option [ngValue]="option">{{ option }}</option>
+            }
+          </select>
+        </label>
+        <button class="ux-table-shell__secondary-action" type="button" (click)="previous.emit()" [disabled]="previousDisabled">
+          {{ previousLabel }}
+        </button>
+        <span class="ux-table-shell__tag">{{ pagePrefix }} {{ currentPage }} / {{ totalPages }}</span>
+        <button class="ux-table-shell__secondary-action" type="button" (click)="next.emit()" [disabled]="nextDisabled">
+          {{ nextLabel }}
+        </button>
+      </div>
+    </div>
+  }
+
+  <div class="ux-table-shell__body">
+    <ng-content></ng-content>
+  </div>
+</article>

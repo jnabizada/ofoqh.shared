@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<div mat-dialog-content>
+  <p style="margin: 0">{{ data.message }}</p>
+</div>
+
+<div mat-dialog-actions align="end">
+  <ofoqh-ux-action-button (click)="close(false)">
+    {{ data.cancelText ?? 'Cancel' }}
+  </ofoqh-ux-action-button>
+  <ofoqh-ux-action-button
+    variant="flat"
+    [attr.cdkFocusInitial]="true"
+    [color]="data.danger ? 'warn' : 'primary'"
+    (click)="close(true)">
+    {{ data.confirmText ?? 'Confirm' }}
+  </ofoqh-ux-action-button>
+</div>

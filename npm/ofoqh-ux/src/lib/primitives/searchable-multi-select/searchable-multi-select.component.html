@@ -1,0 +1,41 @@
+<div class="ux-searchable-multi-select" [class.ux-searchable-multi-select--disabled]="isDisabled">
+  <div class="ux-searchable-multi-select__chips">
+    @for (option of selected; track option) {
+      <button type="button" class="ux-searchable-multi-select__chip" (click)="removeOption(option)" [disabled]="isDisabled">
+        {{ option }} ×
+      </button>
+    } @empty {
+      <span class="ux-searchable-multi-select__placeholder">{{ selectionPlaceholder }}</span>
+    }
+  </div>
+
+  <button type="button" class="ux-searchable-multi-select__toggle" (click)="togglePanel()" [disabled]="isDisabled" [attr.aria-expanded]="open">
+    <span>{{ summaryLabel() }}</span>
+    <span class="ux-searchable-multi-select__icon">{{ open ? '▴' : '▾' }}</span>
+  </button>
+
+  @if (open) {
+    <div class="ux-searchable-multi-select__panel">
+      <input
+        type="search"
+        [(ngModel)]="searchTerm"
+        [placeholder]="searchPlaceholder"
+        [disabled]="isDisabled" />
+
+      <div class="ux-searchable-multi-select__list">
+        @for (option of filteredOptions(); track option) {
+          <label class="ux-searchable-multi-select__option">
+            <input
+              type="checkbox"
+              [checked]="isSelected(option)"
+              [disabled]="isDisabled"
+              (change)="toggleOption(option)" />
+            <span>{{ option }}</span>
+          </label>
+        } @empty {
+          <p class="ux-searchable-multi-select__placeholder">{{ emptyLabel }}</p>
+        }
+      </div>
+    </div>
+  }
+</div>

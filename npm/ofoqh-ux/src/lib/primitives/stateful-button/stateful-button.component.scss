@@ -1,0 +1,287 @@
+:host {
+  display: inline-flex;
+  max-width: 100%;
+  position: relative;
+  overflow: visible;
+  padding: 2px;
+  border-radius: var(--skin-radius-sm, 0px);
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -8px;
+  left: 6px;
+  z-index: 30;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+.ux-stateful-button {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+.ux-stateful-button--full-width,
+.ux-stateful-button--full-width .ux-stateful-button__surface {
+  width: 100%;
+}
+
+.ux-stateful-button__surface {
+  --ux-btn-bg: #1f4e84;
+  --ux-btn-bg-hover: #245993;
+  --ux-btn-bg-active: #173e69;
+  --ux-btn-edge: #0f2743;
+  --ux-btn-text: #ffffff;
+  --ux-btn-shadow: rgba(16, 41, 71, 0.14);
+  --ux-btn-shadow-soft: rgba(16, 41, 71, 0.09);
+  --ux-btn-glow: rgba(78, 141, 219, 0.22);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: auto;
+  min-width: 0;
+  padding: 0 18px;
+  border-radius: var(--skin-radius-sm, 0px);
+  border: 1px solid color-mix(in srgb, var(--ux-btn-edge) 72%, white 28%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ux-btn-bg) 92%, white 8%), var(--ux-btn-bg));
+  color: var(--ux-btn-text);
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow:
+    0 1px 2px var(--ux-btn-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  transition:
+    box-shadow 150ms ease,
+    border-color 150ms ease,
+    background-color 180ms ease,
+    filter 180ms ease,
+    opacity 150ms ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ux-stateful-button__pulse {
+  position: absolute;
+  inset: -20%;
+  border-radius: 999px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--ux-btn-glow) 45%, white 55%) 0%, transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 180ms ease, transform 180ms ease, filter 180ms ease;
+  z-index: 0;
+}
+
+.ux-stateful-button__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+  flex-wrap: wrap;
+}
+
+.ux-stateful-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ux-stateful-button__spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: var(--skin-radius-sm, 0px);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.98);
+  animation: ux-stateful-button-spin 700ms linear infinite;
+  flex: 0 0 auto;
+}
+
+.ux-stateful-button__status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.ux-stateful-button[data-size='sm'] .ux-stateful-button__surface {
+  min-height: 36px;
+  min-width: 0;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.ux-stateful-button[data-size='lg'] .ux-stateful-button__surface {
+  min-height: 50px;
+  min-width: 0;
+  padding: 0 22px;
+  font-size: 16px;
+}
+
+.ux-stateful-button[data-tone='secondary'] .ux-stateful-button__surface,
+.ux-stateful-button[data-tone='neutral'] .ux-stateful-button__surface {
+  --ux-btn-bg: #e7eef6;
+  --ux-btn-bg-hover: #edf3f9;
+  --ux-btn-bg-active: #dbe5ef;
+  --ux-btn-edge: #9db0c4;
+  --ux-btn-text: #173b65;
+  --ux-btn-shadow: rgba(77, 100, 126, 0.12);
+  --ux-btn-shadow-soft: rgba(77, 100, 126, 0.08);
+  --ux-btn-glow: rgba(109, 142, 182, 0.18);
+}
+
+.ux-stateful-button[data-tone='success'] .ux-stateful-button__surface {
+  --ux-btn-bg: #1f8f58;
+  --ux-btn-bg-hover: #249f62;
+  --ux-btn-bg-active: #177447;
+  --ux-btn-edge: #0d5232;
+  --ux-btn-text: #f7fff9;
+  --ux-btn-shadow: rgba(14, 84, 51, 0.14);
+  --ux-btn-shadow-soft: rgba(14, 84, 51, 0.1);
+  --ux-btn-glow: rgba(74, 214, 136, 0.2);
+}
+
+.ux-stateful-button[data-tone='danger'] .ux-stateful-button__surface {
+  --ux-btn-bg: #bf3a3a;
+  --ux-btn-bg-hover: #cf4848;
+  --ux-btn-bg-active: #a92b2b;
+  --ux-btn-edge: #6d1313;
+  --ux-btn-text: #fff7f7;
+  --ux-btn-shadow: rgba(109, 19, 19, 0.14);
+  --ux-btn-shadow-soft: rgba(109, 19, 19, 0.1);
+  --ux-btn-glow: rgba(232, 92, 92, 0.22);
+}
+
+.ux-stateful-button[data-state='success'] .ux-stateful-button__surface {
+  --ux-btn-bg: #249a5d;
+  --ux-btn-bg-hover: #29a865;
+  --ux-btn-bg-active: #1d7e4c;
+  --ux-btn-edge: #106239;
+  --ux-btn-text: #f7fff9;
+  animation: ux-stateful-button-success 320ms ease;
+}
+
+.ux-stateful-button[data-state='error'] .ux-stateful-button__surface {
+  --ux-btn-bg: #cb4a4a;
+  --ux-btn-bg-hover: #d85b5b;
+  --ux-btn-bg-active: #b33636;
+  --ux-btn-edge: #7a1717;
+  --ux-btn-text: #fff8f8;
+  animation: ux-stateful-button-error 320ms ease;
+}
+
+.ux-stateful-button:hover:not(:disabled) .ux-stateful-button__surface {
+  box-shadow:
+    0 2px 8px var(--ux-btn-shadow-soft),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 0 4px color-mix(in srgb, var(--ux-btn-glow) 18%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ux-btn-bg-hover) 92%, white 8%), var(--ux-btn-bg-hover));
+  filter: saturate(1.02);
+}
+
+.ux-stateful-button:hover:not(:disabled) .ux-stateful-button__pulse,
+.ux-stateful-button[data-state='loading'] .ux-stateful-button__pulse {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ux-stateful-button:active:not(:disabled) .ux-stateful-button__surface {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+    0 0 0 4px color-mix(in srgb, var(--ux-btn-glow) 18%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ux-btn-bg-active) 94%, white 6%), var(--ux-btn-bg-active));
+  filter: brightness(0.97) saturate(1.03);
+}
+
+.ux-stateful-button:active:not(:disabled) .ux-stateful-button__pulse {
+  opacity: 1;
+  transform: scale(1.04);
+  filter: saturate(1.08);
+}
+
+.ux-stateful-button:focus-visible .ux-stateful-button__surface {
+  box-shadow:
+    0 2px 8px var(--ux-btn-shadow-soft),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 0 3px color-mix(in srgb, var(--ux-btn-glow) 72%, white 28%);
+}
+
+.ux-stateful-button:disabled .ux-stateful-button__surface {
+  --ux-btn-bg: #dde7f0;
+  --ux-btn-edge: #b1c0cf;
+  --ux-btn-text: #7d8e9f;
+  box-shadow:
+    0 1px 2px rgba(177, 192, 207, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  cursor: not-allowed;
+  filter: grayscale(0.08);
+}
+
+@keyframes ux-stateful-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ux-stateful-button-success {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes ux-stateful-button-error {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

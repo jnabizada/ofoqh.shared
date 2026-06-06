@@ -1,0 +1,53 @@
+<article class="ux-editor-shell">
+  <div class="ux-editor-shell__head">
+    <div class="ux-editor-shell__copy">
+      <h2>{{ title }}</h2>
+      @if (subhead) {
+        <p class="ux-editor-shell__subhead">{{ subhead }}</p>
+      }
+    </div>
+    <div class="ux-editor-shell__header-stack">
+      <div class="ux-editor-shell__header-top">
+        <div class="ux-editor-shell__top-actions">
+          <ng-content select="[editor-top-actions]"></ng-content>
+        </div>
+        @if (showRemove) {
+          <button
+            class="ux-editor-shell__secondary-action"
+            type="button"
+            (click)="remove.emit()"
+            [disabled]="removeDisabled">
+            {{ removeBusy ? removeBusyLabel : removeLabel }}
+          </button>
+        }
+      </div>
+      <div class="ux-editor-shell__header-bottom">
+        <div class="ux-editor-shell__chips">
+          <ng-content select="[editor-chip]"></ng-content>
+        </div>
+        <div class="ux-editor-shell__secondary-actions">
+          <ng-content select="[editor-secondary-actions]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ux-editor-shell__body">
+    <ng-content select="[editor-body]"></ng-content>
+  </div>
+
+  @if (showSave) {
+    <div class="ux-editor-shell__footer">
+      <div class="ux-editor-shell__footer-prefix">
+        <ng-content select="[editor-footer-prefix]"></ng-content>
+      </div>
+      <button
+        class="ux-editor-shell__primary-action"
+        type="button"
+        (click)="save.emit()"
+        [disabled]="saveDisabled">
+        {{ saveLabel }}
+      </button>
+    </div>
+  }
+</article>

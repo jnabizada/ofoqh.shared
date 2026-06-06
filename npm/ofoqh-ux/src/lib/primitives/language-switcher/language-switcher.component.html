@@ -1,0 +1,18 @@
+<div class="language-switcher" [attr.aria-label]="resolvedLabel()" role="group">
+  @for (option of options; track trackOption($index, option)) {
+    <button
+      type="button"
+      class="language-switcher__option"
+      [class.language-switcher__option--active]="option.code === selectedCode"
+      [attr.aria-label]="option.label"
+      [attr.aria-pressed]="option.code === selectedCode"
+      [title]="option.label"
+      (click)="selectLanguage(option.code)">
+      @if (option.flag) {
+        <span class="language-switcher__flag" aria-hidden="true">{{ option.flag }}</span>
+      } @else {
+        <span class="language-switcher__text">{{ option.code }}</span>
+      }
+    </button>
+  }
+</div>

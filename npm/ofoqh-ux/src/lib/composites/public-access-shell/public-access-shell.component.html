@@ -1,0 +1,65 @@
+<mat-toolbar class="toolbar" role="banner">
+  <a class="brand" [routerLink]="homeUrl" aria-label="Home">
+    <mat-icon class="brand-icon">shield</mat-icon>
+    <span class="brand-text">{{ appName }}</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <nav class="nav">
+    @for (link of navLinks; track link.route) {
+      <a mat-button [routerLink]="link.route">{{ link.label }}</a>
+    }
+
+    @if (navLinks.length > 0) {
+      <mat-divider vertical class="divider"></mat-divider>
+    }
+
+    <a mat-flat-button class="signin" [href]="loginUrl">
+      <mat-icon>{{ loginIcon }}</mat-icon>
+      {{ loginLabel }}
+    </a>
+  </nav>
+</mat-toolbar>
+
+@if (bannerText) {
+  <div class="banner">
+    <mat-icon>domain</mat-icon>
+    <span>{{ bannerText }}</span>
+  </div>
+}
+
+<div class="wrap">
+  <section class="hero">
+    <aside class="hero-copy">
+      @if (heroEyebrow) {
+        <p class="hero-kicker">{{ heroEyebrow }}</p>
+      }
+      @if (heroTitle) {
+        <h1>{{ heroTitle }}</h1>
+      }
+      @if (heroBody) {
+        <p>{{ heroBody }}</p>
+      }
+      @if (heroBullets.length > 0) {
+        <ul>
+          @for (bullet of heroBullets; track bullet) {
+            <li>{{ bullet }}</li>
+          }
+        </ul>
+      }
+    </aside>
+
+    <mat-card class="card">
+      <ng-content></ng-content>
+    </mat-card>
+  </section>
+</div>
+
+<footer class="footer">
+  <span class="muted">&copy; {{ appName }}</span>
+  @if (footerText) {
+    <span class="dot">&middot;</span>
+    <span class="muted">{{ footerText }}</span>
+  }
+</footer>

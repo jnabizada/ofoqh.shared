@@ -1,0 +1,29 @@
+<mat-form-field appearance="outline" class="ux-search-input">
+  @if (label) {
+    <mat-label>{{ label }}</mat-label>
+  }
+
+  <input
+    matInput
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInput(($any($event.target)).value)"
+    (keyup.enter)="triggerSearch()" />
+
+  @if (value) {
+    <button mat-icon-button matSuffix type="button" [disabled]="disabled" (click)="clearValue()" aria-label="Clear search">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+
+  <button
+    mat-icon-button
+    matSuffix
+    type="button"
+    [disabled]="disabled || !value.trim()"
+    (click)="triggerSearch()"
+    aria-label="Search">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-form-field>

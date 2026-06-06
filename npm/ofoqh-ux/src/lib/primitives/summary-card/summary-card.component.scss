@@ -1,0 +1,196 @@
+:host {
+  display: block;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  padding: 4px;
+  border-radius: 22px;
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+.ux-summary-card {
+  display: grid;
+  grid-template-rows: minmax(20px, auto) minmax(42px, auto) minmax(19px, auto);
+  gap: 8px;
+  min-width: 0;
+  min-height: 132px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e4) 82%, #8da8c2 18%);
+  border-radius: 18px;
+  background: var(--ux-card-bg, #fff);
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 170, 0.18);
+  color: var(--app-text, #102744);
+}
+
+:host(.ux-summary-card-host--dense) .ux-summary-card {
+  grid-template-rows: minmax(18px, auto) minmax(38px, auto) minmax(18px, auto);
+  gap: 6px;
+  min-height: 118px;
+  padding: 14px 16px;
+}
+
+.ux-summary-card__eyebrow,
+.ux-summary-card__title {
+  min-width: 0;
+  color: #60758d;
+  font-weight: 700;
+}
+
+.ux-summary-card__eyebrow {
+  font-size: 12px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ux-summary-card__title {
+  font-size: 0.95rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ux-summary-card__value {
+  min-width: 0;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.ux-summary-card__value:empty,
+.ux-summary-card__meta:empty,
+.ux-summary-card__hint-slot:empty {
+  display: none;
+}
+
+.ux-summary-card__value ::ng-deep > *:first-child,
+.ux-summary-card__value ::ng-deep > *:only-child {
+  margin-top: 0;
+}
+
+.ux-summary-card__value ::ng-deep > *:last-child,
+.ux-summary-card__meta ::ng-deep > *:last-child,
+.ux-summary-card__hint-slot ::ng-deep > *:last-child {
+  margin-bottom: 0;
+}
+
+.ux-summary-card__hint,
+.ux-summary-card__hint-slot,
+.ux-summary-card__meta {
+  min-width: 0;
+  color: #60758d;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ux-summary-card__hint,
+.ux-summary-card__hint-slot {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ux-summary-card__value ::ng-deep > * {
+  white-space: nowrap;
+}
+
+.ux-summary-card__value ::ng-deep strong,
+.ux-summary-card__value ::ng-deep [uxSummaryValue],
+.ux-summary-card__value ::ng-deep [summaryMetricValue] {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.ux-summary-card__value ::ng-deep [uxSummaryValue],
+.ux-summary-card__value ::ng-deep [summaryMetricValue],
+.ux-summary-card__hint-slot ::ng-deep [uxSummaryHint],
+.ux-summary-card__hint-slot ::ng-deep [summaryMetricHint],
+.ux-summary-card__meta ::ng-deep [uxSummaryMeta],
+.ux-summary-card__meta ::ng-deep [summaryMetricMeta] {
+  margin: 0;
+  min-width: 0;
+}
+
+:host([data-tone='accent']) .ux-summary-card {
+  border-color: #ffea00;
+  background: linear-gradient(160deg, rgba(18, 63, 115, 0.94), rgba(34, 92, 156, 0.94));
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 170, 0.35);
+}
+
+:host([data-tone='accent']) .ux-summary-card__eyebrow,
+:host([data-tone='accent']) .ux-summary-card__title,
+:host([data-tone='accent']) .ux-summary-card__hint,
+:host([data-tone='accent']) .ux-summary-card__hint-slot,
+:host([data-tone='accent']) .ux-summary-card__meta {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+:host([data-tone='muted']) .ux-summary-card {
+  background: color-mix(in srgb, var(--ux-card-bg, #fff) 78%, #f5f8fc 22%);
+}
+
+:host([data-variant='status']) .ux-summary-card__value ::ng-deep [uxSummaryValue],
+:host([data-variant='status']) .ux-summary-card__value ::ng-deep [summaryMetricValue] {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 2rem;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--badge-bg, #e8eef8) 74%, #dbe7f5 26%);
+  color: var(--badge-text, #23415e);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+:host([data-variant='code']) .ux-summary-card__value {
+  padding: 0.15rem 0;
+}
+
+:host([data-variant='code']) .ux-summary-card__value ::ng-deep [uxSummaryValue],
+:host([data-variant='code']) .ux-summary-card__value ::ng-deep [summaryMetricValue] {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--field-bg, #f4f7fb) 88%, #eef4fb 12%);
+  color: color-mix(in srgb, var(--app-text, #102744) 88%, #20486f 12%);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+:host([data-variant='code']) .ux-summary-card__value ::ng-deep [uxSummaryValue] span,
+:host([data-variant='code']) .ux-summary-card__value ::ng-deep [summaryMetricValue] span {
+  display: block;
+}

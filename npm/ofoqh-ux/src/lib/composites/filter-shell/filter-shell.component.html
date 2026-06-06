@@ -1,0 +1,16 @@
+<section class="ux-filter-shell">
+  <div class="ux-filter-shell__grid">
+    <ng-content></ng-content>
+  </div>
+  <div class="ux-filter-shell__summary">
+    <p>{{ summaryText }}</p>
+    <div class="ux-filter-shell__summary-actions">
+      @if (shownTag) {
+        <span class="ux-filter-shell__tag">{{ shownTag }}</span>
+      }
+      @if (showReset) {
+        <button class="ux-filter-shell__button" type="button" (click)="reset.emit()">{{ resetLabel }}</button>
+      }
+    </div>
+  </div>
+</section>

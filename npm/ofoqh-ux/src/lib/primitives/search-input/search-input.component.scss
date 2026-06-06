@@ -1,0 +1,45 @@
+.host {
+}
+
+.ux-search-input {
+  width: 100%;
+}
+
+:host {
+  display: block;
+  position: relative;
+  overflow: visible;
+  margin-block: 6px;
+  padding: 4px;
+  border-radius: var(--skin-radius-sm, 0px);
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: 'UX';
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font: 800 10px/1 monospace;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
+:host ::ng-deep .ux-search-input .mdc-text-field__input::placeholder {
+  opacity: 0.55;
+}
+
+:host ::ng-deep .ux-search-input .mat-mdc-form-field-hint-wrapper,
+:host ::ng-deep .ux-search-input .mat-mdc-form-field-hint,
+:host ::ng-deep .ux-search-input .mat-mdc-form-field-error-wrapper {
+  opacity: 0.65;
+}

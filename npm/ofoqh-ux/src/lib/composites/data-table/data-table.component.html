@@ -1,0 +1,100 @@
+<div class="dt-wrap">
+  <table class="dt-table">
+    <thead>
+      <tr>
+        @for (col of columns; track col.id) {
+          <th [style.width]="col.width || null" [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+            @if (isColumnSortable(col)) {
+              <button type="button" class="dt-sort-trigger" (click)="toggleSort(col.id)">
+                <span>{{ col.header }}</span>
+                <mat-icon class="dt-sort-icon">{{ sortIcon(col.id) }}</mat-icon>
+              </button>
+            } @else {
+              {{ col.header }}
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (row of visibleRows(); track trackRow($index, row); let i = $index) {
+        <tr>
+          @for (col of columns; track col.id) {
+            <td [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+              @switch (col.type) {
+                @case ('checkbox') {
+                  @if (col.checkbox?.(row); as checkboxCell) {
+                    <mat-checkbox
+                      [checked]="checkboxCell.checked"
+                      [disabled]="checkboxCell.disabled"
+                      [aria-label]="checkboxCell.ariaLabel || col.header"
+                      (change)="emitCheckbox(col.id, row, $event.checked)" />
+                  }
+                }
+
+                @case ('text') {
+                  @if (col.text?.(row); as cell) {
+                    <div class="dt-primary">{{ cell.primary }}</div>
+                    @if (cell.secondary) {
+                      <div class="dt-secondary">{{ cell.secondary }}</div>
+                    }
+                  }
+                }
+
+                @case ('link') {
+                  @if (col.link?.(row); as linkCell) {
+                    <button type="button" class="dt-link" (click)="emitLink(col.id, row)">
+                      {{ linkCell.label }}
+                    </button>
+                  }
+                }
+
+                @case ('chips') {
+                  <div class="dt-chips">
+                    @for (chip of col.chips?.(row) ?? []; track chip.label) {
+                      <span class="dt-chip" [class]="'tone-' + (chip.tone ?? 'neutral')">{{ chip.label }}</span>
+                    }
+                  </div>
+                }
+
+                @case ('actions') {
+                  <div class="dt-actions">
+                    @for (a of col.actions?.(row) ?? []; track a.id) {
+                      <button
+                        type="button"
+                        mat-icon-button
+                        [disabled]="a.disabled"
+                        [matTooltip]="a.tooltip || ''"
+                        (click)="emitAction(col.id, a.id, row)">
+                        <mat-icon>{{ a.icon }}</mat-icon>
+                      </button>
+                    }
+                  </div>
+                }
+              }
+            </td>
+          }
+        </tr>
+      }
+
+      @if (visibleRows().length === 0) {
+        <tr class="dt-empty-row">
+          <td class="dt-empty-cell" [attr.colspan]="columns.length || 1">{{ resolvedEmptyStateLabel() }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@if (showPaginator()) {
+  <div class="dt-paginator">
+    <mat-paginator
+      [length]="resolvedLength()"
+      [pageIndex]="resolvedPageIndex()"
+      [pageSize]="resolvedPageSize()"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPage($event)">
+    </mat-paginator>
+  </div>
+}

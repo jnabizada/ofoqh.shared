@@ -1,0 +1,11 @@
+<button
+  class="ux-action-button"
+  [type]="type"
+  [disabled]="disabled"
+  [attr.data-variant]="variant"
+  [attr.data-color]="color ?? 'default'"
+  [attr.data-tone]="tone"
+  [matMenuTriggerFor]="menuTriggerFor"
+  (click)="onClick($event)">
+  <ng-content></ng-content>
+</button>

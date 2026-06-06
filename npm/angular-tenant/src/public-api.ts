@@ -6,3 +6,4 @@ export * from './lib/tenant-route.guard';
 export * from './lib/tenant-route.service';
 export * from './lib/tenant-session.store';
 export * from './lib/tenant.models';
+export * from './lib/tenant-portal-url';
