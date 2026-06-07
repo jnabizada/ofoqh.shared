@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './summary-panel.component.html',
   styleUrl: './summary-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'summary-panel' },
 })
 export class UxSummaryPanelComponent {
   readonly title = input<string | null>(null);

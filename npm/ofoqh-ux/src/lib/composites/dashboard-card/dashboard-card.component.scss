@@ -12,7 +12,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -10px;
@@ -33,10 +33,10 @@
   gap: 0;
   min-width: 0;
   padding: 20px;
-  border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e3) 82%, #8da8c2 18%);
+  border: 1px solid var(--ux-card-border, var(--card-border, #c8d5e3));
   border-radius: var(--ux-radius-xl, 18px);
-  background: var(--card-bg, #fff);
-  box-shadow: inset 0 0 0 1px rgba(255, 0, 170, 0.14);
+  background: var(--ux-card-bg, #fff);
+  box-shadow: inset 0 0 0 1px var(--ux-card-inner-ring, transparent);
 }
 
 .ux-dashboard-card--wide {
@@ -58,17 +58,17 @@
 .ux-dashboard-card__copy h2 {
   margin: 0;
   color: var(--ux-card-text, #102744);
-  font-size: 17px;
-  font-weight: 700;
+  font-size: var(--ux-text-title-sm-size, 17px);
+  font-weight: var(--ux-text-title-sm-weight, 700);
 }
 
 .ux-dashboard-card__eyebrow {
   margin: 0 0 4px;
   color: var(--ux-card-muted, #60758d);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  font-size: var(--ux-text-label-size, 12px);
+  font-weight: var(--ux-text-label-weight, 700);
+  letter-spacing: var(--ux-text-label-spacing, 0);
+  text-transform: var(--ux-text-label-transform, uppercase);
 }
 
 .ux-dashboard-card__subhead {
@@ -128,7 +128,7 @@
   height: 34px;
   border: 1px solid var(--ux-field-border, #d6e0ea);
   border-radius: var(--ux-radius-xs, 10px);
-  background: color-mix(in srgb, var(--ux-field-bg, #f4f7fb) 82%, #f4f7fb 18%);
+  background: var(--ux-field-bg, #f4f7fb);
   color: var(--ux-card-muted, #60758d);
   font-size: 14px;
   font-weight: 700;
@@ -150,10 +150,9 @@
   padding: 12px;
   display: grid;
   gap: 10px;
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--ux-card-border, rgba(15, 23, 42, 0.1));
   border-radius: var(--ux-radius-md, 14px);
-  background: #fff;
-  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+  background: var(--ux-card-bg, #fff);
 }
 
 .ux-dashboard-card-menu__colors,
@@ -164,9 +163,9 @@
 
 .ux-dashboard-card-menu__label {
   color: var(--ux-card-muted, #60758d);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: var(--ux-text-label-size, 12px);
+  font-weight: var(--ux-text-label-weight, 700);
+  text-transform: var(--ux-text-label-transform, uppercase);
 }
 
 .ux-dashboard-card-menu__sizes {
@@ -199,8 +198,8 @@
   padding: 0 10px;
   border: 1px solid var(--ux-field-border, #d6e0ea);
   border-radius: var(--ux-radius-xs, 10px);
-  background: #f6f8fb;
-  color: #173b67;
+  background: var(--ux-field-bg, #f6f8fb);
+  color: var(--ux-field-text, #173b67);
 }
 
 @media (max-width: 960px) {

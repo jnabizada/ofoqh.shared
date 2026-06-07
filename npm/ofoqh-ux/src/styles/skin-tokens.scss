@@ -1,0 +1,217 @@
+@mixin ofoqh-classic-skin-tokens() {
+  --ux-font-family-sans: 'Segoe UI', Inter, system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --ux-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --ux-text-caption-size: 11px;
+  --ux-text-caption-line-height: 1;
+  --ux-text-label-size: 12px;
+  --ux-text-label-line-height: 1.2;
+  --ux-text-label-weight: 700;
+  --ux-text-label-spacing: 0;
+  --ux-text-label-transform: uppercase;
+  --ux-text-eyebrow-size: 12px;
+  --ux-text-eyebrow-line-height: 1.2;
+  --ux-text-eyebrow-weight: 800;
+  --ux-text-eyebrow-spacing: 0.08em;
+  --ux-text-eyebrow-transform: uppercase;
+  --ux-text-body-sm-size: 13px;
+  --ux-text-body-sm-line-height: 1.45;
+  --ux-text-body-md-size: 15px;
+  --ux-text-body-md-line-height: 1.5;
+  --ux-text-body-lg-line-height: 1.6;
+  --ux-text-title-sm-size: 17px;
+  --ux-text-title-sm-line-height: 1.3;
+  --ux-text-title-sm-weight: 700;
+  --ux-text-title-md-size: 20px;
+  --ux-text-title-md-line-height: 1.2;
+  --ux-text-title-md-weight: 700;
+  --ux-text-title-lg-size: 28px;
+  --ux-text-title-lg-line-height: 1.2;
+  --ux-text-title-lg-weight: 700;
+  --ux-text-metric-size: 34px;
+  --ux-text-metric-line-height: 1;
+  --ux-text-metric-weight: 800;
+  --ux-text-button-sm-size: 13px;
+  --ux-text-button-sm-weight: 700;
+  --ux-text-button-md-weight: 800;
+  --ux-text-button-md-spacing: 0.01em;
+  --ux-text-button-lg-size: 16px;
+  --ux-text-button-icon-size: 14px;
+  --ux-text-icon-md-size: 16px;
+  --ux-text-mono-size: 0.78rem;
+  --ux-text-mono-line-height: 1.35;
+  --ux-text-mono-weight: 700;
+  --ux-text-mono-spacing: 0;
+
+  --ux-radius-xs: 10px;
+  --ux-radius-sm: 12px;
+  --ux-radius-md: 14px;
+  --ux-radius-lg: 16px;
+  --ux-radius-xl: 18px;
+  --ux-radius-2xl: 22px;
+  --ux-radius-3xl: 24px;
+  --ux-radius-4xl: 26px;
+  --ux-radius-full: 999px;
+
+  --ux-card-bg: #ffffff;
+  --ux-card-text: #0f172a;
+  --ux-card-muted: #64748b;
+  --ux-card-border: #d9dfe8;
+  --ux-card-inner-ring: transparent;
+  --ux-card-accent-bg: #0b3b73;
+  --ux-card-accent-border: #dbe5f3;
+  --ux-card-accent-text: #ffffff;
+  --ux-card-accent-muted: rgba(255, 255, 255, 0.86);
+
+  --ux-field-bg: #f7f9fc;
+  --ux-field-border: #e5ebf4;
+  --ux-field-text: #0f172a;
+  --ux-badge-bg: #dbe5f3;
+  --ux-badge-text: #0b3b73;
+
+  --ux-button-primary-bg: #0b3b73;
+  --ux-button-primary-bg-hover: color-mix(in srgb, #0b3b73 90%, white 10%);
+  --ux-button-primary-bg-active: color-mix(in srgb, #0b3b73 88%, black 12%);
+  --ux-button-primary-border: color-mix(in srgb, #0b3b73 82%, black 18%);
+  --ux-button-primary-text: #ffffff;
+  --ux-button-primary-shadow: rgba(11, 59, 115, 0.18);
+  --ux-button-primary-shadow-soft: rgba(11, 59, 115, 0.1);
+  --ux-button-primary-glow: rgba(59, 130, 246, 0.3);
+  --ux-button-secondary-bg: #f7f9fc;
+  --ux-button-secondary-bg-hover: color-mix(in srgb, #f7f9fc 92%, white 8%);
+  --ux-button-secondary-bg-active: color-mix(in srgb, #f7f9fc 88%, black 12%);
+  --ux-button-secondary-border: #9db4d4;
+  --ux-button-secondary-text: #0f172a;
+  --ux-button-secondary-shadow: rgba(15, 23, 42, 0.08);
+  --ux-button-secondary-shadow-soft: rgba(15, 23, 42, 0.05);
+  --ux-button-secondary-glow: rgba(59, 130, 246, 0.24);
+
+  --ux-action-btn-base: #ffffff;
+  --ux-action-primary-color: #0b3b73;
+  --ux-action-primary-glow: rgba(59, 130, 246, 0.3);
+  --ux-action-accent-color: #0b3b73;
+  --ux-action-accent-glow: rgba(59, 130, 246, 0.22);
+  --ux-action-neutral-color: #0f172a;
+  --ux-action-neutral-glow: rgba(15, 23, 42, 0.18);
+  --ux-action-info-color: #0b3b73;
+  --ux-action-info-glow: rgba(59, 130, 246, 0.3);
+
+  --ux-shell-content-bg: linear-gradient(180deg, #f9fafc 0%, #f3f5f8 100%);
+  --ux-shell-nav-bg: #eef2f7;
+  --ux-shell-nav-text: #1f2937;
+  --ux-shell-nav-muted: #475569;
+  --ux-shell-nav-strong: #1f2937;
+  --ux-shell-nav-border: #d6dde8;
+  --ux-shell-nav-divider: #d6dde8;
+  --ux-shell-nav-control-bg: #ffffff;
+  --ux-shell-nav-control-border: #d3dbe7;
+  --ux-shell-meta-card-bg: #ffffff;
+  --ux-shell-nav-badge-bg: #dbe5f3;
+  --ux-shell-nav-badge-text: #0b3b73;
+  --ux-shell-nav-item-active-bg: #dfe8f5;
+  --ux-shell-nav-item-active-border: #c8d7ec;
+  --ux-shell-nav-icon-bg: #dce8f5;
+  --ux-shell-topbar-bg: rgba(247, 250, 252, 0.92);
+  --ux-shell-topbar-border: #d9dfe8;
+  --ux-shell-topbar-text: #0f172a;
+  --ux-shell-topbar-muted: #64748b;
+  --ux-shell-attention-bg: #fff0cb;
+  --ux-shell-attention-text: #8a4d00;
+  --ux-shell-debug-active-bg: #fff2bf;
+  --ux-shell-debug-active-border: #d79a00;
+  --ux-shell-debug-active-text: #7a4800;
+  --ux-shell-loading-bg: linear-gradient(90deg, #123f73, #4d8bcc, #123f73);
+
+  --ux-public-toolbar-bg: #f7f9fc;
+  --ux-public-toolbar-border: #d9dfe8;
+  --ux-public-toolbar-text: #0f172a;
+  --ux-public-brand-accent: #315b86;
+  --ux-public-signin-bg: #315b86;
+  --ux-public-signin-text: #ffffff;
+  --ux-public-banner-bg: #e9eff7;
+  --ux-public-banner-border: #d9dfe8;
+  --ux-public-banner-text: #1e3a5f;
+  --ux-public-content-bg: linear-gradient(180deg, #f8fafc 0%, #f2f5f9 100%);
+  --ux-public-card-bg: #ffffff;
+  --ux-public-card-border: #d8e0ea;
+  --ux-public-card-text: #0f172a;
+  --ux-public-card-muted: #475569;
+  --ux-public-list-text: #334155;
+  --ux-public-divider: #94a3b8;
+
+  --ux-page-hero-bg: linear-gradient(135deg, rgba(245, 239, 227, 0.82) 0%, rgba(251, 250, 247, 0.92) 46%, rgba(237, 244, 251, 0.92) 100%);
+  --ux-page-hero-border: #d9dfe8;
+  --ux-page-hero-inner-ring: transparent;
+  --ux-page-hero-text: var(--ux-card-text);
+  --ux-page-hero-muted: var(--ux-card-muted);
+  --ux-page-hero-field-bg: var(--ux-field-bg);
+  --ux-page-hero-field-border: var(--ux-field-border);
+  --ux-page-hero-field-text: var(--ux-field-text);
+
+  --ux-table-bg: #ffffff;
+  --ux-table-border: #d7dfeb;
+  --ux-table-header-bg: #edf3fb;
+  --ux-table-header-text: #1e293b;
+  --ux-table-row-hover: #f3f7fd;
+  --ux-table-tag-bg: var(--ux-badge-bg);
+  --ux-table-tag-text: var(--ux-badge-text);
+}
+
+@mixin ofoqh-sunset-skin-tokens() {
+  --ux-card-text: #2a1f16;
+  --ux-card-muted: #7a5a40;
+  --ux-card-border: #e0ceb2;
+  --ux-card-accent-bg: #4d2f14;
+  --ux-card-accent-border: #e7cca7;
+  --ux-field-bg: #fff5e6;
+  --ux-field-border: #efe1cc;
+  --ux-field-text: #2a1f16;
+  --ux-badge-bg: #e7cca7;
+  --ux-badge-text: #5f3814;
+  --ux-button-primary-bg: #4d2f14;
+  --ux-button-primary-border: #3e220d;
+  --ux-button-secondary-border: #c79663;
+  --ux-shell-content-bg: linear-gradient(180deg, #fcf5ea 0%, #f7efe1 100%);
+  --ux-shell-nav-bg: #f3e5cf;
+  --ux-shell-nav-text: #3d2b1c;
+  --ux-shell-nav-muted: #73553a;
+  --ux-shell-nav-strong: #3d2b1c;
+  --ux-shell-nav-border: #e4d4bd;
+  --ux-shell-nav-divider: #e4d4bd;
+  --ux-shell-nav-badge-bg: #e7cca7;
+  --ux-shell-nav-badge-text: #5f3814;
+  --ux-shell-nav-item-active-bg: #ead3b0;
+  --ux-shell-nav-item-active-border: #d8b88e;
+  --ux-shell-nav-icon-bg: #e4cfb0;
+  --ux-shell-topbar-text: #2a1f16;
+  --ux-shell-topbar-muted: #7a5a40;
+  --ux-public-toolbar-text: #2a1f16;
+  --ux-public-brand-accent: #5f3814;
+  --ux-public-signin-bg: #4d2f14;
+  --ux-public-banner-bg: #e7cca7;
+  --ux-public-banner-text: #5f3814;
+  --ux-public-content-bg: linear-gradient(180deg, #fcf5ea 0%, #f7efe1 100%);
+  --ux-public-card-text: #2a1f16;
+  --ux-public-card-muted: #7a5a40;
+  --ux-public-list-text: #3d2b1c;
+  --ux-page-hero-text: #2a1f16;
+  --ux-page-hero-muted: #7a5a40;
+  --ux-table-header-bg: #f3e5cf;
+  --ux-table-header-text: #3d2b1c;
+  --ux-table-row-hover: #fff5e6;
+}
+
+@mixin ofoqh-root-skins() {
+  :root {
+    @include ofoqh-classic-skin-tokens();
+  }
+
+  html.skin-sunset,
+  body.skin-sunset,
+  html.theme-sunset,
+  body.theme-sunset,
+  :root[data-skin='sunset'],
+  :root[data-theme='sunset'] {
+    @include ofoqh-sunset-skin-tokens();
+  }
+}

@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './page-hero.component.html',
   styleUrl: './page-hero.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'page-hero' },
 })
 export class UxPageHeroComponent {
   readonly eyebrow = input<string | null>(null);

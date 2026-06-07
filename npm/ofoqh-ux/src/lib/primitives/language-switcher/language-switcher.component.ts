@@ -14,6 +14,7 @@ export interface UxLanguageOption {
   imports: [CommonModule],
   templateUrl: './language-switcher.component.html',
   styleUrl: './language-switcher.component.scss',
+  host: { 'data-ux-component': 'language-switcher' },
 })
 export class UxLanguageSwitcherComponent {
   private readonly translate = inject(UX_TRANSLATE);

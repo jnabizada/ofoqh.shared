@@ -10,7 +10,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -8px;
@@ -48,14 +48,14 @@
 }
 
 .ux-stateful-button__surface {
-  --ux-btn-bg: #1f4e84;
-  --ux-btn-bg-hover: #245993;
-  --ux-btn-bg-active: #173e69;
-  --ux-btn-edge: #0f2743;
-  --ux-btn-text: #ffffff;
-  --ux-btn-shadow: rgba(16, 41, 71, 0.14);
-  --ux-btn-shadow-soft: rgba(16, 41, 71, 0.09);
-  --ux-btn-glow: rgba(78, 141, 219, 0.22);
+  --ux-btn-bg: var(--ux-button-primary-bg, #1f4e84);
+  --ux-btn-bg-hover: var(--ux-button-primary-bg-hover, #245993);
+  --ux-btn-bg-active: var(--ux-button-primary-bg-active, #173e69);
+  --ux-btn-edge: var(--ux-button-primary-border, #0f2743);
+  --ux-btn-text: var(--ux-button-primary-text, #ffffff);
+  --ux-btn-shadow: var(--ux-button-primary-shadow, rgba(16, 41, 71, 0.14));
+  --ux-btn-shadow-soft: var(--ux-button-primary-shadow-soft, rgba(16, 41, 71, 0.09));
+  --ux-btn-glow: var(--ux-button-primary-glow, rgba(78, 141, 219, 0.22));
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -157,53 +157,53 @@
 
 .ux-stateful-button[data-tone='secondary'] .ux-stateful-button__surface,
 .ux-stateful-button[data-tone='neutral'] .ux-stateful-button__surface {
-  --ux-btn-bg: #e7eef6;
-  --ux-btn-bg-hover: #edf3f9;
-  --ux-btn-bg-active: #dbe5ef;
-  --ux-btn-edge: #9db0c4;
-  --ux-btn-text: #173b65;
-  --ux-btn-shadow: rgba(77, 100, 126, 0.12);
-  --ux-btn-shadow-soft: rgba(77, 100, 126, 0.08);
-  --ux-btn-glow: rgba(109, 142, 182, 0.18);
+  --ux-btn-bg: var(--ux-button-secondary-bg, #e7eef6);
+  --ux-btn-bg-hover: var(--ux-button-secondary-bg-hover, #edf3f9);
+  --ux-btn-bg-active: var(--ux-button-secondary-bg-active, #dbe5ef);
+  --ux-btn-edge: var(--ux-button-secondary-border, #9db0c4);
+  --ux-btn-text: var(--ux-button-secondary-text, #173b65);
+  --ux-btn-shadow: var(--ux-button-secondary-shadow, rgba(77, 100, 126, 0.12));
+  --ux-btn-shadow-soft: var(--ux-button-secondary-shadow-soft, rgba(77, 100, 126, 0.08));
+  --ux-btn-glow: var(--ux-button-secondary-glow, rgba(109, 142, 182, 0.18));
 }
 
 .ux-stateful-button[data-tone='success'] .ux-stateful-button__surface {
-  --ux-btn-bg: #1f8f58;
-  --ux-btn-bg-hover: #249f62;
-  --ux-btn-bg-active: #177447;
-  --ux-btn-edge: #0d5232;
-  --ux-btn-text: #f7fff9;
-  --ux-btn-shadow: rgba(14, 84, 51, 0.14);
-  --ux-btn-shadow-soft: rgba(14, 84, 51, 0.1);
-  --ux-btn-glow: rgba(74, 214, 136, 0.2);
+  --ux-btn-bg: var(--ux-button-success-bg, #1f8f58);
+  --ux-btn-bg-hover: var(--ux-button-success-bg-hover, #249f62);
+  --ux-btn-bg-active: var(--ux-button-success-bg-active, #177447);
+  --ux-btn-edge: var(--ux-button-success-border, #0d5232);
+  --ux-btn-text: var(--ux-button-success-text, #f7fff9);
+  --ux-btn-shadow: var(--ux-button-success-shadow, rgba(14, 84, 51, 0.14));
+  --ux-btn-shadow-soft: var(--ux-button-success-shadow-soft, rgba(14, 84, 51, 0.1));
+  --ux-btn-glow: var(--ux-button-success-glow, rgba(74, 214, 136, 0.2));
 }
 
 .ux-stateful-button[data-tone='danger'] .ux-stateful-button__surface {
-  --ux-btn-bg: #bf3a3a;
-  --ux-btn-bg-hover: #cf4848;
-  --ux-btn-bg-active: #a92b2b;
-  --ux-btn-edge: #6d1313;
-  --ux-btn-text: #fff7f7;
-  --ux-btn-shadow: rgba(109, 19, 19, 0.14);
-  --ux-btn-shadow-soft: rgba(109, 19, 19, 0.1);
-  --ux-btn-glow: rgba(232, 92, 92, 0.22);
+  --ux-btn-bg: var(--ux-button-danger-bg, #bf3a3a);
+  --ux-btn-bg-hover: var(--ux-button-danger-bg-hover, #cf4848);
+  --ux-btn-bg-active: var(--ux-button-danger-bg-active, #a92b2b);
+  --ux-btn-edge: var(--ux-button-danger-border, #6d1313);
+  --ux-btn-text: var(--ux-button-danger-text, #fff7f7);
+  --ux-btn-shadow: var(--ux-button-danger-shadow, rgba(109, 19, 19, 0.14));
+  --ux-btn-shadow-soft: var(--ux-button-danger-shadow-soft, rgba(109, 19, 19, 0.1));
+  --ux-btn-glow: var(--ux-button-danger-glow, rgba(232, 92, 92, 0.22));
 }
 
 .ux-stateful-button[data-state='success'] .ux-stateful-button__surface {
-  --ux-btn-bg: #249a5d;
-  --ux-btn-bg-hover: #29a865;
-  --ux-btn-bg-active: #1d7e4c;
-  --ux-btn-edge: #106239;
-  --ux-btn-text: #f7fff9;
+  --ux-btn-bg: var(--ux-button-success-state-bg, #249a5d);
+  --ux-btn-bg-hover: var(--ux-button-success-state-bg-hover, #29a865);
+  --ux-btn-bg-active: var(--ux-button-success-state-bg-active, #1d7e4c);
+  --ux-btn-edge: var(--ux-button-success-state-border, #106239);
+  --ux-btn-text: var(--ux-button-success-state-text, #f7fff9);
   animation: ux-stateful-button-success 320ms ease;
 }
 
 .ux-stateful-button[data-state='error'] .ux-stateful-button__surface {
-  --ux-btn-bg: #cb4a4a;
-  --ux-btn-bg-hover: #d85b5b;
-  --ux-btn-bg-active: #b33636;
-  --ux-btn-edge: #7a1717;
-  --ux-btn-text: #fff8f8;
+  --ux-btn-bg: var(--ux-button-error-state-bg, #cb4a4a);
+  --ux-btn-bg-hover: var(--ux-button-error-state-bg-hover, #d85b5b);
+  --ux-btn-bg-active: var(--ux-button-error-state-bg-active, #b33636);
+  --ux-btn-edge: var(--ux-button-error-state-border, #7a1717);
+  --ux-btn-text: var(--ux-button-error-state-text, #fff8f8);
   animation: ux-stateful-button-error 320ms ease;
 }
 

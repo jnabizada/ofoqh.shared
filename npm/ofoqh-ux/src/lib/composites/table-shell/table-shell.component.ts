@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './table-shell.component.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
+    'data-ux-component': 'table-shell',
     '[class.ux-table-shell-host--span-2]': 'spanTwo',
   },
 })

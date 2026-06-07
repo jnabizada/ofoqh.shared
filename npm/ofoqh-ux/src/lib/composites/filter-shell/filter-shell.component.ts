@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
   templateUrl: './filter-shell.component.html',
   styleUrl: './filter-shell.component.scss',
   encapsulation: ViewEncapsulation.None,
+  host: { 'data-ux-component': 'filter-shell' },
 })
 export class UxFilterShellComponent {
   @Input() summaryText = '';

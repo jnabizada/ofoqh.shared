@@ -8,7 +8,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -14px;
@@ -31,9 +31,7 @@
   height: 100vh;
   overflow: hidden;
   border-radius: var(--ux-radius-3xl, 24px);
-  background:
-    radial-gradient(circle at top right, rgba(28, 85, 152, 0.08), transparent 25%),
-    linear-gradient(180deg, #f6f3ec 0%, #f7fafc 45%, #eef4fb 100%);
+  background: var(--ux-shell-content-bg, var(--content-bg, var(--card-bg, #fff)));
 }
 
 .shell__nav {
@@ -43,9 +41,9 @@
   height: 100vh;
   padding: 18px 14px 30px;
   overflow: hidden;
-  border-right: 1px solid color-mix(in srgb, var(--card-border) 82%, #90a7c0 18%);
-  background: linear-gradient(180deg, #12304f 0%, #173f69 100%);
-  color: #eef5fb;
+  border-right: 1px solid var(--ux-shell-nav-border, var(--card-border));
+  background: var(--ux-shell-nav-bg, var(--shell-bg, #173f69));
+  color: var(--ux-shell-nav-text, #eef5fb);
 }
 
 .shell__nav-scroll {
@@ -66,7 +64,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 6px 8px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid var(--ux-shell-nav-divider, rgba(255, 255, 255, 0.14));
 }
 
 .shell__brand strong {
@@ -79,7 +77,7 @@
 .shell__section-label,
 .shell__subtitle {
   margin: 0;
-  color: rgba(238, 245, 251, 0.74);
+  color: var(--ux-shell-nav-muted, rgba(238, 245, 251, 0.74));
 }
 
 .shell__eyebrow,
@@ -111,11 +109,11 @@
 
 .shell__section-toggle:hover .shell__section-label,
 .shell__section-toggle:hover .shell__section-chevron {
-  color: rgba(238, 245, 251, 0.92);
+  color: var(--ux-shell-nav-strong, rgba(238, 245, 251, 0.92));
 }
 
 .shell__section-chevron {
-  color: rgba(238, 245, 251, 0.74);
+  color: var(--ux-shell-nav-muted, rgba(238, 245, 251, 0.74));
   font-size: var(--ux-text-button-icon-size, 14px);
   font-weight: var(--ux-text-eyebrow-weight, 800);
   line-height: var(--ux-text-caption-line-height, 1);
@@ -143,10 +141,10 @@
   width: 52px;
   min-height: 22px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--ux-shell-nav-control-border, rgba(255, 255, 255, 0.18));
   border-radius: var(--ux-radius-xs, 10px);
-  background: rgba(255, 255, 255, 0.12);
-  color: #eef5fb;
+  background: var(--ux-shell-nav-control-bg, rgba(255, 255, 255, 0.12));
+  color: var(--ux-shell-nav-text, #eef5fb);
   cursor: ns-resize;
   touch-action: none;
 }
@@ -163,7 +161,7 @@
   display: grid;
   gap: 12px;
   padding: 10px 8px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid var(--ux-shell-nav-divider, rgba(255, 255, 255, 0.14));
 }
 
 .shell__meta-card {
@@ -171,12 +169,12 @@
   gap: 4px;
   padding: 12px;
   border-radius: var(--ux-radius-lg, 16px);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--ux-shell-meta-card-bg, rgba(255, 255, 255, 0.08));
 }
 
 .shell__meta-card strong,
 .shell__meta-card small {
-  color: #eef5fb;
+  color: var(--ux-shell-nav-text, #eef5fb);
 }
 
 .shell__meta-card small {
@@ -188,7 +186,7 @@
 }
 
 .shell__meta-label {
-  color: rgba(238, 245, 251, 0.72);
+  color: var(--ux-shell-nav-muted, rgba(238, 245, 251, 0.72));
   font-size: var(--ux-text-caption-size, 11px);
   line-height: var(--ux-text-caption-line-height, 1);
   font-weight: var(--ux-text-eyebrow-weight, 800);
@@ -204,7 +202,7 @@
   padding: 0 12px;
   border: 1px solid transparent;
   border-radius: var(--ux-radius-md, 14px);
-  color: #eef5fb;
+  color: var(--ux-shell-nav-text, #eef5fb);
   text-decoration: none;
 }
 
@@ -217,8 +215,8 @@
   min-height: 24px;
   padding: 0 8px;
   border-radius: var(--ux-radius-xs, 10px);
-  background: #f7b955;
-  color: #12304f;
+  background: var(--ux-shell-nav-badge-bg, var(--badge-bg, #f7b955));
+  color: var(--ux-shell-nav-badge-text, var(--badge-text, #12304f));
   font-size: var(--ux-text-label-size, 12px);
   line-height: var(--ux-text-label-line-height, 1.2);
   font-weight: var(--ux-text-eyebrow-weight, 800);
@@ -226,8 +224,8 @@
 
 .shell__link:hover,
 .shell__link--active {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--ux-shell-nav-item-active-bg, rgba(255, 255, 255, 0.12));
+  border-color: var(--ux-shell-nav-item-active-border, rgba(255, 255, 255, 0.12));
 }
 
 .shell__icon {
@@ -237,7 +235,7 @@
   width: 28px;
   height: 28px;
   border-radius: var(--ux-radius-xs, 10px);
-  background: rgba(255, 255, 255, 0.09);
+  background: var(--ux-shell-nav-icon-bg, rgba(255, 255, 255, 0.09));
   text-align: center;
   font-size: var(--ux-text-caption-size, 11px);
   line-height: var(--ux-text-caption-line-height, 1);
@@ -272,8 +270,8 @@
   justify-content: space-between;
   gap: 16px;
   padding: 18px 22px;
-  border-bottom: 1px solid color-mix(in srgb, var(--card-border) 84%, #8aa5bf 16%);
-  background: rgba(247, 250, 252, 0.92);
+  border-bottom: 1px solid var(--ux-shell-topbar-border, var(--ux-card-border, var(--card-border)));
+  background: var(--ux-shell-topbar-bg, var(--ux-field-bg, rgba(247, 250, 252, 0.92)));
   backdrop-filter: blur(16px);
 }
 
@@ -286,14 +284,14 @@
 
 .shell__title {
   display: block;
-  color: var(--app-text);
+  color: var(--ux-shell-topbar-text, var(--ux-card-text, var(--app-text)));
   font-size: var(--ux-text-title-md-size, 20px);
   line-height: var(--ux-text-title-md-line-height, 1.2);
   font-weight: var(--ux-text-title-md-weight, 700);
 }
 
 .shell__subtitle {
-  color: var(--muted);
+  color: var(--ux-shell-topbar-muted, var(--ux-card-muted, var(--muted)));
 }
 
 .shell__attention {
@@ -302,8 +300,8 @@
   min-height: 34px;
   padding: 0 12px;
   border-radius: var(--ux-radius-xs, 10px);
-  background: #fff0cb;
-  color: #8a4d00;
+  background: var(--ux-shell-attention-bg, var(--ux-badge-bg, #fff0cb));
+  color: var(--ux-shell-attention-text, var(--ux-badge-text, #8a4d00));
   font-size: var(--ux-text-label-size, 12px);
   line-height: var(--ux-text-label-line-height, 1.2);
   font-weight: var(--ux-text-eyebrow-weight, 800);
@@ -319,10 +317,10 @@
   justify-content: center;
   min-height: 36px;
   padding: 0 14px;
-  border: 1px solid color-mix(in srgb, var(--field-border, #c8d5e3) 78%, #7690aa 22%);
+  border: 1px solid var(--ux-field-border, #c8d5e3);
   border-radius: var(--ux-radius-xs, 10px);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--field-bg, #f7fafd) 96%, white 4%), color-mix(in srgb, var(--field-bg, #f7fafd) 88%, #e7eef6 12%));
-  color: var(--app-text, #10243e);
+  background: var(--ux-field-bg, #f7fafd);
+  color: var(--ux-field-text, #10243e);
   font: inherit;
   font-size: var(--ux-text-body-sm-size, 13px);
   line-height: var(--ux-text-body-sm-line-height, 1.45);
@@ -331,14 +329,14 @@
 }
 
 .shell__debug-toggle--active {
-  border-color: #d79a00;
-  background: linear-gradient(180deg, #fff2bf, #ffe18b);
-  color: #7a4800;
+  border-color: var(--ux-shell-debug-active-border, var(--ux-badge-bg, #d79a00));
+  background: var(--ux-shell-debug-active-bg, var(--ux-badge-bg, #fff2bf));
+  color: var(--ux-shell-debug-active-text, var(--ux-badge-text, #7a4800));
 }
 
 .shell__loading {
   height: 3px;
-  background: linear-gradient(90deg, #123f73, #4d8bcc, #123f73);
+  background: var(--ux-shell-loading-bg, var(--ux-button-primary-bg, #123f73));
   background-size: 200% 100%;
   animation: shell-loading 1.2s linear infinite;
 }

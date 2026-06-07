@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   templateUrl: './search-input.component.html',
   styleUrl: './search-input.component.scss',
+  host: { 'data-ux-component': 'search-input' },
 })
 export class UxSearchInputComponent {
   @Input() label = '';

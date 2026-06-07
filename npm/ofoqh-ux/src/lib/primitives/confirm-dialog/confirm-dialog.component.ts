@@ -15,6 +15,8 @@ export type ConfirmDialogData = {
   selector: 'ofoqh-ux-confirm-dialog',
   imports: [UxActionButtonComponent, MatDialogModule],
   templateUrl: './confirm-dialog.component.html',
+  styleUrl: './confirm-dialog.component.scss',
+  host: { 'data-ux-component': 'confirm-dialog' },
 })
 export class ConfirmDialogComponent {
   readonly data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);

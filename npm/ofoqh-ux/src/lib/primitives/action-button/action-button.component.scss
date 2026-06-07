@@ -9,7 +9,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -8px;
@@ -30,7 +30,7 @@
 
 .ux-action-button {
   border: 1px solid transparent;
-  background: color-mix(in srgb, var(--ux-action-btn-glow) 8%, rgba(255, 238, 0, 0.85) 92%);
+  background: color-mix(in srgb, var(--ux-action-btn-glow) 8%, var(--ux-action-btn-base, rgba(255, 238, 0, 0.85)) 92%);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--ux-action-btn-glow) 10%, transparent);
   min-width: 0;
   min-height: 19px;
@@ -41,7 +41,7 @@
   font: inherit;
   font-size: var(--ux-text-caption-size, inherit);
   line-height: var(--ux-text-caption-line-height, 1.1);
-  color: var(--ux-action-btn-color, #334155);
+  color: var(--ux-action-btn-color, var(--ux-action-neutral-color, #334155));
   cursor: pointer;
   opacity: 0.9;
   border-radius: var(--ux-radius-xs, 10px);
@@ -55,47 +55,47 @@
 }
 
 .ux-action-button[data-color='primary'] {
-  --ux-action-btn-color: #1d4ed8;
-  --ux-action-btn-glow: rgba(29, 78, 216, 0.42);
+  --ux-action-btn-color: var(--ux-action-primary-color, #1d4ed8);
+  --ux-action-btn-glow: var(--ux-action-primary-glow, rgba(29, 78, 216, 0.42));
 }
 
 .ux-action-button[data-color='accent'] {
-  --ux-action-btn-color: #0f766e;
-  --ux-action-btn-glow: rgba(15, 118, 110, 0.4);
+  --ux-action-btn-color: var(--ux-action-accent-color, #0f766e);
+  --ux-action-btn-glow: var(--ux-action-accent-glow, rgba(15, 118, 110, 0.4));
 }
 
 .ux-action-button[data-color='warn'] {
-  --ux-action-btn-color: #b91c1c;
-  --ux-action-btn-glow: rgba(185, 28, 28, 0.44);
+  --ux-action-btn-color: var(--ux-action-warn-color, #b91c1c);
+  --ux-action-btn-glow: var(--ux-action-warn-glow, rgba(185, 28, 28, 0.44));
 }
 
 .ux-action-button:not([data-color='primary']):not([data-color='accent']):not([data-color='warn']) {
-  --ux-action-btn-glow: rgba(51, 65, 85, 0.35);
+  --ux-action-btn-glow: var(--ux-action-neutral-glow, rgba(51, 65, 85, 0.35));
 }
 
 .ux-action-button[data-tone='info'] {
-  --ux-action-btn-color: #1d4ed8;
-  --ux-action-btn-glow: rgba(29, 78, 216, 0.42);
+  --ux-action-btn-color: var(--ux-action-info-color, #1d4ed8);
+  --ux-action-btn-glow: var(--ux-action-info-glow, rgba(29, 78, 216, 0.42));
 }
 
 .ux-action-button[data-tone='neutral'] {
-  --ux-action-btn-color: #111827;
-  --ux-action-btn-glow: rgba(17, 24, 39, 0.34);
+  --ux-action-btn-color: var(--ux-action-neutral-color, #111827);
+  --ux-action-btn-glow: var(--ux-action-neutral-glow, rgba(17, 24, 39, 0.34));
 }
 
 .ux-action-button[data-tone='success'] {
-  --ux-action-btn-color: #15803d;
-  --ux-action-btn-glow: rgba(21, 128, 61, 0.42);
+  --ux-action-btn-color: var(--ux-action-success-color, #15803d);
+  --ux-action-btn-glow: var(--ux-action-success-glow, rgba(21, 128, 61, 0.42));
 }
 
 .ux-action-button[data-tone='warning'] {
-  --ux-action-btn-color: #b45309;
-  --ux-action-btn-glow: rgba(180, 83, 9, 0.42);
+  --ux-action-btn-color: var(--ux-action-warning-color, #b45309);
+  --ux-action-btn-glow: var(--ux-action-warning-glow, rgba(180, 83, 9, 0.42));
 }
 
 .ux-action-button[data-tone='danger'] {
-  --ux-action-btn-color: #b91c1c;
-  --ux-action-btn-glow: rgba(185, 28, 28, 0.44);
+  --ux-action-btn-color: var(--ux-action-danger-color, #b91c1c);
+  --ux-action-btn-glow: var(--ux-action-danger-glow, rgba(185, 28, 28, 0.44));
 }
 
 .ux-action-button:hover:not(:disabled) {

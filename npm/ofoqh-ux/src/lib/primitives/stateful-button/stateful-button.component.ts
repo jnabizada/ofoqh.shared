@@ -12,6 +12,7 @@ export type UxStatefulButtonType = 'button' | 'submit' | 'reset';
   imports: [CommonModule],
   templateUrl: './stateful-button.component.html',
   styleUrl: './stateful-button.component.scss',
+  host: { 'data-ux-component': 'stateful-button' },
 })
 export class UxStatefulButtonComponent {
   @Input() state: UxStatefulButtonState = 'idle';

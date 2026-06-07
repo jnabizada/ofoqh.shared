@@ -12,7 +12,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -10px;
@@ -66,7 +66,7 @@
 }
 
 .ux-summary-bar__eyebrow {
-  color: var(--ux-summary-bar-accent, #6d83a0);
+  color: var(--ux-summary-bar-accent, var(--ux-card-muted, #6d83a0));
   font-size: var(--ux-text-eyebrow-size, 12px);
   line-height: var(--ux-text-eyebrow-line-height, 1.2);
   font-weight: var(--ux-text-eyebrow-weight, 800);
@@ -75,14 +75,14 @@
 }
 
 .ux-summary-bar__copy h2 {
-  color: var(--ux-summary-bar-text, #102744);
+  color: var(--ux-summary-bar-text, var(--ux-card-text, #102744));
   font-size: var(--ux-text-title-md-size, 1rem);
   line-height: var(--ux-text-title-md-line-height, 1.2);
   font-weight: var(--ux-text-title-md-weight, 700);
 }
 
 .ux-summary-bar__subhead {
-  color: var(--ux-summary-bar-muted, #60758d);
+  color: var(--ux-summary-bar-muted, var(--ux-card-muted, #60758d));
   font-size: var(--ux-text-body-sm-size, inherit);
   line-height: var(--ux-text-body-sm-line-height, 1.45);
 }

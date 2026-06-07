@@ -17,6 +17,7 @@ import {
   templateUrl: './summary-card.component.html',
   styleUrl: './summary-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'summary-card' },
 })
 export class UxSummaryCardComponent {
   private readonly host = inject(ElementRef<HTMLElement>);

@@ -34,6 +34,7 @@ export type UxAppShellMetaCard = {
   templateUrl: './app-shell.component.html',
   styleUrl: './app-shell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'app-shell' },
 })
 export class UxAppShellComponent {
   private readonly document = inject(DOCUMENT);

@@ -26,6 +26,7 @@ export type UxPublicAccessShellLink = {
   ],
   templateUrl: './public-access-shell.component.html',
   styleUrl: './public-access-shell.component.scss',
+  host: { 'data-ux-component': 'public-access-shell' },
 })
 export class UxPublicAccessShellComponent {
   @Input() appName = 'App';

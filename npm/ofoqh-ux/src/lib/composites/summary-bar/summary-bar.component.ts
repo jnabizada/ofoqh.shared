@@ -8,6 +8,7 @@ import { AfterContentChecked, ChangeDetectionStrategy, Component, ElementRef, in
   templateUrl: './summary-bar.component.html',
   styleUrl: './summary-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'summary-bar' },
 })
 export class UxSummaryBarComponent implements AfterContentChecked {
   private readonly host = inject(ElementRef<HTMLElement>);

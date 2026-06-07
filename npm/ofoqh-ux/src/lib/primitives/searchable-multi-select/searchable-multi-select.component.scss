@@ -12,7 +12,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -10px;
@@ -56,7 +56,7 @@
   padding: 4px 10px;
   border: 1px solid var(--ux-field-border, rgba(148, 163, 184, 0.45));
   border-radius: var(--ux-radius-full, 999px);
-  background: color-mix(in srgb, var(--ux-field-bg, #f6f8fb) 88%, #eef3f8 12%);
+  background: var(--ux-badge-bg, color-mix(in srgb, var(--ux-field-bg, #f6f8fb) 88%, #eef3f8 12%));
   color: var(--ux-card-text, #173b67);
 }
 
@@ -72,9 +72,9 @@
   gap: 12px;
   min-height: 42px;
   padding: 0 14px;
-  border: 1px solid rgba(148, 163, 184, 0.45);
+  border: 1px solid var(--ux-field-border, rgba(148, 163, 184, 0.45));
   border-radius: var(--ux-radius-xs, 10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--ux-field-bg, rgba(255, 255, 255, 0.95));
   color: inherit;
   font: inherit;
   text-align: left;
@@ -93,9 +93,9 @@
   display: grid;
   gap: 10px;
   padding: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid var(--ux-card-border, rgba(148, 163, 184, 0.35));
   border-radius: var(--ux-radius-xs, 10px);
-  background: rgba(248, 250, 252, 0.95);
+  background: var(--ux-card-bg, rgba(248, 250, 252, 0.95));
 }
 
 .ux-searchable-multi-select__panel input[type='search'] {
@@ -105,6 +105,8 @@
   border: 1px solid var(--ux-field-border, rgba(148, 163, 184, 0.45));
   border-radius: var(--ux-radius-xs, 10px);
   box-sizing: border-box;
+  background: var(--ux-field-bg, #fff);
+  color: var(--ux-field-text, #173b67);
 }
 
 .ux-searchable-multi-select__list {
@@ -120,7 +122,7 @@
   gap: 10px;
   padding: 8px 10px;
   border-radius: var(--ux-radius-xs, 10px);
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--ux-field-bg, rgba(255, 255, 255, 0.88));
 }
 
 .ux-searchable-multi-select__option input {

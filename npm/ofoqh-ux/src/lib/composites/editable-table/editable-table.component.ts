@@ -38,6 +38,7 @@ export class EditableTableCellDefDirective<T = unknown> {
   imports: [CommonModule, NgTemplateOutlet],
   templateUrl: './editable-table.component.html',
   styleUrl: './editable-table.component.scss',
+  host: { 'data-ux-component': 'editable-table' },
 })
 export class EditableTableComponent<T = unknown> {
   @Input() columns: readonly EditableTableColumn[] = [];

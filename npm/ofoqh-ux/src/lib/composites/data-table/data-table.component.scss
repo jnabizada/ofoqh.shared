@@ -8,7 +8,7 @@
 }
 
 :host::before {
-  content: 'UX';
+  content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
   top: -10px;
@@ -26,14 +26,11 @@
 
 .dt-wrap {
   overflow: auto;
-  border: 1px solid var(--table-border, #d7dfeb);
+  border: 1px solid var(--ux-table-border, var(--table-border, #d7dfeb));
   border-radius: var(--ux-radius-xs, 10px);
-  background: var(--table-bg, #ffffff);
+  background: var(--ux-table-bg, var(--table-bg, #ffffff));
   font: inherit;
   color: inherit;
-  box-shadow:
-    0 1px 0 rgba(15, 23, 42, 0.03),
-    0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
 .dt-table {
@@ -55,19 +52,19 @@ td {
 thead,
 thead tr,
 thead th {
-  background-color: var(--table-header-bg, #edf3fb) !important;
+  background-color: var(--ux-table-header-bg, var(--table-header-bg, #edf3fb)) !important;
 }
 
 thead th {
   font-weight: 700;
   font-size: 0.78em;
   letter-spacing: 0.04em;
-  color: var(--table-header-text, #1e293b) !important;
+  color: var(--ux-table-header-text, var(--table-header-text, #1e293b)) !important;
   text-align: left;
   text-transform: uppercase;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
+  border-bottom: 0.75px solid var(--ux-table-border, var(--table-border, #d7dfeb));
 }
 
 .dt-sort-trigger {
@@ -93,14 +90,14 @@ thead th {
 }
 
 tbody td {
-  border-bottom: 1px solid color-mix(in srgb, var(--table-border, #d7dfeb) 72%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ux-table-border, #d7dfeb) 72%, transparent);
   color: color-mix(in srgb, var(--mat-sys-on-surface) 92%, transparent);
-  background: var(--table-bg, #ffffff);
+  background: var(--ux-table-bg, var(--table-bg, #ffffff));
 }
 
 tbody tr:hover td,
 tbody tr:focus-within td {
-  background: color-mix(in srgb, var(--table-bg, #ffffff) 68%, #eef4fb 32%);
+  background: var(--ux-table-row-hover, color-mix(in srgb, var(--ux-table-bg, #ffffff) 68%, #eef4fb 32%));
   border-bottom-color: color-mix(in srgb, var(--mat-sys-outline) 45%, transparent);
 }
 
@@ -155,23 +152,23 @@ tbody tr:focus-within td {
 }
 
 .dt-chip.tone-neutral {
-  background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
+  background: var(--ux-table-chip-neutral-bg, color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent));
 }
 
 .dt-chip.tone-success {
-  background: color-mix(in srgb, #16a34a 20%, transparent);
+  background: var(--ux-table-chip-success-bg, color-mix(in srgb, #16a34a 20%, transparent));
 }
 
 .dt-chip.tone-warning {
-  background: color-mix(in srgb, #ca8a04 22%, transparent);
+  background: var(--ux-table-chip-warning-bg, color-mix(in srgb, #ca8a04 22%, transparent));
 }
 
 .dt-chip.tone-danger {
-  background: color-mix(in srgb, #dc2626 18%, transparent);
+  background: var(--ux-table-chip-danger-bg, color-mix(in srgb, #dc2626 18%, transparent));
 }
 
 .dt-chip.tone-info {
-  background: color-mix(in srgb, #2563eb 18%, transparent);
+  background: var(--ux-table-chip-info-bg, color-mix(in srgb, #2563eb 18%, transparent));
 }
 
 .dt-actions {

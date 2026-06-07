@@ -1,12 +1,41 @@
+:host {
+  display: block;
+  position: relative;
+  overflow: visible;
+  margin-block: 6px;
+  padding: 4px;
+  border-radius: var(--ux-radius-xs, 10px);
+  background: var(--ux-debug-host-bg, transparent);
+  outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
+  outline-offset: 2px;
+}
+
+:host::before {
+  content: attr(data-ux-component);
+  display: var(--ux-debug-badge-display, none);
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: var(--ux-radius-full, 999px);
+  background: var(--ux-debug-badge-bg, #ff00a8);
+  color: var(--ux-debug-badge-color, #ffea00);
+  font-family: var(--ux-font-family-mono, ui-monospace, monospace);
+  font-size: var(--ux-text-debug-size, 10px);
+  line-height: var(--ux-text-debug-line-height, 1);
+  font-weight: var(--ux-text-debug-weight, 800);
+  letter-spacing: var(--ux-text-debug-spacing, 0.12em);
+  box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
+  pointer-events: none;
+}
+
 .editable-table {
   display: grid;
   gap: 8px;
-  border-left: 0.75px solid var(--table-border, #d7dfeb);
-  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
-  background: var(--table-bg, #ffffff);
-  box-shadow:
-    -2px 2px 0 rgba(15, 23, 42, 0.09),
-    -4px 4px 0 rgba(15, 23, 42, 0.05);
+  border-left: 0.75px solid var(--ux-table-border, var(--table-border, #d7dfeb));
+  border-bottom: 0.75px solid var(--ux-table-border, var(--table-border, #d7dfeb));
+  background: var(--ux-table-bg, var(--table-bg, #ffffff));
 }
 
 .editable-table-header,
@@ -18,8 +47,8 @@
 
 .editable-table-header {
   min-height: 44px;
-  border-bottom: 0.75px solid var(--table-border, #d7dfeb);
-  background-color: var(--table-header-bg, #edf3fb) !important;
+  border-bottom: 0.75px solid var(--ux-table-border, var(--table-border, #d7dfeb));
+  background-color: var(--ux-table-header-bg, var(--table-header-bg, #edf3fb)) !important;
 }
 
 .editable-table-header-cell {
@@ -30,7 +59,7 @@
   font-size: var(--table-header-font-size, 0.74rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--table-header-text, #1e293b) !important;
+  color: var(--ux-table-header-text, var(--table-header-text, #1e293b)) !important;
 }
 
 .editable-table-body {
@@ -79,7 +108,7 @@
     gap: 8px;
     padding: 10px;
     border: 0.75px solid transparent;
-    background: color-mix(in srgb, var(--mat-sys-surface) 96%, transparent);
+    background: var(--ux-table-row-hover, color-mix(in srgb, var(--ux-table-bg, var(--mat-sys-surface)) 96%, transparent));
   }
 
   .editable-table-row:hover,

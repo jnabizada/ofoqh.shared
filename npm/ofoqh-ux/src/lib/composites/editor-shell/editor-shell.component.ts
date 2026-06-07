@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
   styleUrl: './editor-shell.component.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
+    'data-ux-component': 'editor-shell',
     '[class.ux-editor-shell-host--span-2]': 'spanTwo',
   },
 })

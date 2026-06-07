@@ -11,6 +11,7 @@ export type UxActionButtonTone = 'default' | 'neutral' | 'info' | 'success' | 'w
   imports: [MatMenuModule],
   templateUrl: './action-button.component.html',
   styleUrl: './action-button.component.scss',
+  host: { 'data-ux-component': 'action-button' },
 })
 export class UxActionButtonComponent {
   @Input() variant: UxActionButtonVariant = 'text';

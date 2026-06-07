@@ -18,6 +18,7 @@ export type UxDashboardCardWidthOption = {
   templateUrl: './dashboard-card.component.html',
   styleUrl: './dashboard-card.component.scss',
   encapsulation: ViewEncapsulation.None,
+  host: { 'data-ux-component': 'dashboard-card' },
 })
 export class UxDashboardCardComponent {
   protected dragTemporarilyDisabled = false;

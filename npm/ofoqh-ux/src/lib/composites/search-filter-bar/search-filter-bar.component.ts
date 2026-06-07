@@ -7,6 +7,7 @@ import { UX_TRANSLATE } from '../../i18n/ux-i18n';
   templateUrl: './search-filter-bar.component.html',
   styleUrl: './search-filter-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { 'data-ux-component': 'search-filter-bar' },
 })
 export class UxSearchFilterBarComponent {
   private readonly translate = inject(UX_TRANSLATE);

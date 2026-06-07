@@ -94,6 +94,7 @@ export interface DataTableSortEvent {
   imports: [CommonModule, MatCheckboxModule, MatIconModule, MatButtonModule, MatTooltipModule, MatPaginatorModule],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',
+  host: { 'data-ux-component': 'data-table' },
 })
 export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit {
   private readonly hostRef = inject(ElementRef<HTMLElement>);

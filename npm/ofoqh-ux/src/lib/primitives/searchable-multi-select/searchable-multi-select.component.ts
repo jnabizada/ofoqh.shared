@@ -8,6 +8,7 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
   imports: [CommonModule, FormsModule],
   templateUrl: './searchable-multi-select.component.html',
   styleUrl: './searchable-multi-select.component.scss',
+  host: { 'data-ux-component': 'searchable-multi-select' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
