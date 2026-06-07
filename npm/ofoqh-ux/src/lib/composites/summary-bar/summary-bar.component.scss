@@ -5,7 +5,7 @@
   overflow: visible;
   margin: 0 0 var(--ux-stack-gap, 14px);
   padding: 4px;
-  border-radius: 22px;
+  border-radius: var(--ux-radius-2xl, 22px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
   outline-offset: 2px;
@@ -19,11 +19,14 @@
   left: 10px;
   z-index: 30;
   padding: 2px 7px;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: var(--ux-debug-badge-bg, #ff00a8);
   color: var(--ux-debug-badge-color, #ffea00);
-  font: 800 10px/1 monospace;
-  letter-spacing: 0.12em;
+  font-family: var(--ux-font-family-mono, ui-monospace, monospace);
+  font-size: var(--ux-text-debug-size, 10px);
+  line-height: var(--ux-text-debug-line-height, 1);
+  font-weight: var(--ux-text-debug-weight, 800);
+  letter-spacing: var(--ux-text-debug-spacing, 0.12em);
   box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
   pointer-events: none;
 }
@@ -33,7 +36,7 @@
   gap: 14px;
   min-width: 0;
   padding: 0;
-  border-radius: 18px;
+  border-radius: var(--ux-radius-xl, 18px);
   background: transparent;
   box-shadow: none;
 }
@@ -64,21 +67,24 @@
 
 .ux-summary-bar__eyebrow {
   color: var(--ux-summary-bar-accent, #6d83a0);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: var(--ux-text-eyebrow-size, 12px);
+  line-height: var(--ux-text-eyebrow-line-height, 1.2);
+  font-weight: var(--ux-text-eyebrow-weight, 800);
+  letter-spacing: var(--ux-text-eyebrow-spacing, 0.08em);
+  text-transform: var(--ux-text-eyebrow-transform, uppercase);
 }
 
 .ux-summary-bar__copy h2 {
   color: var(--ux-summary-bar-text, #102744);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--ux-text-title-md-size, 1rem);
+  line-height: var(--ux-text-title-md-line-height, 1.2);
+  font-weight: var(--ux-text-title-md-weight, 700);
 }
 
 .ux-summary-bar__subhead {
   color: var(--ux-summary-bar-muted, #60758d);
-  line-height: 1.45;
+  font-size: var(--ux-text-body-sm-size, inherit);
+  line-height: var(--ux-text-body-sm-line-height, 1.45);
 }
 
 .ux-summary-bar__actions {

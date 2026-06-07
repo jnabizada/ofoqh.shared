@@ -10,7 +10,7 @@
   min-height: 36px;
   padding: 4px;
   border: 1px solid color-mix(in srgb, var(--field-border, #cad7df) 78%, #8da3b7 22%);
-  border-radius: 10px;
+  border-radius: var(--ux-radius-xs, 10px);
   background: rgba(255, 255, 255, 0.82);
   color: var(--field-text, #17324d);
 }
@@ -23,7 +23,7 @@
   height: 28px;
   padding: 0 6px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--ux-radius-xs, 10px);
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -48,13 +48,13 @@
 }
 
 .language-switcher__flag {
-  font-size: 16px;
-  line-height: 1;
+  font-size: var(--ux-text-icon-md-size, 16px);
+  line-height: var(--ux-text-caption-line-height, 1);
 }
 
 .language-switcher__text {
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
+  font-size: var(--ux-text-caption-size, 11px);
+  font-weight: var(--ux-text-label-weight, 700);
+  line-height: var(--ux-text-caption-line-height, 1);
+  text-transform: var(--ux-text-label-transform, uppercase);
 }

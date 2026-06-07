@@ -5,7 +5,7 @@
   overflow: visible;
   margin: 0;
   padding: 4px;
-  border-radius: 22px;
+  border-radius: var(--ux-radius-2xl, 22px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
   outline-offset: 2px;
@@ -19,11 +19,14 @@
   left: 10px;
   z-index: 30;
   padding: 2px 7px;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: var(--ux-debug-badge-bg, #ff00a8);
   color: var(--ux-debug-badge-color, #ffea00);
-  font: 800 10px/1 monospace;
-  letter-spacing: 0.12em;
+  font-family: var(--ux-font-family-mono, ui-monospace, monospace);
+  font-size: var(--ux-text-debug-size, 10px);
+  line-height: var(--ux-text-debug-line-height, 1);
+  font-weight: var(--ux-text-debug-weight, 800);
+  letter-spacing: var(--ux-text-debug-spacing, 0.12em);
   box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
   pointer-events: none;
 }
@@ -36,7 +39,7 @@
   min-height: 132px;
   padding: 18px;
   border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e4) 82%, #8da8c2 18%);
-  border-radius: 18px;
+  border-radius: var(--ux-radius-xl, 18px);
   background: var(--ux-card-bg, #fff);
   box-shadow: inset 0 0 0 1px rgba(255, 0, 170, 0.18);
   color: var(--app-text, #102744);
@@ -57,15 +60,15 @@
 }
 
 .ux-summary-card__eyebrow {
-  font-size: 12px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: var(--ux-text-label-size, 12px);
+  line-height: var(--ux-text-label-line-height, 1.2);
+  text-transform: var(--ux-text-label-transform, uppercase);
+  letter-spacing: var(--ux-text-label-spacing, 0.04em);
 }
 
 .ux-summary-card__title {
-  font-size: 0.95rem;
-  line-height: 1.3;
+  font-size: var(--ux-text-title-sm-size, 0.95rem);
+  line-height: var(--ux-text-title-sm-line-height, 1.3);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -100,8 +103,8 @@
 .ux-summary-card__meta {
   min-width: 0;
   color: #60758d;
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: var(--ux-text-body-sm-size, 13px);
+  line-height: var(--ux-text-body-sm-line-height, 1.45);
 }
 
 .ux-summary-card__hint,
@@ -118,8 +121,9 @@
 .ux-summary-card__value ::ng-deep strong,
 .ux-summary-card__value ::ng-deep [uxSummaryValue],
 .ux-summary-card__value ::ng-deep [summaryMetricValue] {
-  font-size: 34px;
-  line-height: 1;
+  font-size: var(--ux-text-metric-size, 34px);
+  line-height: var(--ux-text-metric-line-height, 1);
+  font-weight: var(--ux-text-metric-weight, inherit);
 }
 
 .ux-summary-card__value ::ng-deep [uxSummaryValue],
@@ -159,12 +163,12 @@
   max-width: 100%;
   min-height: 2rem;
   padding: 0.34rem 0.72rem;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: color-mix(in srgb, var(--badge-bg, #e8eef8) 74%, #dbe7f5 26%);
   color: var(--badge-text, #23415e);
-  font-size: 0.88rem;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: var(--ux-text-button-sm-size, 0.88rem);
+  font-weight: var(--ux-text-button-md-weight, 800);
+  line-height: var(--ux-text-label-line-height, 1.2);
   white-space: normal;
 }
 
@@ -177,14 +181,14 @@
   display: grid;
   gap: 2px;
   padding: 8px 10px;
-  border-radius: 12px;
+  border-radius: var(--ux-radius-sm, 12px);
   background: color-mix(in srgb, var(--field-bg, #f4f7fb) 88%, #eef4fb 12%);
   color: color-mix(in srgb, var(--app-text, #102744) 88%, #20486f 12%);
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: 0;
+  font-family: var(--ux-font-family-mono, ui-monospace, monospace);
+  font-size: var(--ux-text-mono-size, 0.78rem);
+  font-weight: var(--ux-text-mono-weight, 700);
+  line-height: var(--ux-text-mono-line-height, 1.35);
+  letter-spacing: var(--ux-text-mono-spacing, 0);
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;

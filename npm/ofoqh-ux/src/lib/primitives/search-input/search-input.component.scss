@@ -11,7 +11,7 @@
   overflow: visible;
   margin-block: 6px;
   padding: 4px;
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
   outline-offset: 2px;
@@ -25,7 +25,7 @@
   left: 8px;
   z-index: 30;
   padding: 2px 7px;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: var(--ux-debug-badge-bg, #ff00a8);
   color: var(--ux-debug-badge-color, #ffea00);
   font: 800 10px/1 monospace;

@@ -4,7 +4,7 @@
   overflow: visible;
   margin-block: 6px;
   padding: 4px;
-  border-radius: 22px;
+  border-radius: var(--ux-radius-2xl, 22px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
   outline-offset: 2px;
@@ -18,7 +18,7 @@
   left: 10px;
   z-index: 30;
   padding: 2px 7px;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: var(--ux-debug-badge-bg, #ff00a8);
   color: var(--ux-debug-badge-color, #ffea00);
   font: 800 10px/1 monospace;
@@ -33,7 +33,7 @@
 
 .ux-editor-shell {
   border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e3) 82%, #8da8c2 18%);
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   background: var(--card-bg, #fff);
   padding: 18px;
   font: inherit;
@@ -135,7 +135,7 @@
   justify-content: center;
   min-height: 40px;
   padding: 0 16px;
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   font: inherit;
   font-weight: 700;
   cursor: pointer;

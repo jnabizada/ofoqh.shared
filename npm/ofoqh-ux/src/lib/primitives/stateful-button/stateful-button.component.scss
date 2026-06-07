@@ -4,7 +4,7 @@
   position: relative;
   overflow: visible;
   padding: 2px;
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   background: var(--ux-debug-host-bg, transparent);
   outline: var(--ux-debug-outline-width, 0) dashed var(--ux-debug-outline-color, transparent);
 }
@@ -17,11 +17,14 @@
   left: 6px;
   z-index: 30;
   padding: 2px 6px;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: var(--ux-debug-badge-bg, #ff00a8);
   color: var(--ux-debug-badge-color, #ffea00);
-  font: 800 10px/1 monospace;
-  letter-spacing: 0.12em;
+  font-family: var(--ux-font-family-mono, ui-monospace, monospace);
+  font-size: var(--ux-text-debug-size, 10px);
+  line-height: var(--ux-text-debug-line-height, 1);
+  font-weight: var(--ux-text-debug-weight, 800);
+  letter-spacing: var(--ux-text-debug-spacing, 0.12em);
   box-shadow: 0 0 0 2px var(--ux-debug-badge-ring, #ffea00);
   pointer-events: none;
 }
@@ -61,13 +64,14 @@
   width: auto;
   min-width: 0;
   padding: 0 18px;
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   border: 1px solid color-mix(in srgb, var(--ux-btn-edge) 72%, white 28%);
   background: linear-gradient(180deg, color-mix(in srgb, var(--ux-btn-bg) 92%, white 8%), var(--ux-btn-bg));
   color: var(--ux-btn-text);
   font: inherit;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  font-size: var(--ux-text-button-md-size, inherit);
+  font-weight: var(--ux-text-button-md-weight, 800);
+  letter-spacing: var(--ux-text-button-md-spacing, 0.01em);
   text-decoration: none;
   box-shadow:
     0 1px 2px var(--ux-btn-shadow),
@@ -85,7 +89,7 @@
 .ux-stateful-button__pulse {
   position: absolute;
   inset: -20%;
-  border-radius: 999px;
+  border-radius: var(--ux-radius-full, 999px);
   background: radial-gradient(circle, color-mix(in srgb, var(--ux-btn-glow) 45%, white 55%) 0%, transparent 65%);
   pointer-events: none;
   opacity: 0;
@@ -104,7 +108,7 @@
   width: 100%;
   white-space: normal;
   text-align: center;
-  line-height: 1.2;
+  line-height: var(--ux-text-label-line-height, 1.2);
   flex-wrap: wrap;
 }
 
@@ -119,7 +123,7 @@
 .ux-stateful-button__spinner {
   width: 15px;
   height: 15px;
-  border-radius: var(--skin-radius-sm, 10px);
+  border-radius: var(--ux-radius-xs, 10px);
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: rgba(255, 255, 255, 0.98);
   animation: ux-stateful-button-spin 700ms linear infinite;
@@ -131,9 +135,9 @@
   align-items: center;
   justify-content: center;
   min-width: 16px;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 900;
+  font-size: var(--ux-text-button-icon-size, 14px);
+  line-height: var(--ux-text-caption-line-height, 1);
+  font-weight: var(--ux-text-debug-weight, 900);
   flex: 0 0 auto;
 }
 
@@ -141,14 +145,14 @@
   min-height: 36px;
   min-width: 0;
   padding: 0 14px;
-  font-size: 13px;
+  font-size: var(--ux-text-button-sm-size, 13px);
 }
 
 .ux-stateful-button[data-size='lg'] .ux-stateful-button__surface {
   min-height: 50px;
   min-width: 0;
   padding: 0 22px;
-  font-size: 16px;
+  font-size: var(--ux-text-button-lg-size, 16px);
 }
 
 .ux-stateful-button[data-tone='secondary'] .ux-stateful-button__surface,

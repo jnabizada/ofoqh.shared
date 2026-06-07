@@ -33,7 +33,7 @@
 .divider { height: 28px; margin: 0 6px; opacity: 0.5; }
 
 .signin {
-  border-radius: 10px;
+  border-radius: var(--ux-radius-xs, 10px);
   background: #315b86;
   color: #ffffff;
 }
@@ -68,7 +68,7 @@
 }
 
 .hero-copy {
-  border-radius: 16px;
+  border-radius: var(--ux-radius-lg, 16px);
   padding: clamp(18px, 2.4vw, 30px);
   color: #0f172a;
   background: #ffffff;
@@ -111,7 +111,7 @@
 
 .card {
   width: min(560px, 96vw);
-  border-radius: 16px;
+  border-radius: var(--ux-radius-lg, 16px);
   overflow: hidden;
   background: #ffffff;
   border: 1px solid #d8e0ea;
