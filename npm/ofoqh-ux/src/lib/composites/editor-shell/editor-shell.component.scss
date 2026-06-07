@@ -1,4 +1,4 @@
-:host {
+ofoqh-ux-editor-shell {
   display: block;
   position: relative;
   overflow: visible;
@@ -10,7 +10,7 @@
   outline-offset: 2px;
 }
 
-:host::before {
+ofoqh-ux-editor-shell::before {
   content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
@@ -27,7 +27,7 @@
   pointer-events: none;
 }
 
-:host(.ux-editor-shell-host--span-2) {
+ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   grid-column: span 2;
 }
 
@@ -38,6 +38,9 @@
   padding: 18px;
   font: inherit;
   color: inherit;
+  box-shadow:
+    0 0 0 var(--ux-debug-outline-width, 0) var(--ux-debug-outline-color, transparent),
+    inset 0 0 0 1px var(--ux-editor-shell-inner-ring, transparent);
 }
 
 .ux-editor-shell__head {

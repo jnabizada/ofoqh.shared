@@ -1,4 +1,4 @@
-:host {
+ofoqh-ux-table-shell {
   display: block;
   position: relative;
   overflow: visible;
@@ -10,7 +10,7 @@
   outline-offset: 2px;
 }
 
-:host::before {
+ofoqh-ux-table-shell::before {
   content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;
@@ -30,7 +30,7 @@
   pointer-events: none;
 }
 
-:host(.ux-table-shell-host--span-2) {
+ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   grid-column: span 2;
 }
 
@@ -39,6 +39,9 @@
   border-radius: var(--ux-radius-xs, 10px);
   background: var(--ux-card-bg, #fff);
   padding: 18px;
+  box-shadow:
+    0 0 0 var(--ux-debug-outline-width, 0) var(--ux-debug-outline-color, transparent),
+    inset 0 0 0 1px var(--ux-table-shell-inner-ring, transparent);
 }
 
 .ux-table-shell__head {

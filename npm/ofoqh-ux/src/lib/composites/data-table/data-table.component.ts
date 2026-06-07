@@ -90,7 +90,7 @@ export interface DataTableSortEvent {
 
 @Component({
   standalone: true,
-  selector: 'idp-data-table',
+  selector: 'ofoqh-ux-data-table, idp-data-table',
   imports: [CommonModule, MatCheckboxModule, MatIconModule, MatButtonModule, MatTooltipModule, MatPaginatorModule],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',

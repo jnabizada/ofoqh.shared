@@ -24,6 +24,13 @@
     "package.json"
   ],
   "exports": {
+    ".": {
+      "types": "./types/ofoqh-ux.d.ts",
+      "default": "./fesm2022/ofoqh-ux.mjs"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
     "./styles/*": "./styles/*"
   },
   "peerDependencies": {

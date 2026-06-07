@@ -1,4 +1,4 @@
-:host {
+ofoqh-ux-dashboard-card {
   display: block;
   max-width: 100%;
   position: relative;
@@ -11,7 +11,7 @@
   outline-offset: 2px;
 }
 
-:host::before {
+ofoqh-ux-dashboard-card::before {
   content: attr(data-ux-component);
   display: var(--ux-debug-badge-display, none);
   position: absolute;

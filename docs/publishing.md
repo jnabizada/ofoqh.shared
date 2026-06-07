@@ -16,6 +16,14 @@ Use:
 bash ./scripts/publish-bagetter.sh
 ```
 
+You can also publish selected packages only:
+
+```bash
+bash ./scripts/publish-bagetter.sh workflow-diagnostics
+bash ./scripts/publish-bagetter.sh workflow-diagnostics-aspnetcore
+bash ./scripts/publish-bagetter.sh workflow-diagnostics workflow-diagnostics-aspnetcore
+```
+
 Environment variables:
 
 - `BAGETTER_SOURCE_URL`
@@ -26,6 +34,24 @@ Environment variables:
 ```bash
 bash ./scripts/publish-verdaccio.sh
 ```
+
+You can also publish selected packages only:
+
+```bash
+bash ./scripts/publish-verdaccio.sh ux
+bash ./scripts/publish-verdaccio.sh angular-tenant
+bash ./scripts/publish-verdaccio.sh workflow-diagnostics
+bash ./scripts/publish-verdaccio.sh workflow-diagnostics ux
+```
+
+Important:
+
+- Publish Angular packages from `dist/...`, never from `npm/...`.
+- `@ofoqh/ux` must be published from `dist/ofoqh-ux`, otherwise consumers will
+  receive an incomplete package without generated `types/` and `fesm2022/`
+  output.
+- `scripts/publish-verdaccio.sh` now verifies the built dist package before it
+  publishes.
 
 Environment variables:
 
@@ -45,6 +71,13 @@ You can also remove multiple exact versions in one run:
 bash ./scripts/unpublish-verdaccio.sh \
   @ofoqh/angular-tenant@0.1.0 \
   @ofoqh/ux@0.1.0
+```
+
+Short aliases are also supported:
+
+```bash
+bash ./scripts/unpublish-verdaccio.sh ux@0.1.0
+bash ./scripts/unpublish-verdaccio.sh angular-tenant@0.1.0 workflow-diagnostics@0.1.1
 ```
 
 Rules:
