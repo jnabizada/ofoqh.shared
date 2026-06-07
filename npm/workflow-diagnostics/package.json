@@ -1,6 +1,6 @@
 {
   "name": "@ofoqh/workflow-diagnostics",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "Shared workflow diagnostics contracts and helpers for Ofoqh SPAs and frontend libraries.",
   "license": "UNLICENSED",
   "type": "module",
