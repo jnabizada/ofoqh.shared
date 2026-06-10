@@ -10,6 +10,20 @@ Use these registries only:
 
 ## Files
 
+### `build-ux.sh`
+
+Builds the Angular UX package without publishing it.
+
+Output:
+
+- `./dist/ofoqh-ux`
+
+Example:
+
+```bash
+bash ./scripts/build-ux.sh
+```
+
 ### `publish-bagetter.sh`
 
 Publishes the .NET workflow diagnostics packages to BaGetter.
@@ -118,6 +132,13 @@ bash ./scripts/verify-dist-package.sh ./dist/ofoqh-ux
 ```
 
 ## Recommended flows
+
+Build UX only:
+
+```bash
+cd /home/jnabizada/Projects/Ofoqh/ofoqh.shared
+bash ./scripts/build-ux.sh
+```
 
 Publish only UX:
 
