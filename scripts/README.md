@@ -1,7 +1,7 @@
 # Scripts
 
-Helper scripts in this folder are the supported way to publish shared packages
-from `ofoqh.shared` to the cluster registries.
+Helper scripts in this folder are the supported way to build and publish shared
+packages from `ofoqh.shared`.
 
 Use these registries only:
 
@@ -10,19 +10,34 @@ Use these registries only:
 
 ## Files
 
-### `build-ux.sh`
+### `build-verdaccio.sh`
 
-Builds the Angular UX package without publishing it.
+Builds the npm shared packages supported by the Verdaccio publish flow.
 
-Output:
+Default behavior:
 
-- `./dist/ofoqh-ux`
+- builds all supported npm packages:
+  - `workflow-diagnostics`
+  - `angular-tenant`
+  - `ux`
 
-Example:
+Selective behavior:
 
 ```bash
-bash ./scripts/build-ux.sh
+bash ./scripts/build-verdaccio.sh workflow-diagnostics
+bash ./scripts/build-verdaccio.sh angular-tenant
+bash ./scripts/build-verdaccio.sh ux
+bash ./scripts/build-verdaccio.sh workflow-diagnostics ux
 ```
+
+Notes:
+
+- `all` is the default when no target is passed.
+- this script mirrors the target model used by `publish-verdaccio.sh`.
+- output directories include:
+  - `./dist/angular-tenant`
+  - `./dist/ofoqh-ux`
+  - workspace build output for `workflow-diagnostics`
 
 ### `publish-bagetter.sh`
 
@@ -133,11 +148,32 @@ bash ./scripts/verify-dist-package.sh ./dist/ofoqh-ux
 
 ## Recommended flows
 
-Build UX only:
+Build all npm shared packages:
 
 ```bash
 cd /home/jnabizada/Projects/Ofoqh/ofoqh.shared
-bash ./scripts/build-ux.sh
+bash ./scripts/build-verdaccio.sh
+```
+
+Build only UX:
+
+```bash
+cd /home/jnabizada/Projects/Ofoqh/ofoqh.shared
+bash ./scripts/build-verdaccio.sh ux
+```
+
+Build only angular tenant:
+
+```bash
+cd /home/jnabizada/Projects/Ofoqh/ofoqh.shared
+bash ./scripts/build-verdaccio.sh angular-tenant
+```
+
+Build only workflow diagnostics:
+
+```bash
+cd /home/jnabizada/Projects/Ofoqh/ofoqh.shared
+bash ./scripts/build-verdaccio.sh workflow-diagnostics
 ```
 
 Publish only UX:

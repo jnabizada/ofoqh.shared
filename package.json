@@ -7,6 +7,7 @@
     "npm/ofoqh-ux"
   ],
   "scripts": {
+    "build:verdaccio": "bash ./scripts/build-verdaccio.sh",
     "build:angular-tenant": "ng-packagr -p npm/angular-tenant/ng-package.json",
     "build:ux": "ng-packagr -p npm/ofoqh-ux/ng-package.json",
     "pack:angular-tenant": "npm run build:angular-tenant && npm pack ./dist/angular-tenant",
