@@ -1,17 +1,33 @@
 <div class="dt-wrap">
   <table class="dt-table">
+    <colgroup>
+      @for (col of columns; track col.id) {
+        <col [style.width]="columnWidth(col)" />
+      }
+    </colgroup>
     <thead>
       <tr>
-        @for (col of columns; track col.id) {
-          <th [style.width]="col.width || null" [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
-            @if (isColumnSortable(col)) {
-              <button type="button" class="dt-sort-trigger" (click)="toggleSort(col.id)">
-                <span>{{ col.header }}</span>
-                <mat-icon class="dt-sort-icon">{{ sortIcon(col.id) }}</mat-icon>
-              </button>
-            } @else {
-              {{ col.header }}
-            }
+        @for (col of columns; track col.id; let colIndex = $index) {
+          <th [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+            <div class="dt-head-cell">
+              @if (isColumnSortable(col)) {
+                <button type="button" class="dt-sort-trigger" (click)="toggleSort(col.id)">
+                  <span>{{ col.header }}</span>
+                  <mat-icon class="dt-sort-icon">{{ sortIcon(col.id) }}</mat-icon>
+                </button>
+              } @else {
+                <span class="dt-head-label">{{ col.header }}</span>
+              }
+
+              @if (canResizeColumn(colIndex)) {
+                <button
+                  type="button"
+                  class="dt-resize-handle"
+                  [attr.aria-label]="'Resize ' + col.header + ' column'"
+                  (pointerdown)="beginResize($event, col.id)">
+                </button>
+              }
+            </div>
           </th>
         }
       </tr>

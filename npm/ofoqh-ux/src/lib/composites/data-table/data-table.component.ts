@@ -7,6 +7,7 @@ import {
   HostListener,
   Input,
   OnChanges,
+  OnDestroy,
   Output,
   SimpleChanges,
   inject,
@@ -103,11 +104,15 @@ export interface DataTableSortEvent {
 export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit {
   private readonly hostRef = inject(ElementRef<HTMLElement>);
   private readonly translate = inject(UX_TRANSLATE);
+  private activeResize: { columnId: string; startX: number; startWidth: number } | null = null;
+  private readonly resizedWidths = signal<Record<string, number>>({});
+  private readonly minimumColumnWidthPx = 96;
 
   @Input() columns: readonly DataTableColumn<T>[] = [];
   @Input() rows: readonly T[] = [];
   @Input() rowTrackBy?: (index: number, row: T) => string | number;
   @Input() emptyStateLabel = '';
+  @Input() resizableColumns = false;
 
   @Input() enablePagination = true;
   @Input() enableSorting = true;
@@ -135,6 +140,23 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
   private readonly clientPageSize = signal(20);
   private readonly sortColumnId = signal<string>('');
   private readonly sortDirection = signal<DataTableSortDirection>('');
+
+  columnWidth(col: DataTableColumn<T>): string | null {
+    const resized = this.resizedWidths()[col.id];
+    if (typeof resized === 'number') {
+      return `${resized}px`;
+    }
+
+    return col.width ?? null;
+  }
+
+  isLastColumn(index: number): boolean {
+    return index === this.columns.length - 1;
+  }
+
+  canResizeColumn(index: number): boolean {
+    return this.resizableColumns && !this.isLastColumn(index);
+  }
 
   resolvedPageIndex(): number {
     return this.serverPagination ? this.pageIndex : this.clientPageIndex();
@@ -241,9 +263,35 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
     this.applyAutoPageSize();
   }
 
+  ngOnDestroy(): void {
+    this.stopResize();
+  }
+
   @HostListener('window:resize')
   onWindowResize(): void {
     this.applyAutoPageSize();
+  }
+
+  @HostListener('document:pointermove', ['$event'])
+  onPointerMove(event: PointerEvent): void {
+    if (!this.activeResize) {
+      return;
+    }
+
+    const nextWidth = Math.max(
+      this.minimumColumnWidthPx,
+      this.activeResize.startWidth + (event.clientX - this.activeResize.startX),
+    );
+
+    this.resizedWidths.update(current => ({
+      ...current,
+      [this.activeResize!.columnId]: nextWidth,
+    }));
+  }
+
+  @HostListener('document:pointerup')
+  onPointerUp(): void {
+    this.stopResize();
   }
 
   emitAction(columnId: string, actionId: string, row: T): void {
@@ -260,6 +308,24 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
 
   emitRow(row: T): void {
     this.rowTriggered.emit({ row });
+  }
+
+  beginResize(event: PointerEvent, columnId: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const header = (event.target as HTMLElement | null)?.closest('th');
+    if (!(header instanceof HTMLElement)) {
+      return;
+    }
+
+    this.activeResize = {
+      columnId,
+      startX: event.clientX,
+      startWidth: header.getBoundingClientRect().width,
+    };
+
+    this.hostRef.nativeElement.classList.add('dt-is-resizing');
   }
 
   onPage(event: PageEvent): void {
@@ -292,6 +358,11 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
       const bv = this.resolveSortValue(column, b);
       return this.compareSortValues(av, bv) * factor;
     });
+  }
+
+  private stopResize(): void {
+    this.activeResize = null;
+    this.hostRef.nativeElement.classList.remove('dt-is-resizing');
   }
 
   private resolveSortValue(column: DataTableColumn<T>, row: T): string | number | boolean | Date | null | undefined {

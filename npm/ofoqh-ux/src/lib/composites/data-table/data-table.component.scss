@@ -24,6 +24,11 @@
   pointer-events: none;
 }
 
+:host(.dt-is-resizing) {
+  cursor: col-resize;
+  user-select: none;
+}
+
 .dt-wrap {
   overflow: auto;
   border: 1px solid var(--ux-table-border, var(--table-border, #d7dfeb));
@@ -56,6 +61,7 @@ thead th {
 }
 
 thead th {
+  position: relative;
   font-weight: 700;
   font-size: 0.78em;
   letter-spacing: 0.04em;
@@ -65,6 +71,18 @@ thead th {
   padding-top: 12px;
   padding-bottom: 12px;
   border-bottom: 0.75px solid var(--ux-table-border, var(--table-border, #d7dfeb));
+}
+
+.dt-head-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+  padding-right: 10px;
+}
+
+.dt-head-label {
+  display: inline-block;
 }
 
 .dt-sort-trigger {
@@ -87,6 +105,37 @@ thead th {
   height: 16px;
   font-size: 16px;
   opacity: 0.8;
+}
+
+.dt-resize-handle {
+  position: absolute;
+  top: -12px;
+  right: -14px;
+  bottom: -12px;
+  width: 20px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: col-resize;
+}
+
+.dt-resize-handle::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: transparent;
+  transition: background-color 120ms ease;
+}
+
+.dt-resize-handle:hover::before,
+.dt-resize-handle:focus-visible::before,
+:host(.dt-is-resizing) .dt-resize-handle::before {
+  background: color-mix(in srgb, var(--mat-sys-primary, #1d4ed8) 42%, transparent);
 }
 
 tbody td {
