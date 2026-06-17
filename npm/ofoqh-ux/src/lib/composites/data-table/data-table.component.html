@@ -19,7 +19,7 @@
 
     <tbody>
       @for (row of visibleRows(); track trackRow($index, row); let i = $index) {
-        <tr>
+        <tr class="dt-row-clickable" tabindex="0" (click)="emitRow(row)" (keydown.enter)="emitRow(row)" (keydown.space)="emitRow(row); $event.preventDefault()">
           @for (col of columns; track col.id) {
             <td [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
               @switch (col.type) {
@@ -29,6 +29,7 @@
                       [checked]="checkboxCell.checked"
                       [disabled]="checkboxCell.disabled"
                       [aria-label]="checkboxCell.ariaLabel || col.header"
+                      (click)="$event.stopPropagation()"
                       (change)="emitCheckbox(col.id, row, $event.checked)" />
                   }
                 }
@@ -44,7 +45,7 @@
 
                 @case ('link') {
                   @if (col.link?.(row); as linkCell) {
-                    <button type="button" class="dt-link" (click)="emitLink(col.id, row)">
+                    <button type="button" class="dt-link" (click)="$event.stopPropagation(); emitLink(col.id, row)">
                       {{ linkCell.label }}
                     </button>
                   }
@@ -66,7 +67,7 @@
                         mat-icon-button
                         [disabled]="a.disabled"
                         [matTooltip]="a.tooltip || ''"
-                        (click)="emitAction(col.id, a.id, row)">
+                        (click)="$event.stopPropagation(); emitAction(col.id, a.id, row)">
                         <mat-icon>{{ a.icon }}</mat-icon>
                       </button>
                     }

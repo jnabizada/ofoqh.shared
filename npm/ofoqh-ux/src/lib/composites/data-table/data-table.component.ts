@@ -83,6 +83,10 @@ export interface DataTableCheckboxEvent<T> {
   columnId: string;
 }
 
+export interface DataTableRowEvent<T> {
+  row: T;
+}
+
 export interface DataTableSortEvent {
   columnId: string;
   direction: DataTableSortDirection;
@@ -123,6 +127,7 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
   @Output() actionTriggered = new EventEmitter<DataTableActionEvent<T>>();
   @Output() checkboxToggled = new EventEmitter<DataTableCheckboxEvent<T>>();
   @Output() linkTriggered = new EventEmitter<DataTableLinkEvent<T>>();
+  @Output() rowTriggered = new EventEmitter<DataTableRowEvent<T>>();
   @Output() pageChanged = new EventEmitter<PageEvent>();
   @Output() sortChanged = new EventEmitter<DataTableSortEvent>();
 
@@ -251,6 +256,10 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
 
   emitCheckbox(columnId: string, row: T, checked: boolean): void {
     this.checkboxToggled.emit({ checked, row, columnId });
+  }
+
+  emitRow(row: T): void {
+    this.rowTriggered.emit({ row });
   }
 
   onPage(event: PageEvent): void {

@@ -101,6 +101,15 @@ tbody tr:focus-within td {
   border-bottom-color: color-mix(in srgb, var(--mat-sys-outline) 45%, transparent);
 }
 
+.dt-row-clickable {
+  cursor: pointer;
+}
+
+.dt-row-clickable:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--mat-sys-primary, #1d4ed8) 58%, white);
+  outline-offset: -2px;
+}
+
 .dt-primary {
   font-size: 1em;
   line-height: 1.3;
