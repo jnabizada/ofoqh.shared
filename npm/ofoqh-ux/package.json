@@ -1,6 +1,6 @@
 {
   "name": "@ofoqh/ux",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Shared cross-repo Angular UX primitives and composites for Ofoqh products.",
   "license": "UNLICENSED",
   "homepage": "https://github.com/jnabizada/ofoqh.shared",
