@@ -30,10 +30,10 @@
 .ux-search-filter-bar {
   display: grid;
   gap: 12px;
-  border: 1px solid color-mix(in srgb, var(--card-border, #c8d5e3) 82%, #8da8c2 18%);
+  border: none;
   border-radius: var(--ux-radius-xs, 10px);
   background: var(--card-bg, #fff);
-  box-shadow: inset 0 0 0 1px var(--ux-shell-inner-ring, transparent);
+  box-shadow: none;
   padding: 18px;
 }
 
