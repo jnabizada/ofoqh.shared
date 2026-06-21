@@ -8,10 +8,18 @@
     <thead>
       <tr>
         @for (col of columns; track col.id; let colIndex = $index) {
-          <th [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
+          <th
+            [class.align-end]="col.align === 'end'"
+            [class.align-center]="col.align === 'center'"
+            [attr.aria-sort]="isColumnSortable(col) ? sortAriaSort(col.id) : null">
             <div class="dt-head-cell">
               @if (isColumnSortable(col)) {
-                <button type="button" class="dt-sort-trigger" (click)="toggleSort(col.id)">
+                <button
+                  type="button"
+                  class="dt-sort-trigger"
+                  [class.is-sorted]="isSortedColumn(col.id)"
+                  [attr.aria-label]="'Sort by ' + col.header"
+                  (click)="toggleSort(col.id)">
                   <span>{{ col.header }}</span>
                   <mat-icon class="dt-sort-icon">{{ sortIcon(col.id) }}</mat-icon>
                 </button>
@@ -35,7 +43,14 @@
 
     <tbody>
       @for (row of visibleRows(); track trackRow($index, row); let i = $index) {
-        <tr class="dt-row-clickable" tabindex="0" (click)="emitRow(row)" (keydown.enter)="emitRow(row)" (keydown.space)="emitRow(row); $event.preventDefault()">
+        <tr
+          class="dt-row-clickable"
+          [class.is-selected]="isRowSelected(row)"
+          [attr.aria-selected]="isRowSelected(row)"
+          tabindex="0"
+          (click)="emitRow(row)"
+          (keydown.enter)="emitRow(row)"
+          (keydown.space)="emitRow(row); $event.preventDefault()">
           @for (col of columns; track col.id) {
             <td [class.align-end]="col.align === 'end'" [class.align-center]="col.align === 'center'">
               @switch (col.type) {

@@ -113,6 +113,9 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
   @Input() rowTrackBy?: (index: number, row: T) => string | number;
   @Input() emptyStateLabel = '';
   @Input() resizableColumns = false;
+  @Input() selectableRows = true;
+  @Input() selectedRow: T | null = null;
+  @Input() selectedRowId: string | number | null = null;
 
   @Input() enablePagination = true;
   @Input() enableSorting = true;
@@ -140,6 +143,7 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
   private readonly clientPageSize = signal(20);
   private readonly sortColumnId = signal<string>('');
   private readonly sortDirection = signal<DataTableSortDirection>('');
+  private readonly activeRowKey = signal<string | number | T | null>(null);
 
   columnWidth(col: DataTableColumn<T>): string | null {
     const resized = this.resizedWidths()[col.id];
@@ -207,6 +211,18 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
     return this.sortDirection() === 'asc' ? 'arrow_upward' : 'arrow_downward';
   }
 
+  sortAriaSort(columnId: string): 'none' | 'ascending' | 'descending' {
+    if (this.sortColumnId() !== columnId || !this.sortDirection()) {
+      return 'none';
+    }
+
+    return this.sortDirection() === 'asc' ? 'ascending' : 'descending';
+  }
+
+  isSortedColumn(columnId: string): boolean {
+    return this.sortColumnId() === columnId && !!this.sortDirection();
+  }
+
   toggleSort(columnId: string): void {
     if (this.sortColumnId() !== columnId) {
       this.sortColumnId.set(columnId);
@@ -225,8 +241,9 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
       direction: this.sortDirection(),
     };
 
+    this.sortChanged.emit(event);
+
     if (this.serverSorting) {
-      this.sortChanged.emit(event);
       return;
     }
 
@@ -307,7 +324,23 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
   }
 
   emitRow(row: T): void {
+    this.activeRowKey.set(this.resolveRowIdentity(row));
     this.rowTriggered.emit({ row });
+  }
+
+  isRowSelected(row: T): boolean {
+    const rowIdentity = this.resolveRowIdentity(row);
+
+    if (this.selectedRowId != null) {
+      return rowIdentity === this.selectedRowId;
+    }
+
+    if (this.selectedRow != null) {
+      const selectedIdentity = this.resolveRowIdentity(this.selectedRow);
+      return rowIdentity === selectedIdentity || row === this.selectedRow;
+    }
+
+    return this.selectableRows && this.activeRowKey() === rowIdentity;
   }
 
   beginResize(event: PointerEvent, columnId: string): void {
@@ -433,5 +466,14 @@ export class DataTableComponent<T = unknown> implements OnChanges, AfterViewInit
       this.clientPageSize.set(nextSize);
       this.clientPageIndex.set(0);
     }
+  }
+
+  private resolveRowIdentity(row: T): string | number | T {
+    const index = this.rows.indexOf(row);
+    if (index >= 0) {
+      return this.trackRow(index, row);
+    }
+
+    return row;
   }
 }
