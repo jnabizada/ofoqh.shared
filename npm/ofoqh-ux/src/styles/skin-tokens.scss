@@ -8,6 +8,8 @@
   --ux-text-label-line-height: 1.2;
   --ux-text-label-weight: 700;
   --ux-text-label-spacing: 0;
+  --ux-text-label-wide-spacing: 0.08em;
+  --ux-text-label-badge-spacing: 0.06em;
   --ux-text-label-transform: uppercase;
   --ux-text-eyebrow-size: 12px;
   --ux-text-eyebrow-line-height: 1.2;
@@ -38,10 +40,19 @@
   --ux-text-button-lg-size: 16px;
   --ux-text-button-icon-size: 14px;
   --ux-text-icon-md-size: 16px;
+  --ux-text-icon-lg-size: 44px;
   --ux-text-mono-size: 0.78rem;
   --ux-text-mono-line-height: 1.35;
   --ux-text-mono-weight: 700;
   --ux-text-mono-spacing: 0;
+  --ux-line-height-snug: 1.35;
+  --ux-line-height-detail: 1.4;
+  --ux-line-height-compact: 1.25;
+  --ux-text-display-hero-size: clamp(2.3rem, 5vw, 4.4rem);
+  --ux-text-display-metric-size: clamp(1.45rem, 1rem + 0.7vw, 2.05rem);
+  --ux-text-display-metric-line-height: 1.08;
+  --ux-text-display-metric-spacing: -0.03em;
+  --ux-text-display-badge-spacing: -0.01em;
 
   --ux-radius-xs: 10px;
   --ux-radius-sm: 12px;
@@ -53,7 +64,15 @@
   --ux-radius-4xl: 26px;
   --ux-radius-full: 999px;
 
+  --ux-border-width-thin: 1px;
+  --ux-border-width-strong: 2px;
+  --ux-border-width-accent: 3px;
+  --ux-border-width-status: 6px;
+  --ux-border-style-default: solid;
+  --ux-border-style-muted: dashed;
+
   --ux-card-bg: #ffffff;
+  --ux-overlay-backdrop-bg: rgba(15, 23, 42, 0.3);
   --ux-card-text: #0f172a;
   --ux-card-muted: #64748b;
   --ux-card-border: #d9dfe8;
@@ -77,6 +96,14 @@
   --ux-button-primary-shadow: rgba(11, 59, 115, 0.18);
   --ux-button-primary-shadow-soft: rgba(11, 59, 115, 0.1);
   --ux-button-primary-glow: rgba(59, 130, 246, 0.3);
+  --ux-button-danger-bg: #bf3a3a;
+  --ux-button-danger-bg-hover: #cf4848;
+  --ux-button-danger-bg-active: #a92b2b;
+  --ux-button-danger-border: #6d1313;
+  --ux-button-danger-text: #fff7f7;
+  --ux-button-danger-shadow: rgba(109, 19, 19, 0.14);
+  --ux-button-danger-shadow-soft: rgba(109, 19, 19, 0.1);
+  --ux-button-danger-glow: rgba(232, 92, 92, 0.22);
   --ux-button-secondary-bg: #f7f9fc;
   --ux-button-secondary-bg-hover: color-mix(in srgb, #f7f9fc 92%, white 8%);
   --ux-button-secondary-bg-active: color-mix(in srgb, #f7f9fc 88%, black 12%);
@@ -155,6 +182,34 @@
   --ux-table-row-hover: #f3f7fd;
   --ux-table-tag-bg: var(--ux-badge-bg);
   --ux-table-tag-text: var(--ux-badge-text);
+
+  --ux-border-transparent: var(--ux-border-width-thin) var(--ux-border-style-default) transparent;
+  --ux-border-card: var(--ux-border-width-thin) var(--ux-border-style-default) var(--ux-card-border);
+  --ux-border-card-dashed: var(--ux-border-width-thin) var(--ux-border-style-muted) var(--ux-card-border);
+  --ux-border-field: var(--ux-border-width-thin) var(--ux-border-style-default) var(--ux-field-border);
+  --ux-border-field-strong: var(--ux-border-width-strong) var(--ux-border-style-default) var(--ux-field-border);
+  --ux-border-table: var(--ux-border-width-thin) var(--ux-border-style-default) var(--ux-table-border);
+  --ux-border-button-primary: var(--ux-border-width-thin) var(--ux-border-style-default) var(--ux-button-primary-border);
+  --ux-border-accent-primary: var(--ux-border-width-accent) var(--ux-border-style-default) var(--ux-button-primary-bg);
+  --ux-border-accent-shell: var(--ux-border-width-accent) var(--ux-border-style-default) var(--ux-shell-nav-badge-text);
+  --ux-border-accent-field: var(--ux-border-width-accent) var(--ux-border-style-default) var(--ux-field-border);
+  --ux-border-status-info: var(--ux-border-width-status) var(--ux-border-style-default) var(--ux-button-primary-bg);
+  --ux-border-status-warning: var(--ux-border-width-status) var(--ux-border-style-default) var(--ux-shell-attention-text);
+  --ux-border-status-danger: var(--ux-border-width-status) var(--ux-border-style-default) var(--ux-button-danger-bg);
+
+  --ux-opacity-hover: 0.96;
+  --ux-opacity-active: 0.92;
+  --ux-opacity-disabled: 0.72;
+  --ux-opacity-muted: 0.62;
+  --ux-opacity-subtle: 0.55;
+  --ux-opacity-faint: 0.26;
+  --ux-opacity-soft: 0.78;
+  --ux-opacity-medium: 0.82;
+  --ux-opacity-divider: 0.7;
+  --ux-transition-interactive: opacity 140ms ease;
+  --ux-transition-interactive-emphasis: background-color 140ms ease, border-color 140ms ease, opacity 140ms ease;
+  --ux-transition-shell-slide: transform 180ms ease;
+  --ux-focus-outline: 2px solid var(--ux-button-primary-bg);
 }
 
 @mixin ofoqh-sunset-skin-tokens() {

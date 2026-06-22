@@ -2,18 +2,18 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'ofoqh-ux-table-shell',
+  selector: 'ofoqh-ux-panel-shell, ofoqh-ux-table-shell',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './table-shell.component.html',
   styleUrl: './table-shell.component.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
-    'data-ux-component': 'table-shell',
+    'data-ux-component': 'panel-shell',
     '[class.ux-table-shell-host--span-2]': 'spanTwo',
   },
 })
-export class UxTableShellComponent {
+export class UxPanelShellComponent {
   @Input() title = '';
   @Input() subhead = '';
   @Input() spanTwo = false;
@@ -35,3 +35,5 @@ export class UxTableShellComponent {
   @Output() readonly next = new EventEmitter<void>();
   @Output() readonly pageSizeChange = new EventEmitter<number>();
 }
+
+export { UxPanelShellComponent as UxTableShellComponent };
