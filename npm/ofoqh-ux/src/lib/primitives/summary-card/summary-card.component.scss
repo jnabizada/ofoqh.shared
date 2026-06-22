@@ -39,7 +39,7 @@
   min-height: 132px;
   padding: 18px;
   border: none;
-  border-radius: var(--ux-radius-xl, 18px);
+  border-radius: var(--ux-radius-surface, var(--ux-radius-xl, 18px));
   background: var(--ux-card-bg, #fff);
   box-shadow: none;
   color: var(--ux-card-text, var(--app-text, #102744));

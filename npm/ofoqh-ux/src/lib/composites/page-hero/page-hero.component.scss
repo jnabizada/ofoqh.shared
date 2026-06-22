@@ -38,7 +38,7 @@
   min-width: 0;
   padding: 24px;
   border: none;
-  border-radius: var(--ux-radius-xl, 18px);
+  border-radius: var(--ux-radius-surface, var(--ux-radius-xl, 18px));
   background: var(--ux-page-hero-bg, var(--ux-card-bg, #fff));
   box-shadow: none;
 }
@@ -88,6 +88,50 @@
   gap: 10px;
   align-items: center;
   justify-content: flex-end;
+}
+
+.ux-page-hero__actions > [data-ux-chip] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: var(--ux-border-field);
+  border-radius: var(--ux-radius-full);
+  background: var(--ux-field-bg);
+  color: var(--ux-card-text);
+  font-size: var(--ux-text-label-size);
+  line-height: var(--ux-text-label-line-height);
+  font-weight: var(--ux-text-label-weight);
+  letter-spacing: var(--ux-text-label-spacing);
+  text-transform: var(--ux-text-label-transform);
+}
+
+.ux-page-hero__actions > [data-ux-chip][data-ux-tone="muted"] {
+  color: var(--ux-card-muted);
+}
+
+.ux-page-hero__actions > [data-ux-chip][data-ux-tone="accent"] {
+  border-color: var(--ux-table-tag-bg, var(--ux-field-border));
+  background: var(--ux-table-tag-bg, var(--ux-field-bg));
+  color: var(--ux-table-tag-text, var(--ux-card-text));
+}
+
+.ux-page-hero__actions > [data-ux-chip][data-ux-tone="success"] {
+  border-color: var(--ux-status-success-border, var(--ux-field-border));
+  background: var(--ux-status-success-bg, var(--ux-field-bg));
+  color: var(--ux-status-success-text, var(--ux-card-text));
+}
+
+.ux-page-hero__actions > [data-ux-chip][data-ux-tone="warning"] {
+  border-color: var(--ux-status-warning-border, var(--ux-field-border));
+  background: var(--ux-status-warning-bg, var(--ux-field-bg));
+  color: var(--ux-status-warning-text, var(--ux-card-text));
+}
+
+.ux-page-hero__actions > [data-ux-chip][data-ux-tone="danger"] {
+  border-color: var(--ux-status-danger-border, var(--ux-field-border));
+  background: var(--ux-status-danger-bg, var(--ux-field-bg));
+  color: var(--ux-status-danger-text, var(--ux-card-text));
 }
 
 .ux-page-hero__actions:empty {

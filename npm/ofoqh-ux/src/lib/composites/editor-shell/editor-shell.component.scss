@@ -33,7 +33,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
 
 .ux-editor-shell {
   border: var(--ux-border-card);
-  border-radius: var(--ux-radius-xl);
+  border-radius: var(--ux-radius-surface, var(--ux-radius-xl, 18px));
   background: var(--ux-card-bg);
   padding: 18px;
   font: inherit;
@@ -132,6 +132,28 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   border-color: var(--ux-status-warning-border, var(--ux-field-border));
   background: var(--ux-status-warning-bg, var(--ux-field-bg));
   color: var(--ux-status-warning-text, var(--ux-card-text));
+}
+
+.ux-editor-shell__chips > [data-ux-tone="muted"] {
+  color: var(--ux-card-muted);
+}
+
+.ux-editor-shell__chips > [data-ux-tone="accent"] {
+  border-color: var(--ux-table-tag-bg, var(--ux-field-border));
+  background: var(--ux-table-tag-bg, var(--ux-field-bg));
+  color: var(--ux-table-tag-text, var(--ux-card-text));
+}
+
+.ux-editor-shell__chips > [data-ux-tone="success"] {
+  border-color: var(--ux-status-success-border, var(--ux-field-border));
+  background: var(--ux-status-success-bg, var(--ux-field-bg));
+  color: var(--ux-status-success-text, var(--ux-card-text));
+}
+
+.ux-editor-shell__chips > [data-ux-tone="danger"] {
+  border-color: var(--ux-status-danger-border, var(--ux-field-border));
+  background: var(--ux-status-danger-bg, var(--ux-field-bg));
+  color: var(--ux-status-danger-text, var(--ux-card-text));
 }
 
 .ux-editor-shell__footer {
