@@ -117,6 +117,25 @@
     }
 
     <main class="shell__page">
+      @if (tenantBranding; as branding) {
+        <section class="shell__tenant-branding">
+          @if (branding.logoUrl) {
+            <img class="shell__tenant-branding-logo" [src]="branding.logoUrl" alt="" />
+          }
+          <div class="shell__tenant-branding-copy">
+            @if (branding.eyebrow) {
+              <p class="shell__tenant-branding-eyebrow">{{ branding.eyebrow }}</p>
+            }
+            @if (branding.title) {
+              <strong class="shell__tenant-branding-title">{{ branding.title }}</strong>
+            }
+            @if (branding.body) {
+              <p class="shell__tenant-branding-body">{{ branding.body }}</p>
+            }
+          </div>
+        </section>
+      }
+
       <ng-content></ng-content>
     </main>
   </div>

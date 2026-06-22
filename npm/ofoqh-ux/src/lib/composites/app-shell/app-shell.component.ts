@@ -27,6 +27,13 @@ export type UxAppShellMetaCard = {
   monoLine?: string | null;
 };
 
+export type UxAppShellTenantBranding = {
+  eyebrow?: string | null;
+  title?: string | null;
+  body?: string | null;
+  logoUrl?: string | null;
+};
+
 @Component({
   selector: 'ofoqh-ux-app-shell',
   standalone: true,
@@ -53,6 +60,7 @@ export class UxAppShellComponent {
   @Input() metaGripAriaLabel = 'Move info cards';
   @Input() navSections: readonly UxAppShellNavSection[] = [];
   @Input() metaCards: readonly UxAppShellMetaCard[] = [];
+  @Input() tenantBranding: UxAppShellTenantBranding | null = null;
   @Input() showDebugToggle = true;
   @Input() debugToggleOnLabel = 'UX on';
   @Input() debugToggleOffLabel = 'UX off';
