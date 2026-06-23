@@ -33,7 +33,7 @@
 
 .ux-summary-bar {
   display: grid;
-  gap: 14px;
+  gap: var(--ux-shell-section-gap, 14px);
   min-width: 0;
   padding: 0;
   border-radius: var(--ux-radius-xl, 18px);
@@ -42,7 +42,7 @@
 }
 
 .ux-summary-bar--dense {
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
 }
 
 .ux-summary-bar__head {
@@ -50,7 +50,7 @@
   flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ux-content-gap-md, 12px);
 }
 
 .ux-summary-bar__copy {
@@ -92,7 +92,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
 }
 
 .ux-summary-bar__actions:empty {
@@ -101,13 +101,13 @@
 
 .ux-summary-bar__grid {
   display: grid;
-  gap: 14px;
+  gap: var(--ux-shell-section-gap, 14px);
   min-width: 0;
   align-items: stretch;
 }
 
 .ux-summary-bar--dense .ux-summary-bar__grid {
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
 }
 
 @media (max-width: 1100px) {

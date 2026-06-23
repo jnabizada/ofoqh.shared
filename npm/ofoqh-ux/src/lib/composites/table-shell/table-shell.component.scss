@@ -49,8 +49,8 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: var(--ux-content-gap-md, 12px);
+  margin-bottom: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-table-shell__copy {
@@ -80,7 +80,7 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
   min-width: 0;
 }
 
@@ -89,7 +89,7 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
 }
 
 .ux-table-shell__head-actions [table-head-meta] > *,
@@ -99,7 +99,7 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
 
 .ux-table-shell__body {
   display: grid;
-  gap: 14px;
+  gap: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-table-shell__body [data-ux-chip] {
@@ -151,7 +151,7 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
 }
 
 .ux-table-shell__count {
@@ -165,7 +165,7 @@ ofoqh-ux-table-shell.ux-table-shell-host--span-2 {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
 }
 
 .ux-table-shell__pager-label {

@@ -45,8 +45,8 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: var(--ux-content-gap-md, 12px);
+  margin-bottom: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-editor-shell__copy {
@@ -75,7 +75,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
   min-width: 0;
 }
 
@@ -85,7 +85,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
   min-width: 0;
 }
 
@@ -96,7 +96,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
   min-width: 0;
 }
 
@@ -109,7 +109,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
 
 .ux-editor-shell__body {
   display: grid;
-  gap: 14px;
+  gap: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-editor-shell__chips > * {
@@ -160,9 +160,9 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: 14px;
+  gap: var(--ux-shell-section-gap, 14px);
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-editor-shell__footer-prefix {
@@ -170,7 +170,7 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
   margin-right: auto;
 }
 

@@ -29,7 +29,7 @@
 
 .ux-search-filter-bar {
   display: grid;
-  gap: 12px;
+  gap: var(--ux-shell-section-gap, 14px);
   border: none;
   border-radius: var(--ux-radius-xs, 10px);
   background: var(--card-bg, #fff);
@@ -38,7 +38,7 @@
 }
 
 .ux-search-filter-bar--compact {
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
   padding: 16px;
 }
 
@@ -47,7 +47,7 @@
   flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--ux-content-gap-md, 12px);
 }
 
 .ux-search-filter-bar__copy {
@@ -86,7 +86,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
 }
 
 .ux-search-filter-bar__head-actions:empty {
@@ -96,7 +96,7 @@
 .ux-search-filter-bar__controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
-  gap: 12px;
+  gap: var(--ux-shell-section-gap, 14px);
 }
 
 .ux-search-filter-bar__controls ::ng-deep .panel--span-2 {
@@ -142,7 +142,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 8px;
+  gap: var(--ux-inline-gap-sm, 8px);
 }
 
 .ux-search-filter-bar__controls ::ng-deep .search-row > * {
@@ -154,7 +154,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: var(--ux-inline-gap-md, 10px);
 }
 
 .ux-search-filter-bar__summary-copy {

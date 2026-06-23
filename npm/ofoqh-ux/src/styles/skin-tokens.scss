@@ -64,6 +64,13 @@
   --ux-radius-4xl: 26px;
   --ux-radius-full: 999px;
 
+  --ux-workspace-gap: 14px;
+  --ux-stack-gap: var(--ux-workspace-gap);
+  --ux-shell-section-gap: var(--ux-workspace-gap);
+  --ux-inline-gap-sm: 8px;
+  --ux-inline-gap-md: 10px;
+  --ux-content-gap-md: 12px;
+
   --ux-border-width-thin: 1px;
   --ux-border-width-strong: 2px;
   --ux-border-width-accent: 3px;
