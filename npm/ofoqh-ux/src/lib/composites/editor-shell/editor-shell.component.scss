@@ -100,6 +100,16 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   min-width: 0;
 }
 
+.ux-editor-shell__top-actions > *,
+.ux-editor-shell__secondary-actions > *,
+.ux-editor-shell__footer-prefix > * {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux-inline-gap-sm, 8px);
+  min-width: 0;
+}
+
 .ux-editor-shell__top-actions:empty,
 .ux-editor-shell__chips:empty,
 .ux-editor-shell__secondary-actions:empty,
@@ -176,12 +186,12 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
 
 .ux-editor-shell__primary-action,
 .ux-editor-shell__secondary-action,
-.ux-editor-shell__top-actions > button,
-.ux-editor-shell__top-actions > a,
-.ux-editor-shell__secondary-actions > button,
-.ux-editor-shell__secondary-actions > a,
-.ux-editor-shell__footer-prefix > button,
-.ux-editor-shell__footer-prefix > a {
+.ux-editor-shell__top-actions button,
+.ux-editor-shell__top-actions a,
+.ux-editor-shell__secondary-actions button,
+.ux-editor-shell__secondary-actions a,
+.ux-editor-shell__footer-prefix button,
+.ux-editor-shell__footer-prefix a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -205,53 +215,47 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
 }
 
 .ux-editor-shell__secondary-action,
-.ux-editor-shell__top-actions > button,
-.ux-editor-shell__top-actions > a,
-.ux-editor-shell__secondary-actions > button,
-.ux-editor-shell__secondary-actions > a,
-.ux-editor-shell__footer-prefix > button,
-.ux-editor-shell__footer-prefix > a {
+.ux-editor-shell__top-actions button,
+.ux-editor-shell__top-actions a,
+.ux-editor-shell__secondary-actions button,
+.ux-editor-shell__secondary-actions a,
+.ux-editor-shell__footer-prefix button,
+.ux-editor-shell__footer-prefix a {
   border: var(--ux-border-field);
   color: var(--ux-card-text);
   background: var(--ux-field-bg);
 }
 
-:is(
-  .ux-editor-shell__primary-action,
-  .ux-editor-shell__secondary-action,
-  .ux-editor-shell__top-actions > button,
-  .ux-editor-shell__top-actions > a,
-  .ux-editor-shell__secondary-actions > button,
-  .ux-editor-shell__secondary-actions > a,
-  .ux-editor-shell__footer-prefix > button,
-  .ux-editor-shell__footer-prefix > a
-):hover {
+.ux-editor-shell__primary-action:hover,
+.ux-editor-shell__secondary-action:hover,
+.ux-editor-shell__top-actions button:hover,
+.ux-editor-shell__top-actions a:hover,
+.ux-editor-shell__secondary-actions button:hover,
+.ux-editor-shell__secondary-actions a:hover,
+.ux-editor-shell__footer-prefix button:hover,
+.ux-editor-shell__footer-prefix a:hover {
   opacity: var(--ux-opacity-hover);
 }
 
-:is(
-  .ux-editor-shell__primary-action,
-  .ux-editor-shell__secondary-action,
-  .ux-editor-shell__top-actions > button,
-  .ux-editor-shell__top-actions > a,
-  .ux-editor-shell__secondary-actions > button,
-  .ux-editor-shell__secondary-actions > a,
-  .ux-editor-shell__footer-prefix > button,
-  .ux-editor-shell__footer-prefix > a
-):active {
+.ux-editor-shell__primary-action:active,
+.ux-editor-shell__secondary-action:active,
+.ux-editor-shell__top-actions button:active,
+.ux-editor-shell__top-actions a:active,
+.ux-editor-shell__secondary-actions button:active,
+.ux-editor-shell__secondary-actions a:active,
+.ux-editor-shell__footer-prefix button:active,
+.ux-editor-shell__footer-prefix a:active {
   opacity: var(--ux-opacity-active);
 }
 
-:is(
-  .ux-editor-shell__primary-action,
-  .ux-editor-shell__secondary-action,
-  .ux-editor-shell__top-actions > button,
-  .ux-editor-shell__top-actions > a,
-  .ux-editor-shell__secondary-actions > button,
-  .ux-editor-shell__secondary-actions > a,
-  .ux-editor-shell__footer-prefix > button,
-  .ux-editor-shell__footer-prefix > a
-):is(:disabled, [disabled]) {
+.ux-editor-shell__primary-action:is(:disabled, [disabled]),
+.ux-editor-shell__secondary-action:is(:disabled, [disabled]),
+.ux-editor-shell__top-actions button:is(:disabled, [disabled]),
+.ux-editor-shell__top-actions a:is(:disabled, [disabled]),
+.ux-editor-shell__secondary-actions button:is(:disabled, [disabled]),
+.ux-editor-shell__secondary-actions a:is(:disabled, [disabled]),
+.ux-editor-shell__footer-prefix button:is(:disabled, [disabled]),
+.ux-editor-shell__footer-prefix a:is(:disabled, [disabled]) {
   border-color: var(--ux-field-border);
   background: var(--ux-field-bg);
   color: var(--ux-card-muted);
@@ -260,10 +264,10 @@ ofoqh-ux-editor-shell.ux-editor-shell-host--span-2 {
   opacity: var(--ux-opacity-disabled);
 }
 
-.ux-editor-shell__top-actions > button,
-.ux-editor-shell__top-actions > a,
-.ux-editor-shell__secondary-actions > button,
-.ux-editor-shell__secondary-actions > a {
+.ux-editor-shell__top-actions button,
+.ux-editor-shell__top-actions a,
+.ux-editor-shell__secondary-actions button,
+.ux-editor-shell__secondary-actions a {
   min-height: 36px;
   padding-inline: 14px;
 }
