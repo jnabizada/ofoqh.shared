@@ -50,6 +50,8 @@ export class UxDashboardCardComponent {
   @Input() startsNewRow = false;
   @Input() colorPickerValue = '#7a889a';
   @Input() dragData: unknown = null;
+  @Input() draggable = true;
+  @Input() showToolbar = true;
 
   @Output() toggleMenu = new EventEmitter<void>();
   @Output() hideCard = new EventEmitter<void>();
@@ -65,6 +67,10 @@ export class UxDashboardCardComponent {
   }
 
   protected onPointerDown(event: MouseEvent | TouchEvent) {
+    if (!this.draggable) {
+      return;
+    }
+
     const target = event.target as HTMLElement | null;
     if (!target) {
       return;
