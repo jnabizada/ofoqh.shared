@@ -1,6 +1,6 @@
 {
   "name": "@ofoqh/angular-tenant",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Shared Angular tenant routing, callback, session, and request helpers for Ofoqh tenant-scoped SPAs.",
   "license": "UNLICENSED",
   "homepage": "https://github.com/jnabizada/ofoqh.shared",
